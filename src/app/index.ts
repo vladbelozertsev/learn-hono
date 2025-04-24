@@ -1,15 +1,6 @@
-import { _app, _prisma } from "./app.js"; // imported first!!! declare Global Variables
-import { serve } from "@hono/node-server";
+// disable-sort-imports
+
+import { _app } from "./app";
 import "./routes.js";
 
-serve(
-  {
-    fetch: _app.fetch,
-    port: 3000,
-  },
-  (info) => {
-    console.log(`Server is running on http://localhost:${info.port}`);
-  }
-).on("close", () => {
-  _prisma.$disconnect().catch(console.error);
-});
+export default _app;

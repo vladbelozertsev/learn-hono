@@ -1,35 +1,42 @@
 import { HTTPException } from "hono/http-exception";
-import { delkeys } from "../../libs/utils/index.js";
-import { hash } from "bcrypt";
-import { token } from "../../libs/token/index.js";
-import { zValidator } from "@hono/zod-validator";
+import { User } from "../../libs/types/user";
+import { delkeys } from "../../libs/helpers/utils";
+import { password, sql } from "bun";
+import { token } from "../../libs/helpers/token";
+import { validator } from "../../libs/mws/validator";
 import { z } from "zod";
 
-const jsonv = zValidator(
-  "json",
-  z.object({
+const jsonv = validator({
+  target: "json",
+  schema: z.object({
     email: z.string().email().nonempty(),
-    password: z.string().nonempty(),
-  })
-);
+    password: z.string().nonempty().max(72),
+  }),
+});
 
-app.post("auth", jsonv, async (c) => {
-  console.log("asasas");
+app.post("api/auth", jsonv, async (c) => {
+  console.log(c);
   const json = c.req.valid("json");
-  const user = await prisma.user.findUnique({ where: { email: json.email } });
+
+  const [user]: [User["value"] | undefined] = await sql`
+    SELECT * FROM "Users"
+    WHERE "email" = ${json.email}
+  `;
+
   if (!user) throw new HTTPException(401, { message: "Invalid email" });
   if (user.password !== json.password) throw new HTTPException(401, { message: "Invalid password" });
-  const refreshToken = await token.refresh(user.email);
-  const accessToken = await token.access(user.email);
-  const signature = await hash(refreshToken.split(".")[2], 10);
+  const refreshToken = await token.refresh(user.id);
+  const accessToken = await token.access(user.id);
+  const signature = await password.hash(refreshToken.split(".")[2]);
 
-  await prisma.user.update({
-    where: { email: json.email },
-    data: { refreshToken: signature },
-  });
+  await sql`
+    UPDATE "Users"
+    SET "signature" = ${signature}
+    WHERE "email" = ${json.email}
+  `;
 
-  return c.json({
-    user: delkeys(user, ["password", "refreshToken"]),
+  return c.json<User["valid"]>({
+    user: delkeys(user, ["password", "signature"]),
     accessToken,
     refreshToken,
   });

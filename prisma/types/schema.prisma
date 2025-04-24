@@ -1,0 +1,69 @@
+model Files {
+  id       Int    @id @default(autoincrement())
+  name     String @unique
+  createAt Int
+}
+
+model Flowers {
+  id      Int                      @id @default(autoincrement())
+  color   String
+  name    String
+  price   Int
+  history FlowersHistory[]
+  farms   FlowersFarmsAndFlowers[]
+}
+
+model FlowersHistory {
+  id        Int     @id @default(autoincrement())
+  flowersId Int
+  date      Int
+  price     Int
+  flower    Flowers @relation(fields: [flowersId], references: [id])
+}
+
+model FlowersFarms {
+  id      Int                      @id @default(autoincrement())
+  name    String
+  country String
+  rate    Int
+  flowers FlowersFarmsAndFlowers[]
+}
+
+model FlowersFarmsAndFlowers {
+  flowers        Flowers      @relation(fields: [flowersId], references: [id])
+  flowersId      Int
+  flowersFarms   FlowersFarms @relation(fields: [flowersFarmsId], references: [id])
+  flowersFarmsId Int
+
+  @@id([flowersId, flowersFarmsId])
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL_PRISMA")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../types"
+  previewFeatures = ["prismaSchemaFolder"]
+}
+
+model Users {
+  id            Int     @id @default(autoincrement())
+  email         String
+  emailVerified Boolean @default(false)
+  name          String
+  password      String?
+  signature     String?
+  role          String  @default("user")
+  oauth         String?
+  oauthId       String?
+}
+
+model UsersFiles {
+  userId Int
+  fileId Int
+
+  @@id([userId, fileId])
+}

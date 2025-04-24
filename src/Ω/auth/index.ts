@@ -1,2 +1,3 @@
-import "./login.js";
-import "./refresh.js";
+import "./login";
+import "./logout";
+import "./refresh";

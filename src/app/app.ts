@@ -1,30 +1,32 @@
-import "dotenv/config";
 import { Hono } from "hono";
-import { PrismaClient } from "@prisma/client";
 import { cors } from "hono/cors";
+import { privatemw } from "../libs/mws/private";
+import { serveStatic } from "hono/bun";
 
-import type { BlankEnv, BlankSchema } from "hono/types";
+export const _app = new Hono();
+_app.get("public/*", serveStatic({}));
 
-const basePath = "api" as const;
-export const _app = new Hono().basePath(basePath);
-export const _prisma = new PrismaClient();
-
-global.app = _app;
-global.prisma = _prisma;
+_app.get("private/*", privatemw, serveStatic({}));
 
 _app.use(
   "*",
   cors({
-    origin: ["http://localhost:3001", "http://192.168.0.10:3001"],
-    // allowHeaders: ["Origin", "Content-Type", "Authorization"],
+    origin: "http://localhost:3001",
+    // allowHeaders: ["Origin", "Content-Type", "Authorization", "Access-Control-Allow-Origin"],
     // allowMethods: ["GET", "OPTIONS", "POST", "PUT", "DELETE"],
-    // credentials: true, // for cookies
+    credentials: true, // for cookies
   })
 );
 
-type App = Hono<BlankEnv, BlankSchema, typeof basePath>;
+global.app = _app;
 
-declare global {
-  var app: App;
-  var prisma: PrismaClient;
-}
+/**
+ * Typescript errors:
+ * 1. install global typescript: <| bun install -g typescript |>
+ * 1.1 to uninstall global tsc: <| bun uninstall typescript |>
+ * https://www.typescriptlang.org/download/
+ *
+ * 2. Add command to package.json:
+ * <| "ts": "tsc --skipLibCheck", |>
+ * https://stackoverflow.com/questions/51634361/how-to-force-tsc-to-ignore-node-modules-folder
+ */

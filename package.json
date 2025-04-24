@@ -1,25 +1,31 @@
 {
   "name": "server",
-  "type": "module",
   "scripts": {
-    "dev": "tsx watch src/app/index.ts"
+    "ts": "tsc --skipLibCheck --noEmit",
+    "tsw": "tsc --skipLibCheck --noEmit --watch",
+    "db-gen:dev": "dotenv -e .env.development bunx prisma generate",
+    "db-migrate:prod": "dotenv -e .env.production bunx prisma migrate deploy",
+    "db-migrate:dev": "dotenv -e .env.development bunx prisma migrate dev --name",
+    "db-reset:dev": "dotenv -e .env.development bunx prisma migrate reset",
+    "dev": "NODE_ENV=development bun run --hot src/app/index.ts",
+    "build": "NODE_ENV=production bun build src/app/index.ts --target bun --outdir ./build --minify",
+    "start": "NODE_ENV=production bun run build/index.js --target bun"
   },
   "dependencies": {
-    "@hono/node-server": "^1.13.8",
+    "@a2seven/yoo-checkout": "^1.1.4",
+    "@hono/oauth-providers": "^0.7.1",
     "@hono/zod-validator": "^0.4.3",
-    "@prisma/client": "^6.4.1",
-    "bcrypt": "^5.1.1",
-    "busboy": "^1.6.0",
-    "dotenv": "^16.4.7",
-    "hono": "^4.7.4",
-    "hono-upload": "^0.2.0",
+    "@prisma/client": "^6.5.0",
+    "file-type": "^20.4.1",
+    "hono": "^4.7.5",
+    "pdfkit": "^0.17.0",
+    "pdfkit-table": "^0.1.99",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/busboy": "^1.5.4",
-    "@types/node": "^20.11.17",
-    "prisma": "^6.4.1",
-    "tsx": "^4.7.1"
+    "@types/bun": "latest",
+    "@types/pdfkit": "^0.13.9",
+    "prisma": "^6.5.0"
   }
 }
