@@ -1,7 +1,7 @@
 import { Context } from "hono";
+import { SQLQuery, sql } from "bun";
 import { atobURL, safeParseJSON } from "../../helpers/utils";
 import { getSQLFilter } from "./get-sql-filter";
-import { sql } from "bun";
 import { z } from "zod";
 
 const filterSchema = z
@@ -15,24 +15,24 @@ const filterSchema = z
   ])
   .array();
 
-export const WHERE = (c: Context<any, any, any>) => {
-  const filterJSON = atobURL(c.req.query("filter"));
-  if (!filterJSON) return sql``;
+export const WHERE = (c: Context<any, any, any>, and?: SQLQuery) => {
+  const filterJSON = c.req.query("filter");
+  if (!filterJSON) return and ? sql`WHERE ${and}` : sql``;
 
   const filters = filterSchema.safeParse(safeParseJSON(filterJSON));
 
   if (!filters.success || !filters.data) {
-    console.error(filters.error);
-    return sql``;
+    console.error("WHERE ZOD ERROR", filters.error);
+    return and ? sql`WHERE ${and}` : sql``;
   }
 
   return filters.data
     .map(getSQLFilter)
     .filter((sqlQuery) => !!sqlQuery)
     .reduce((acc, cur, index) => {
-      if (!index) return sql`WHERE ${cur}`;
+      if (!index) return sql`WHERE ${acc}`;
       return sql`${acc} AND ${cur}`;
-    }, sql``);
+    }, and || sql``);
 };
 
 /**

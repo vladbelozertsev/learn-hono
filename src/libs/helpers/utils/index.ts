@@ -66,17 +66,25 @@ export const atobURL = (decode?: string) => {
   return atob(decode.replace(/[\-_\.]/g, (s) => chars[s] || s));
 };
 
-export const safeParseJSON = (json: string) => {
+export const safeParseJSON = <T>(json: string) => {
   try {
-    return JSON.parse(json);
+    return JSON.parse(json) as T;
   } catch (err) {
     return null;
   }
 };
 
-// export const base64URL = {
-//   slash: ["/", ""],
-//   encode:
-// }
+export const groupBy = <T extends { [key: string]: unknown }>(field?: string | number, arr?: T[]) => {
+  if (!field || !arr?.length) return {};
+  return arr.reduce((acc, cur) => {
+    const key = cur[field] as string | number;
+    if (!isStringOrNumber(cur[field])) return acc;
+    return { ...acc, [key]: (acc[key] || []).concat(cur) };
+  }, {} as { [key: string]: T[] });
+};
 
-//https://github.com/colinhacks/zod/discussions/1358
+export const queryIds = (c: Context<any, any, any>, name: string) => {
+  const str = c.req.query(name);
+  if (!c || !name || !str) return [];
+  return str.split(".").map((id) => +id);
+};

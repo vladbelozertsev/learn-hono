@@ -149,6 +149,17 @@ exports.Prisma.FlowersFarmsAndFlowersScalarFieldEnum = {
   flowersFarmsId: 'flowersFarmsId'
 };
 
+exports.Prisma.FlowersBouquetsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  price: 'price'
+};
+
+exports.Prisma.FlowersBouquetsAndFlowersScalarFieldEnum = {
+  flowersId: 'flowersId',
+  flowersBouquetsId: 'flowersBouquetsId'
+};
+
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -188,6 +199,8 @@ exports.Prisma.ModelName = {
   FlowersHistory: 'FlowersHistory',
   FlowersFarms: 'FlowersFarms',
   FlowersFarmsAndFlowers: 'FlowersFarmsAndFlowers',
+  FlowersBouquets: 'FlowersBouquets',
+  FlowersBouquetsAndFlowers: 'FlowersBouquetsAndFlowers',
   Users: 'Users',
   UsersFiles: 'UsersFiles'
 };

@@ -9,8 +9,8 @@ const selectSchema = z
   .array();
 
 export const SELECT = (c: Context<any, any, any>, from: string, exclude?: string[]) => {
-  const result = (psql?: SQLQuery, join?: { [key: string]: boolean }) => {
-    return { SQL: psql, join };
+  const result = (SQL?: SQLQuery, join?: { [key: string]: boolean }) => {
+    return { SQL: SQL || sql`SELECT * FROM ${sql(from)}`, join };
   };
 
   const selectJSON = c.req.query("select");

@@ -39,6 +39,16 @@ export type FlowersFarms = $Result.DefaultSelection<Prisma.$FlowersFarmsPayload>
  */
 export type FlowersFarmsAndFlowers = $Result.DefaultSelection<Prisma.$FlowersFarmsAndFlowersPayload>
 /**
+ * Model FlowersBouquets
+ * 
+ */
+export type FlowersBouquets = $Result.DefaultSelection<Prisma.$FlowersBouquetsPayload>
+/**
+ * Model FlowersBouquetsAndFlowers
+ * 
+ */
+export type FlowersBouquetsAndFlowers = $Result.DefaultSelection<Prisma.$FlowersBouquetsAndFlowersPayload>
+/**
  * Model Users
  * 
  */
@@ -223,6 +233,26 @@ export class PrismaClient<
     * ```
     */
   get flowersFarmsAndFlowers(): Prisma.FlowersFarmsAndFlowersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.flowersBouquets`: Exposes CRUD operations for the **FlowersBouquets** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FlowersBouquets
+    * const flowersBouquets = await prisma.flowersBouquets.findMany()
+    * ```
+    */
+  get flowersBouquets(): Prisma.FlowersBouquetsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.flowersBouquetsAndFlowers`: Exposes CRUD operations for the **FlowersBouquetsAndFlowers** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FlowersBouquetsAndFlowers
+    * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.findMany()
+    * ```
+    */
+  get flowersBouquetsAndFlowers(): Prisma.FlowersBouquetsAndFlowersDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.users`: Exposes CRUD operations for the **Users** model.
@@ -688,6 +718,8 @@ export namespace Prisma {
     FlowersHistory: 'FlowersHistory',
     FlowersFarms: 'FlowersFarms',
     FlowersFarmsAndFlowers: 'FlowersFarmsAndFlowers',
+    FlowersBouquets: 'FlowersBouquets',
+    FlowersBouquetsAndFlowers: 'FlowersBouquetsAndFlowers',
     Users: 'Users',
     UsersFiles: 'UsersFiles'
   };
@@ -708,7 +740,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "files" | "flowers" | "flowersHistory" | "flowersFarms" | "flowersFarmsAndFlowers" | "users" | "usersFiles"
+      modelProps: "files" | "flowers" | "flowersHistory" | "flowersFarms" | "flowersFarmsAndFlowers" | "flowersBouquets" | "flowersBouquetsAndFlowers" | "users" | "usersFiles"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1082,6 +1114,154 @@ export namespace Prisma {
           }
         }
       }
+      FlowersBouquets: {
+        payload: Prisma.$FlowersBouquetsPayload<ExtArgs>
+        fields: Prisma.FlowersBouquetsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FlowersBouquetsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FlowersBouquetsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>
+          }
+          findFirst: {
+            args: Prisma.FlowersBouquetsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FlowersBouquetsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>
+          }
+          findMany: {
+            args: Prisma.FlowersBouquetsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>[]
+          }
+          create: {
+            args: Prisma.FlowersBouquetsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>
+          }
+          createMany: {
+            args: Prisma.FlowersBouquetsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FlowersBouquetsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>[]
+          }
+          delete: {
+            args: Prisma.FlowersBouquetsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>
+          }
+          update: {
+            args: Prisma.FlowersBouquetsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>
+          }
+          deleteMany: {
+            args: Prisma.FlowersBouquetsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FlowersBouquetsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FlowersBouquetsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>[]
+          }
+          upsert: {
+            args: Prisma.FlowersBouquetsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsPayload>
+          }
+          aggregate: {
+            args: Prisma.FlowersBouquetsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFlowersBouquets>
+          }
+          groupBy: {
+            args: Prisma.FlowersBouquetsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FlowersBouquetsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FlowersBouquetsCountArgs<ExtArgs>
+            result: $Utils.Optional<FlowersBouquetsCountAggregateOutputType> | number
+          }
+        }
+      }
+      FlowersBouquetsAndFlowers: {
+        payload: Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>
+        fields: Prisma.FlowersBouquetsAndFlowersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FlowersBouquetsAndFlowersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FlowersBouquetsAndFlowersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>
+          }
+          findFirst: {
+            args: Prisma.FlowersBouquetsAndFlowersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FlowersBouquetsAndFlowersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>
+          }
+          findMany: {
+            args: Prisma.FlowersBouquetsAndFlowersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>[]
+          }
+          create: {
+            args: Prisma.FlowersBouquetsAndFlowersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>
+          }
+          createMany: {
+            args: Prisma.FlowersBouquetsAndFlowersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FlowersBouquetsAndFlowersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>[]
+          }
+          delete: {
+            args: Prisma.FlowersBouquetsAndFlowersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>
+          }
+          update: {
+            args: Prisma.FlowersBouquetsAndFlowersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>
+          }
+          deleteMany: {
+            args: Prisma.FlowersBouquetsAndFlowersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FlowersBouquetsAndFlowersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FlowersBouquetsAndFlowersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>[]
+          }
+          upsert: {
+            args: Prisma.FlowersBouquetsAndFlowersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersBouquetsAndFlowersPayload>
+          }
+          aggregate: {
+            args: Prisma.FlowersBouquetsAndFlowersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFlowersBouquetsAndFlowers>
+          }
+          groupBy: {
+            args: Prisma.FlowersBouquetsAndFlowersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FlowersBouquetsAndFlowersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FlowersBouquetsAndFlowersCountArgs<ExtArgs>
+            result: $Utils.Optional<FlowersBouquetsAndFlowersCountAggregateOutputType> | number
+          }
+        }
+      }
       Users: {
         payload: Prisma.$UsersPayload<ExtArgs>
         fields: Prisma.UsersFieldRefs
@@ -1319,6 +1499,8 @@ export namespace Prisma {
     flowersHistory?: FlowersHistoryOmit
     flowersFarms?: FlowersFarmsOmit
     flowersFarmsAndFlowers?: FlowersFarmsAndFlowersOmit
+    flowersBouquets?: FlowersBouquetsOmit
+    flowersBouquetsAndFlowers?: FlowersBouquetsAndFlowersOmit
     users?: UsersOmit
     usersFiles?: UsersFilesOmit
   }
@@ -1417,11 +1599,13 @@ export namespace Prisma {
   export type FlowersCountOutputType = {
     history: number
     farms: number
+    bouquets: number
   }
 
   export type FlowersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     history?: boolean | FlowersCountOutputTypeCountHistoryArgs
     farms?: boolean | FlowersCountOutputTypeCountFarmsArgs
+    bouquets?: boolean | FlowersCountOutputTypeCountBouquetsArgs
   }
 
   // Custom InputTypes
@@ -1447,6 +1631,13 @@ export namespace Prisma {
    */
   export type FlowersCountOutputTypeCountFarmsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FlowersFarmsAndFlowersWhereInput
+  }
+
+  /**
+   * FlowersCountOutputType without action
+   */
+  export type FlowersCountOutputTypeCountBouquetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlowersBouquetsAndFlowersWhereInput
   }
 
 
@@ -1478,6 +1669,37 @@ export namespace Prisma {
    */
   export type FlowersFarmsCountOutputTypeCountFlowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FlowersFarmsAndFlowersWhereInput
+  }
+
+
+  /**
+   * Count Type FlowersBouquetsCountOutputType
+   */
+
+  export type FlowersBouquetsCountOutputType = {
+    flowers: number
+  }
+
+  export type FlowersBouquetsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersBouquetsCountOutputTypeCountFlowersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FlowersBouquetsCountOutputType without action
+   */
+  export type FlowersBouquetsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsCountOutputType
+     */
+    select?: FlowersBouquetsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FlowersBouquetsCountOutputType without action
+   */
+  export type FlowersBouquetsCountOutputTypeCountFlowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlowersBouquetsAndFlowersWhereInput
   }
 
 
@@ -2688,6 +2910,7 @@ export namespace Prisma {
     price?: boolean
     history?: boolean | Flowers$historyArgs<ExtArgs>
     farms?: boolean | Flowers$farmsArgs<ExtArgs>
+    bouquets?: boolean | Flowers$bouquetsArgs<ExtArgs>
     _count?: boolean | FlowersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["flowers"]>
 
@@ -2716,6 +2939,7 @@ export namespace Prisma {
   export type FlowersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     history?: boolean | Flowers$historyArgs<ExtArgs>
     farms?: boolean | Flowers$farmsArgs<ExtArgs>
+    bouquets?: boolean | Flowers$bouquetsArgs<ExtArgs>
     _count?: boolean | FlowersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type FlowersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2726,6 +2950,7 @@ export namespace Prisma {
     objects: {
       history: Prisma.$FlowersHistoryPayload<ExtArgs>[]
       farms: Prisma.$FlowersFarmsAndFlowersPayload<ExtArgs>[]
+      bouquets: Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3128,6 +3353,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     history<T extends Flowers$historyArgs<ExtArgs> = {}>(args?: Subset<T, Flowers$historyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     farms<T extends Flowers$farmsArgs<ExtArgs> = {}>(args?: Subset<T, Flowers$farmsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersFarmsAndFlowersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bouquets<T extends Flowers$bouquetsArgs<ExtArgs> = {}>(args?: Subset<T, Flowers$bouquetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3594,6 +3820,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FlowersFarmsAndFlowersScalarFieldEnum | FlowersFarmsAndFlowersScalarFieldEnum[]
+  }
+
+  /**
+   * Flowers.bouquets
+   */
+  export type Flowers$bouquetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    where?: FlowersBouquetsAndFlowersWhereInput
+    orderBy?: FlowersBouquetsAndFlowersOrderByWithRelationInput | FlowersBouquetsAndFlowersOrderByWithRelationInput[]
+    cursor?: FlowersBouquetsAndFlowersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlowersBouquetsAndFlowersScalarFieldEnum | FlowersBouquetsAndFlowersScalarFieldEnum[]
   }
 
   /**
@@ -6867,6 +7117,2153 @@ export namespace Prisma {
 
 
   /**
+   * Model FlowersBouquets
+   */
+
+  export type AggregateFlowersBouquets = {
+    _count: FlowersBouquetsCountAggregateOutputType | null
+    _avg: FlowersBouquetsAvgAggregateOutputType | null
+    _sum: FlowersBouquetsSumAggregateOutputType | null
+    _min: FlowersBouquetsMinAggregateOutputType | null
+    _max: FlowersBouquetsMaxAggregateOutputType | null
+  }
+
+  export type FlowersBouquetsAvgAggregateOutputType = {
+    id: number | null
+    price: number | null
+  }
+
+  export type FlowersBouquetsSumAggregateOutputType = {
+    id: number | null
+    price: number | null
+  }
+
+  export type FlowersBouquetsMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    price: number | null
+  }
+
+  export type FlowersBouquetsMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    price: number | null
+  }
+
+  export type FlowersBouquetsCountAggregateOutputType = {
+    id: number
+    name: number
+    price: number
+    _all: number
+  }
+
+
+  export type FlowersBouquetsAvgAggregateInputType = {
+    id?: true
+    price?: true
+  }
+
+  export type FlowersBouquetsSumAggregateInputType = {
+    id?: true
+    price?: true
+  }
+
+  export type FlowersBouquetsMinAggregateInputType = {
+    id?: true
+    name?: true
+    price?: true
+  }
+
+  export type FlowersBouquetsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    price?: true
+  }
+
+  export type FlowersBouquetsCountAggregateInputType = {
+    id?: true
+    name?: true
+    price?: true
+    _all?: true
+  }
+
+  export type FlowersBouquetsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlowersBouquets to aggregate.
+     */
+    where?: FlowersBouquetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquets to fetch.
+     */
+    orderBy?: FlowersBouquetsOrderByWithRelationInput | FlowersBouquetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FlowersBouquetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FlowersBouquets
+    **/
+    _count?: true | FlowersBouquetsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FlowersBouquetsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FlowersBouquetsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FlowersBouquetsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FlowersBouquetsMaxAggregateInputType
+  }
+
+  export type GetFlowersBouquetsAggregateType<T extends FlowersBouquetsAggregateArgs> = {
+        [P in keyof T & keyof AggregateFlowersBouquets]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFlowersBouquets[P]>
+      : GetScalarType<T[P], AggregateFlowersBouquets[P]>
+  }
+
+
+
+
+  export type FlowersBouquetsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlowersBouquetsWhereInput
+    orderBy?: FlowersBouquetsOrderByWithAggregationInput | FlowersBouquetsOrderByWithAggregationInput[]
+    by: FlowersBouquetsScalarFieldEnum[] | FlowersBouquetsScalarFieldEnum
+    having?: FlowersBouquetsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FlowersBouquetsCountAggregateInputType | true
+    _avg?: FlowersBouquetsAvgAggregateInputType
+    _sum?: FlowersBouquetsSumAggregateInputType
+    _min?: FlowersBouquetsMinAggregateInputType
+    _max?: FlowersBouquetsMaxAggregateInputType
+  }
+
+  export type FlowersBouquetsGroupByOutputType = {
+    id: number
+    name: string
+    price: number
+    _count: FlowersBouquetsCountAggregateOutputType | null
+    _avg: FlowersBouquetsAvgAggregateOutputType | null
+    _sum: FlowersBouquetsSumAggregateOutputType | null
+    _min: FlowersBouquetsMinAggregateOutputType | null
+    _max: FlowersBouquetsMaxAggregateOutputType | null
+  }
+
+  type GetFlowersBouquetsGroupByPayload<T extends FlowersBouquetsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FlowersBouquetsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FlowersBouquetsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FlowersBouquetsGroupByOutputType[P]>
+            : GetScalarType<T[P], FlowersBouquetsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FlowersBouquetsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    price?: boolean
+    flowers?: boolean | FlowersBouquets$flowersArgs<ExtArgs>
+    _count?: boolean | FlowersBouquetsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flowersBouquets"]>
+
+  export type FlowersBouquetsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    price?: boolean
+  }, ExtArgs["result"]["flowersBouquets"]>
+
+  export type FlowersBouquetsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    price?: boolean
+  }, ExtArgs["result"]["flowersBouquets"]>
+
+  export type FlowersBouquetsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    price?: boolean
+  }
+
+  export type FlowersBouquetsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price", ExtArgs["result"]["flowersBouquets"]>
+  export type FlowersBouquetsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersBouquets$flowersArgs<ExtArgs>
+    _count?: boolean | FlowersBouquetsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type FlowersBouquetsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type FlowersBouquetsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $FlowersBouquetsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FlowersBouquets"
+    objects: {
+      flowers: Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      price: number
+    }, ExtArgs["result"]["flowersBouquets"]>
+    composites: {}
+  }
+
+  type FlowersBouquetsGetPayload<S extends boolean | null | undefined | FlowersBouquetsDefaultArgs> = $Result.GetResult<Prisma.$FlowersBouquetsPayload, S>
+
+  type FlowersBouquetsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FlowersBouquetsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FlowersBouquetsCountAggregateInputType | true
+    }
+
+  export interface FlowersBouquetsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FlowersBouquets'], meta: { name: 'FlowersBouquets' } }
+    /**
+     * Find zero or one FlowersBouquets that matches the filter.
+     * @param {FlowersBouquetsFindUniqueArgs} args - Arguments to find a FlowersBouquets
+     * @example
+     * // Get one FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FlowersBouquetsFindUniqueArgs>(args: SelectSubset<T, FlowersBouquetsFindUniqueArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FlowersBouquets that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FlowersBouquetsFindUniqueOrThrowArgs} args - Arguments to find a FlowersBouquets
+     * @example
+     * // Get one FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FlowersBouquetsFindUniqueOrThrowArgs>(args: SelectSubset<T, FlowersBouquetsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlowersBouquets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsFindFirstArgs} args - Arguments to find a FlowersBouquets
+     * @example
+     * // Get one FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FlowersBouquetsFindFirstArgs>(args?: SelectSubset<T, FlowersBouquetsFindFirstArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlowersBouquets that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsFindFirstOrThrowArgs} args - Arguments to find a FlowersBouquets
+     * @example
+     * // Get one FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FlowersBouquetsFindFirstOrThrowArgs>(args?: SelectSubset<T, FlowersBouquetsFindFirstOrThrowArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FlowersBouquets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.findMany()
+     * 
+     * // Get first 10 FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const flowersBouquetsWithIdOnly = await prisma.flowersBouquets.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FlowersBouquetsFindManyArgs>(args?: SelectSubset<T, FlowersBouquetsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FlowersBouquets.
+     * @param {FlowersBouquetsCreateArgs} args - Arguments to create a FlowersBouquets.
+     * @example
+     * // Create one FlowersBouquets
+     * const FlowersBouquets = await prisma.flowersBouquets.create({
+     *   data: {
+     *     // ... data to create a FlowersBouquets
+     *   }
+     * })
+     * 
+     */
+    create<T extends FlowersBouquetsCreateArgs>(args: SelectSubset<T, FlowersBouquetsCreateArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FlowersBouquets.
+     * @param {FlowersBouquetsCreateManyArgs} args - Arguments to create many FlowersBouquets.
+     * @example
+     * // Create many FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FlowersBouquetsCreateManyArgs>(args?: SelectSubset<T, FlowersBouquetsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FlowersBouquets and returns the data saved in the database.
+     * @param {FlowersBouquetsCreateManyAndReturnArgs} args - Arguments to create many FlowersBouquets.
+     * @example
+     * // Create many FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FlowersBouquets and only return the `id`
+     * const flowersBouquetsWithIdOnly = await prisma.flowersBouquets.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FlowersBouquetsCreateManyAndReturnArgs>(args?: SelectSubset<T, FlowersBouquetsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FlowersBouquets.
+     * @param {FlowersBouquetsDeleteArgs} args - Arguments to delete one FlowersBouquets.
+     * @example
+     * // Delete one FlowersBouquets
+     * const FlowersBouquets = await prisma.flowersBouquets.delete({
+     *   where: {
+     *     // ... filter to delete one FlowersBouquets
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FlowersBouquetsDeleteArgs>(args: SelectSubset<T, FlowersBouquetsDeleteArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FlowersBouquets.
+     * @param {FlowersBouquetsUpdateArgs} args - Arguments to update one FlowersBouquets.
+     * @example
+     * // Update one FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FlowersBouquetsUpdateArgs>(args: SelectSubset<T, FlowersBouquetsUpdateArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FlowersBouquets.
+     * @param {FlowersBouquetsDeleteManyArgs} args - Arguments to filter FlowersBouquets to delete.
+     * @example
+     * // Delete a few FlowersBouquets
+     * const { count } = await prisma.flowersBouquets.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FlowersBouquetsDeleteManyArgs>(args?: SelectSubset<T, FlowersBouquetsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlowersBouquets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FlowersBouquetsUpdateManyArgs>(args: SelectSubset<T, FlowersBouquetsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlowersBouquets and returns the data updated in the database.
+     * @param {FlowersBouquetsUpdateManyAndReturnArgs} args - Arguments to update many FlowersBouquets.
+     * @example
+     * // Update many FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FlowersBouquets and only return the `id`
+     * const flowersBouquetsWithIdOnly = await prisma.flowersBouquets.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FlowersBouquetsUpdateManyAndReturnArgs>(args: SelectSubset<T, FlowersBouquetsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FlowersBouquets.
+     * @param {FlowersBouquetsUpsertArgs} args - Arguments to update or create a FlowersBouquets.
+     * @example
+     * // Update or create a FlowersBouquets
+     * const flowersBouquets = await prisma.flowersBouquets.upsert({
+     *   create: {
+     *     // ... data to create a FlowersBouquets
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FlowersBouquets we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FlowersBouquetsUpsertArgs>(args: SelectSubset<T, FlowersBouquetsUpsertArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FlowersBouquets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsCountArgs} args - Arguments to filter FlowersBouquets to count.
+     * @example
+     * // Count the number of FlowersBouquets
+     * const count = await prisma.flowersBouquets.count({
+     *   where: {
+     *     // ... the filter for the FlowersBouquets we want to count
+     *   }
+     * })
+    **/
+    count<T extends FlowersBouquetsCountArgs>(
+      args?: Subset<T, FlowersBouquetsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FlowersBouquetsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FlowersBouquets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FlowersBouquetsAggregateArgs>(args: Subset<T, FlowersBouquetsAggregateArgs>): Prisma.PrismaPromise<GetFlowersBouquetsAggregateType<T>>
+
+    /**
+     * Group by FlowersBouquets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FlowersBouquetsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FlowersBouquetsGroupByArgs['orderBy'] }
+        : { orderBy?: FlowersBouquetsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FlowersBouquetsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFlowersBouquetsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FlowersBouquets model
+   */
+  readonly fields: FlowersBouquetsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FlowersBouquets.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FlowersBouquetsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    flowers<T extends FlowersBouquets$flowersArgs<ExtArgs> = {}>(args?: Subset<T, FlowersBouquets$flowersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FlowersBouquets model
+   */ 
+  interface FlowersBouquetsFieldRefs {
+    readonly id: FieldRef<"FlowersBouquets", 'Int'>
+    readonly name: FieldRef<"FlowersBouquets", 'String'>
+    readonly price: FieldRef<"FlowersBouquets", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FlowersBouquets findUnique
+   */
+  export type FlowersBouquetsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquets to fetch.
+     */
+    where: FlowersBouquetsWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquets findUniqueOrThrow
+   */
+  export type FlowersBouquetsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquets to fetch.
+     */
+    where: FlowersBouquetsWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquets findFirst
+   */
+  export type FlowersBouquetsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquets to fetch.
+     */
+    where?: FlowersBouquetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquets to fetch.
+     */
+    orderBy?: FlowersBouquetsOrderByWithRelationInput | FlowersBouquetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlowersBouquets.
+     */
+    cursor?: FlowersBouquetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlowersBouquets.
+     */
+    distinct?: FlowersBouquetsScalarFieldEnum | FlowersBouquetsScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersBouquets findFirstOrThrow
+   */
+  export type FlowersBouquetsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquets to fetch.
+     */
+    where?: FlowersBouquetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquets to fetch.
+     */
+    orderBy?: FlowersBouquetsOrderByWithRelationInput | FlowersBouquetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlowersBouquets.
+     */
+    cursor?: FlowersBouquetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlowersBouquets.
+     */
+    distinct?: FlowersBouquetsScalarFieldEnum | FlowersBouquetsScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersBouquets findMany
+   */
+  export type FlowersBouquetsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquets to fetch.
+     */
+    where?: FlowersBouquetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquets to fetch.
+     */
+    orderBy?: FlowersBouquetsOrderByWithRelationInput | FlowersBouquetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FlowersBouquets.
+     */
+    cursor?: FlowersBouquetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquets.
+     */
+    skip?: number
+    distinct?: FlowersBouquetsScalarFieldEnum | FlowersBouquetsScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersBouquets create
+   */
+  export type FlowersBouquetsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FlowersBouquets.
+     */
+    data: XOR<FlowersBouquetsCreateInput, FlowersBouquetsUncheckedCreateInput>
+  }
+
+  /**
+   * FlowersBouquets createMany
+   */
+  export type FlowersBouquetsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FlowersBouquets.
+     */
+    data: FlowersBouquetsCreateManyInput | FlowersBouquetsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FlowersBouquets createManyAndReturn
+   */
+  export type FlowersBouquetsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * The data used to create many FlowersBouquets.
+     */
+    data: FlowersBouquetsCreateManyInput | FlowersBouquetsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FlowersBouquets update
+   */
+  export type FlowersBouquetsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FlowersBouquets.
+     */
+    data: XOR<FlowersBouquetsUpdateInput, FlowersBouquetsUncheckedUpdateInput>
+    /**
+     * Choose, which FlowersBouquets to update.
+     */
+    where: FlowersBouquetsWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquets updateMany
+   */
+  export type FlowersBouquetsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FlowersBouquets.
+     */
+    data: XOR<FlowersBouquetsUpdateManyMutationInput, FlowersBouquetsUncheckedUpdateManyInput>
+    /**
+     * Filter which FlowersBouquets to update
+     */
+    where?: FlowersBouquetsWhereInput
+    /**
+     * Limit how many FlowersBouquets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlowersBouquets updateManyAndReturn
+   */
+  export type FlowersBouquetsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * The data used to update FlowersBouquets.
+     */
+    data: XOR<FlowersBouquetsUpdateManyMutationInput, FlowersBouquetsUncheckedUpdateManyInput>
+    /**
+     * Filter which FlowersBouquets to update
+     */
+    where?: FlowersBouquetsWhereInput
+    /**
+     * Limit how many FlowersBouquets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlowersBouquets upsert
+   */
+  export type FlowersBouquetsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FlowersBouquets to update in case it exists.
+     */
+    where: FlowersBouquetsWhereUniqueInput
+    /**
+     * In case the FlowersBouquets found by the `where` argument doesn't exist, create a new FlowersBouquets with this data.
+     */
+    create: XOR<FlowersBouquetsCreateInput, FlowersBouquetsUncheckedCreateInput>
+    /**
+     * In case the FlowersBouquets was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FlowersBouquetsUpdateInput, FlowersBouquetsUncheckedUpdateInput>
+  }
+
+  /**
+   * FlowersBouquets delete
+   */
+  export type FlowersBouquetsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+    /**
+     * Filter which FlowersBouquets to delete.
+     */
+    where: FlowersBouquetsWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquets deleteMany
+   */
+  export type FlowersBouquetsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlowersBouquets to delete
+     */
+    where?: FlowersBouquetsWhereInput
+    /**
+     * Limit how many FlowersBouquets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlowersBouquets.flowers
+   */
+  export type FlowersBouquets$flowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    where?: FlowersBouquetsAndFlowersWhereInput
+    orderBy?: FlowersBouquetsAndFlowersOrderByWithRelationInput | FlowersBouquetsAndFlowersOrderByWithRelationInput[]
+    cursor?: FlowersBouquetsAndFlowersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlowersBouquetsAndFlowersScalarFieldEnum | FlowersBouquetsAndFlowersScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersBouquets without action
+   */
+  export type FlowersBouquetsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquets
+     */
+    select?: FlowersBouquetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquets
+     */
+    omit?: FlowersBouquetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FlowersBouquetsAndFlowers
+   */
+
+  export type AggregateFlowersBouquetsAndFlowers = {
+    _count: FlowersBouquetsAndFlowersCountAggregateOutputType | null
+    _avg: FlowersBouquetsAndFlowersAvgAggregateOutputType | null
+    _sum: FlowersBouquetsAndFlowersSumAggregateOutputType | null
+    _min: FlowersBouquetsAndFlowersMinAggregateOutputType | null
+    _max: FlowersBouquetsAndFlowersMaxAggregateOutputType | null
+  }
+
+  export type FlowersBouquetsAndFlowersAvgAggregateOutputType = {
+    flowersId: number | null
+    flowersBouquetsId: number | null
+  }
+
+  export type FlowersBouquetsAndFlowersSumAggregateOutputType = {
+    flowersId: number | null
+    flowersBouquetsId: number | null
+  }
+
+  export type FlowersBouquetsAndFlowersMinAggregateOutputType = {
+    flowersId: number | null
+    flowersBouquetsId: number | null
+  }
+
+  export type FlowersBouquetsAndFlowersMaxAggregateOutputType = {
+    flowersId: number | null
+    flowersBouquetsId: number | null
+  }
+
+  export type FlowersBouquetsAndFlowersCountAggregateOutputType = {
+    flowersId: number
+    flowersBouquetsId: number
+    _all: number
+  }
+
+
+  export type FlowersBouquetsAndFlowersAvgAggregateInputType = {
+    flowersId?: true
+    flowersBouquetsId?: true
+  }
+
+  export type FlowersBouquetsAndFlowersSumAggregateInputType = {
+    flowersId?: true
+    flowersBouquetsId?: true
+  }
+
+  export type FlowersBouquetsAndFlowersMinAggregateInputType = {
+    flowersId?: true
+    flowersBouquetsId?: true
+  }
+
+  export type FlowersBouquetsAndFlowersMaxAggregateInputType = {
+    flowersId?: true
+    flowersBouquetsId?: true
+  }
+
+  export type FlowersBouquetsAndFlowersCountAggregateInputType = {
+    flowersId?: true
+    flowersBouquetsId?: true
+    _all?: true
+  }
+
+  export type FlowersBouquetsAndFlowersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlowersBouquetsAndFlowers to aggregate.
+     */
+    where?: FlowersBouquetsAndFlowersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquetsAndFlowers to fetch.
+     */
+    orderBy?: FlowersBouquetsAndFlowersOrderByWithRelationInput | FlowersBouquetsAndFlowersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FlowersBouquetsAndFlowersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquetsAndFlowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquetsAndFlowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FlowersBouquetsAndFlowers
+    **/
+    _count?: true | FlowersBouquetsAndFlowersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FlowersBouquetsAndFlowersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FlowersBouquetsAndFlowersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FlowersBouquetsAndFlowersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FlowersBouquetsAndFlowersMaxAggregateInputType
+  }
+
+  export type GetFlowersBouquetsAndFlowersAggregateType<T extends FlowersBouquetsAndFlowersAggregateArgs> = {
+        [P in keyof T & keyof AggregateFlowersBouquetsAndFlowers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFlowersBouquetsAndFlowers[P]>
+      : GetScalarType<T[P], AggregateFlowersBouquetsAndFlowers[P]>
+  }
+
+
+
+
+  export type FlowersBouquetsAndFlowersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlowersBouquetsAndFlowersWhereInput
+    orderBy?: FlowersBouquetsAndFlowersOrderByWithAggregationInput | FlowersBouquetsAndFlowersOrderByWithAggregationInput[]
+    by: FlowersBouquetsAndFlowersScalarFieldEnum[] | FlowersBouquetsAndFlowersScalarFieldEnum
+    having?: FlowersBouquetsAndFlowersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FlowersBouquetsAndFlowersCountAggregateInputType | true
+    _avg?: FlowersBouquetsAndFlowersAvgAggregateInputType
+    _sum?: FlowersBouquetsAndFlowersSumAggregateInputType
+    _min?: FlowersBouquetsAndFlowersMinAggregateInputType
+    _max?: FlowersBouquetsAndFlowersMaxAggregateInputType
+  }
+
+  export type FlowersBouquetsAndFlowersGroupByOutputType = {
+    flowersId: number
+    flowersBouquetsId: number
+    _count: FlowersBouquetsAndFlowersCountAggregateOutputType | null
+    _avg: FlowersBouquetsAndFlowersAvgAggregateOutputType | null
+    _sum: FlowersBouquetsAndFlowersSumAggregateOutputType | null
+    _min: FlowersBouquetsAndFlowersMinAggregateOutputType | null
+    _max: FlowersBouquetsAndFlowersMaxAggregateOutputType | null
+  }
+
+  type GetFlowersBouquetsAndFlowersGroupByPayload<T extends FlowersBouquetsAndFlowersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FlowersBouquetsAndFlowersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FlowersBouquetsAndFlowersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FlowersBouquetsAndFlowersGroupByOutputType[P]>
+            : GetScalarType<T[P], FlowersBouquetsAndFlowersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FlowersBouquetsAndFlowersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    flowersId?: boolean
+    flowersBouquetsId?: boolean
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    flowersBouquets?: boolean | FlowersBouquetsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flowersBouquetsAndFlowers"]>
+
+  export type FlowersBouquetsAndFlowersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    flowersId?: boolean
+    flowersBouquetsId?: boolean
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    flowersBouquets?: boolean | FlowersBouquetsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flowersBouquetsAndFlowers"]>
+
+  export type FlowersBouquetsAndFlowersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    flowersId?: boolean
+    flowersBouquetsId?: boolean
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    flowersBouquets?: boolean | FlowersBouquetsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flowersBouquetsAndFlowers"]>
+
+  export type FlowersBouquetsAndFlowersSelectScalar = {
+    flowersId?: boolean
+    flowersBouquetsId?: boolean
+  }
+
+  export type FlowersBouquetsAndFlowersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"flowersId" | "flowersBouquetsId", ExtArgs["result"]["flowersBouquetsAndFlowers"]>
+  export type FlowersBouquetsAndFlowersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    flowersBouquets?: boolean | FlowersBouquetsDefaultArgs<ExtArgs>
+  }
+  export type FlowersBouquetsAndFlowersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    flowersBouquets?: boolean | FlowersBouquetsDefaultArgs<ExtArgs>
+  }
+  export type FlowersBouquetsAndFlowersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    flowersBouquets?: boolean | FlowersBouquetsDefaultArgs<ExtArgs>
+  }
+
+  export type $FlowersBouquetsAndFlowersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FlowersBouquetsAndFlowers"
+    objects: {
+      flowers: Prisma.$FlowersPayload<ExtArgs>
+      flowersBouquets: Prisma.$FlowersBouquetsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      flowersId: number
+      flowersBouquetsId: number
+    }, ExtArgs["result"]["flowersBouquetsAndFlowers"]>
+    composites: {}
+  }
+
+  type FlowersBouquetsAndFlowersGetPayload<S extends boolean | null | undefined | FlowersBouquetsAndFlowersDefaultArgs> = $Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload, S>
+
+  type FlowersBouquetsAndFlowersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FlowersBouquetsAndFlowersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FlowersBouquetsAndFlowersCountAggregateInputType | true
+    }
+
+  export interface FlowersBouquetsAndFlowersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FlowersBouquetsAndFlowers'], meta: { name: 'FlowersBouquetsAndFlowers' } }
+    /**
+     * Find zero or one FlowersBouquetsAndFlowers that matches the filter.
+     * @param {FlowersBouquetsAndFlowersFindUniqueArgs} args - Arguments to find a FlowersBouquetsAndFlowers
+     * @example
+     * // Get one FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FlowersBouquetsAndFlowersFindUniqueArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersFindUniqueArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FlowersBouquetsAndFlowers that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FlowersBouquetsAndFlowersFindUniqueOrThrowArgs} args - Arguments to find a FlowersBouquetsAndFlowers
+     * @example
+     * // Get one FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FlowersBouquetsAndFlowersFindUniqueOrThrowArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlowersBouquetsAndFlowers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAndFlowersFindFirstArgs} args - Arguments to find a FlowersBouquetsAndFlowers
+     * @example
+     * // Get one FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FlowersBouquetsAndFlowersFindFirstArgs>(args?: SelectSubset<T, FlowersBouquetsAndFlowersFindFirstArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlowersBouquetsAndFlowers that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAndFlowersFindFirstOrThrowArgs} args - Arguments to find a FlowersBouquetsAndFlowers
+     * @example
+     * // Get one FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FlowersBouquetsAndFlowersFindFirstOrThrowArgs>(args?: SelectSubset<T, FlowersBouquetsAndFlowersFindFirstOrThrowArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FlowersBouquetsAndFlowers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAndFlowersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.findMany()
+     * 
+     * // Get first 10 FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.findMany({ take: 10 })
+     * 
+     * // Only select the `flowersId`
+     * const flowersBouquetsAndFlowersWithFlowersIdOnly = await prisma.flowersBouquetsAndFlowers.findMany({ select: { flowersId: true } })
+     * 
+     */
+    findMany<T extends FlowersBouquetsAndFlowersFindManyArgs>(args?: SelectSubset<T, FlowersBouquetsAndFlowersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FlowersBouquetsAndFlowers.
+     * @param {FlowersBouquetsAndFlowersCreateArgs} args - Arguments to create a FlowersBouquetsAndFlowers.
+     * @example
+     * // Create one FlowersBouquetsAndFlowers
+     * const FlowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.create({
+     *   data: {
+     *     // ... data to create a FlowersBouquetsAndFlowers
+     *   }
+     * })
+     * 
+     */
+    create<T extends FlowersBouquetsAndFlowersCreateArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersCreateArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FlowersBouquetsAndFlowers.
+     * @param {FlowersBouquetsAndFlowersCreateManyArgs} args - Arguments to create many FlowersBouquetsAndFlowers.
+     * @example
+     * // Create many FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FlowersBouquetsAndFlowersCreateManyArgs>(args?: SelectSubset<T, FlowersBouquetsAndFlowersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FlowersBouquetsAndFlowers and returns the data saved in the database.
+     * @param {FlowersBouquetsAndFlowersCreateManyAndReturnArgs} args - Arguments to create many FlowersBouquetsAndFlowers.
+     * @example
+     * // Create many FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FlowersBouquetsAndFlowers and only return the `flowersId`
+     * const flowersBouquetsAndFlowersWithFlowersIdOnly = await prisma.flowersBouquetsAndFlowers.createManyAndReturn({
+     *   select: { flowersId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FlowersBouquetsAndFlowersCreateManyAndReturnArgs>(args?: SelectSubset<T, FlowersBouquetsAndFlowersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FlowersBouquetsAndFlowers.
+     * @param {FlowersBouquetsAndFlowersDeleteArgs} args - Arguments to delete one FlowersBouquetsAndFlowers.
+     * @example
+     * // Delete one FlowersBouquetsAndFlowers
+     * const FlowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.delete({
+     *   where: {
+     *     // ... filter to delete one FlowersBouquetsAndFlowers
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FlowersBouquetsAndFlowersDeleteArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersDeleteArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FlowersBouquetsAndFlowers.
+     * @param {FlowersBouquetsAndFlowersUpdateArgs} args - Arguments to update one FlowersBouquetsAndFlowers.
+     * @example
+     * // Update one FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FlowersBouquetsAndFlowersUpdateArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersUpdateArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FlowersBouquetsAndFlowers.
+     * @param {FlowersBouquetsAndFlowersDeleteManyArgs} args - Arguments to filter FlowersBouquetsAndFlowers to delete.
+     * @example
+     * // Delete a few FlowersBouquetsAndFlowers
+     * const { count } = await prisma.flowersBouquetsAndFlowers.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FlowersBouquetsAndFlowersDeleteManyArgs>(args?: SelectSubset<T, FlowersBouquetsAndFlowersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlowersBouquetsAndFlowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAndFlowersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FlowersBouquetsAndFlowersUpdateManyArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlowersBouquetsAndFlowers and returns the data updated in the database.
+     * @param {FlowersBouquetsAndFlowersUpdateManyAndReturnArgs} args - Arguments to update many FlowersBouquetsAndFlowers.
+     * @example
+     * // Update many FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FlowersBouquetsAndFlowers and only return the `flowersId`
+     * const flowersBouquetsAndFlowersWithFlowersIdOnly = await prisma.flowersBouquetsAndFlowers.updateManyAndReturn({
+     *   select: { flowersId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FlowersBouquetsAndFlowersUpdateManyAndReturnArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FlowersBouquetsAndFlowers.
+     * @param {FlowersBouquetsAndFlowersUpsertArgs} args - Arguments to update or create a FlowersBouquetsAndFlowers.
+     * @example
+     * // Update or create a FlowersBouquetsAndFlowers
+     * const flowersBouquetsAndFlowers = await prisma.flowersBouquetsAndFlowers.upsert({
+     *   create: {
+     *     // ... data to create a FlowersBouquetsAndFlowers
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FlowersBouquetsAndFlowers we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FlowersBouquetsAndFlowersUpsertArgs>(args: SelectSubset<T, FlowersBouquetsAndFlowersUpsertArgs<ExtArgs>>): Prisma__FlowersBouquetsAndFlowersClient<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FlowersBouquetsAndFlowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAndFlowersCountArgs} args - Arguments to filter FlowersBouquetsAndFlowers to count.
+     * @example
+     * // Count the number of FlowersBouquetsAndFlowers
+     * const count = await prisma.flowersBouquetsAndFlowers.count({
+     *   where: {
+     *     // ... the filter for the FlowersBouquetsAndFlowers we want to count
+     *   }
+     * })
+    **/
+    count<T extends FlowersBouquetsAndFlowersCountArgs>(
+      args?: Subset<T, FlowersBouquetsAndFlowersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FlowersBouquetsAndFlowersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FlowersBouquetsAndFlowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAndFlowersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FlowersBouquetsAndFlowersAggregateArgs>(args: Subset<T, FlowersBouquetsAndFlowersAggregateArgs>): Prisma.PrismaPromise<GetFlowersBouquetsAndFlowersAggregateType<T>>
+
+    /**
+     * Group by FlowersBouquetsAndFlowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersBouquetsAndFlowersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FlowersBouquetsAndFlowersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FlowersBouquetsAndFlowersGroupByArgs['orderBy'] }
+        : { orderBy?: FlowersBouquetsAndFlowersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FlowersBouquetsAndFlowersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFlowersBouquetsAndFlowersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FlowersBouquetsAndFlowers model
+   */
+  readonly fields: FlowersBouquetsAndFlowersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FlowersBouquetsAndFlowers.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FlowersBouquetsAndFlowersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    flowers<T extends FlowersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FlowersDefaultArgs<ExtArgs>>): Prisma__FlowersClient<$Result.GetResult<Prisma.$FlowersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    flowersBouquets<T extends FlowersBouquetsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FlowersBouquetsDefaultArgs<ExtArgs>>): Prisma__FlowersBouquetsClient<$Result.GetResult<Prisma.$FlowersBouquetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FlowersBouquetsAndFlowers model
+   */ 
+  interface FlowersBouquetsAndFlowersFieldRefs {
+    readonly flowersId: FieldRef<"FlowersBouquetsAndFlowers", 'Int'>
+    readonly flowersBouquetsId: FieldRef<"FlowersBouquetsAndFlowers", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FlowersBouquetsAndFlowers findUnique
+   */
+  export type FlowersBouquetsAndFlowersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquetsAndFlowers to fetch.
+     */
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers findUniqueOrThrow
+   */
+  export type FlowersBouquetsAndFlowersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquetsAndFlowers to fetch.
+     */
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers findFirst
+   */
+  export type FlowersBouquetsAndFlowersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquetsAndFlowers to fetch.
+     */
+    where?: FlowersBouquetsAndFlowersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquetsAndFlowers to fetch.
+     */
+    orderBy?: FlowersBouquetsAndFlowersOrderByWithRelationInput | FlowersBouquetsAndFlowersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlowersBouquetsAndFlowers.
+     */
+    cursor?: FlowersBouquetsAndFlowersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquetsAndFlowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquetsAndFlowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlowersBouquetsAndFlowers.
+     */
+    distinct?: FlowersBouquetsAndFlowersScalarFieldEnum | FlowersBouquetsAndFlowersScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers findFirstOrThrow
+   */
+  export type FlowersBouquetsAndFlowersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquetsAndFlowers to fetch.
+     */
+    where?: FlowersBouquetsAndFlowersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquetsAndFlowers to fetch.
+     */
+    orderBy?: FlowersBouquetsAndFlowersOrderByWithRelationInput | FlowersBouquetsAndFlowersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlowersBouquetsAndFlowers.
+     */
+    cursor?: FlowersBouquetsAndFlowersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquetsAndFlowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquetsAndFlowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlowersBouquetsAndFlowers.
+     */
+    distinct?: FlowersBouquetsAndFlowersScalarFieldEnum | FlowersBouquetsAndFlowersScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers findMany
+   */
+  export type FlowersBouquetsAndFlowersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersBouquetsAndFlowers to fetch.
+     */
+    where?: FlowersBouquetsAndFlowersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersBouquetsAndFlowers to fetch.
+     */
+    orderBy?: FlowersBouquetsAndFlowersOrderByWithRelationInput | FlowersBouquetsAndFlowersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FlowersBouquetsAndFlowers.
+     */
+    cursor?: FlowersBouquetsAndFlowersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersBouquetsAndFlowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersBouquetsAndFlowers.
+     */
+    skip?: number
+    distinct?: FlowersBouquetsAndFlowersScalarFieldEnum | FlowersBouquetsAndFlowersScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers create
+   */
+  export type FlowersBouquetsAndFlowersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FlowersBouquetsAndFlowers.
+     */
+    data: XOR<FlowersBouquetsAndFlowersCreateInput, FlowersBouquetsAndFlowersUncheckedCreateInput>
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers createMany
+   */
+  export type FlowersBouquetsAndFlowersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FlowersBouquetsAndFlowers.
+     */
+    data: FlowersBouquetsAndFlowersCreateManyInput | FlowersBouquetsAndFlowersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers createManyAndReturn
+   */
+  export type FlowersBouquetsAndFlowersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * The data used to create many FlowersBouquetsAndFlowers.
+     */
+    data: FlowersBouquetsAndFlowersCreateManyInput | FlowersBouquetsAndFlowersCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers update
+   */
+  export type FlowersBouquetsAndFlowersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FlowersBouquetsAndFlowers.
+     */
+    data: XOR<FlowersBouquetsAndFlowersUpdateInput, FlowersBouquetsAndFlowersUncheckedUpdateInput>
+    /**
+     * Choose, which FlowersBouquetsAndFlowers to update.
+     */
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers updateMany
+   */
+  export type FlowersBouquetsAndFlowersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FlowersBouquetsAndFlowers.
+     */
+    data: XOR<FlowersBouquetsAndFlowersUpdateManyMutationInput, FlowersBouquetsAndFlowersUncheckedUpdateManyInput>
+    /**
+     * Filter which FlowersBouquetsAndFlowers to update
+     */
+    where?: FlowersBouquetsAndFlowersWhereInput
+    /**
+     * Limit how many FlowersBouquetsAndFlowers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers updateManyAndReturn
+   */
+  export type FlowersBouquetsAndFlowersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * The data used to update FlowersBouquetsAndFlowers.
+     */
+    data: XOR<FlowersBouquetsAndFlowersUpdateManyMutationInput, FlowersBouquetsAndFlowersUncheckedUpdateManyInput>
+    /**
+     * Filter which FlowersBouquetsAndFlowers to update
+     */
+    where?: FlowersBouquetsAndFlowersWhereInput
+    /**
+     * Limit how many FlowersBouquetsAndFlowers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers upsert
+   */
+  export type FlowersBouquetsAndFlowersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FlowersBouquetsAndFlowers to update in case it exists.
+     */
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    /**
+     * In case the FlowersBouquetsAndFlowers found by the `where` argument doesn't exist, create a new FlowersBouquetsAndFlowers with this data.
+     */
+    create: XOR<FlowersBouquetsAndFlowersCreateInput, FlowersBouquetsAndFlowersUncheckedCreateInput>
+    /**
+     * In case the FlowersBouquetsAndFlowers was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FlowersBouquetsAndFlowersUpdateInput, FlowersBouquetsAndFlowersUncheckedUpdateInput>
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers delete
+   */
+  export type FlowersBouquetsAndFlowersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+    /**
+     * Filter which FlowersBouquetsAndFlowers to delete.
+     */
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers deleteMany
+   */
+  export type FlowersBouquetsAndFlowersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlowersBouquetsAndFlowers to delete
+     */
+    where?: FlowersBouquetsAndFlowersWhereInput
+    /**
+     * Limit how many FlowersBouquetsAndFlowers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlowersBouquetsAndFlowers without action
+   */
+  export type FlowersBouquetsAndFlowersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersBouquetsAndFlowers
+     */
+    select?: FlowersBouquetsAndFlowersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersBouquetsAndFlowers
+     */
+    omit?: FlowersBouquetsAndFlowersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersBouquetsAndFlowersInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Users
    */
 
@@ -9002,6 +11399,23 @@ export namespace Prisma {
   export type FlowersFarmsAndFlowersScalarFieldEnum = (typeof FlowersFarmsAndFlowersScalarFieldEnum)[keyof typeof FlowersFarmsAndFlowersScalarFieldEnum]
 
 
+  export const FlowersBouquetsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    price: 'price'
+  };
+
+  export type FlowersBouquetsScalarFieldEnum = (typeof FlowersBouquetsScalarFieldEnum)[keyof typeof FlowersBouquetsScalarFieldEnum]
+
+
+  export const FlowersBouquetsAndFlowersScalarFieldEnum: {
+    flowersId: 'flowersId',
+    flowersBouquetsId: 'flowersBouquetsId'
+  };
+
+  export type FlowersBouquetsAndFlowersScalarFieldEnum = (typeof FlowersBouquetsAndFlowersScalarFieldEnum)[keyof typeof FlowersBouquetsAndFlowersScalarFieldEnum]
+
+
   export const UsersScalarFieldEnum: {
     id: 'id',
     email: 'email',
@@ -9160,6 +11574,7 @@ export namespace Prisma {
     price?: IntFilter<"Flowers"> | number
     history?: FlowersHistoryListRelationFilter
     farms?: FlowersFarmsAndFlowersListRelationFilter
+    bouquets?: FlowersBouquetsAndFlowersListRelationFilter
   }
 
   export type FlowersOrderByWithRelationInput = {
@@ -9169,6 +11584,7 @@ export namespace Prisma {
     price?: SortOrder
     history?: FlowersHistoryOrderByRelationAggregateInput
     farms?: FlowersFarmsAndFlowersOrderByRelationAggregateInput
+    bouquets?: FlowersBouquetsAndFlowersOrderByRelationAggregateInput
   }
 
   export type FlowersWhereUniqueInput = Prisma.AtLeast<{
@@ -9181,6 +11597,7 @@ export namespace Prisma {
     price?: IntFilter<"Flowers"> | number
     history?: FlowersHistoryListRelationFilter
     farms?: FlowersFarmsAndFlowersListRelationFilter
+    bouquets?: FlowersBouquetsAndFlowersListRelationFilter
   }, "id">
 
   export type FlowersOrderByWithAggregationInput = {
@@ -9355,6 +11772,99 @@ export namespace Prisma {
     flowersFarmsId?: IntWithAggregatesFilter<"FlowersFarmsAndFlowers"> | number
   }
 
+  export type FlowersBouquetsWhereInput = {
+    AND?: FlowersBouquetsWhereInput | FlowersBouquetsWhereInput[]
+    OR?: FlowersBouquetsWhereInput[]
+    NOT?: FlowersBouquetsWhereInput | FlowersBouquetsWhereInput[]
+    id?: IntFilter<"FlowersBouquets"> | number
+    name?: StringFilter<"FlowersBouquets"> | string
+    price?: IntFilter<"FlowersBouquets"> | number
+    flowers?: FlowersBouquetsAndFlowersListRelationFilter
+  }
+
+  export type FlowersBouquetsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    flowers?: FlowersBouquetsAndFlowersOrderByRelationAggregateInput
+  }
+
+  export type FlowersBouquetsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: FlowersBouquetsWhereInput | FlowersBouquetsWhereInput[]
+    OR?: FlowersBouquetsWhereInput[]
+    NOT?: FlowersBouquetsWhereInput | FlowersBouquetsWhereInput[]
+    name?: StringFilter<"FlowersBouquets"> | string
+    price?: IntFilter<"FlowersBouquets"> | number
+    flowers?: FlowersBouquetsAndFlowersListRelationFilter
+  }, "id">
+
+  export type FlowersBouquetsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    _count?: FlowersBouquetsCountOrderByAggregateInput
+    _avg?: FlowersBouquetsAvgOrderByAggregateInput
+    _max?: FlowersBouquetsMaxOrderByAggregateInput
+    _min?: FlowersBouquetsMinOrderByAggregateInput
+    _sum?: FlowersBouquetsSumOrderByAggregateInput
+  }
+
+  export type FlowersBouquetsScalarWhereWithAggregatesInput = {
+    AND?: FlowersBouquetsScalarWhereWithAggregatesInput | FlowersBouquetsScalarWhereWithAggregatesInput[]
+    OR?: FlowersBouquetsScalarWhereWithAggregatesInput[]
+    NOT?: FlowersBouquetsScalarWhereWithAggregatesInput | FlowersBouquetsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FlowersBouquets"> | number
+    name?: StringWithAggregatesFilter<"FlowersBouquets"> | string
+    price?: IntWithAggregatesFilter<"FlowersBouquets"> | number
+  }
+
+  export type FlowersBouquetsAndFlowersWhereInput = {
+    AND?: FlowersBouquetsAndFlowersWhereInput | FlowersBouquetsAndFlowersWhereInput[]
+    OR?: FlowersBouquetsAndFlowersWhereInput[]
+    NOT?: FlowersBouquetsAndFlowersWhereInput | FlowersBouquetsAndFlowersWhereInput[]
+    flowersId?: IntFilter<"FlowersBouquetsAndFlowers"> | number
+    flowersBouquetsId?: IntFilter<"FlowersBouquetsAndFlowers"> | number
+    flowers?: XOR<FlowersScalarRelationFilter, FlowersWhereInput>
+    flowersBouquets?: XOR<FlowersBouquetsScalarRelationFilter, FlowersBouquetsWhereInput>
+  }
+
+  export type FlowersBouquetsAndFlowersOrderByWithRelationInput = {
+    flowersId?: SortOrder
+    flowersBouquetsId?: SortOrder
+    flowers?: FlowersOrderByWithRelationInput
+    flowersBouquets?: FlowersBouquetsOrderByWithRelationInput
+  }
+
+  export type FlowersBouquetsAndFlowersWhereUniqueInput = Prisma.AtLeast<{
+    flowersId_flowersBouquetsId?: FlowersBouquetsAndFlowersFlowersIdFlowersBouquetsIdCompoundUniqueInput
+    AND?: FlowersBouquetsAndFlowersWhereInput | FlowersBouquetsAndFlowersWhereInput[]
+    OR?: FlowersBouquetsAndFlowersWhereInput[]
+    NOT?: FlowersBouquetsAndFlowersWhereInput | FlowersBouquetsAndFlowersWhereInput[]
+    flowersId?: IntFilter<"FlowersBouquetsAndFlowers"> | number
+    flowersBouquetsId?: IntFilter<"FlowersBouquetsAndFlowers"> | number
+    flowers?: XOR<FlowersScalarRelationFilter, FlowersWhereInput>
+    flowersBouquets?: XOR<FlowersBouquetsScalarRelationFilter, FlowersBouquetsWhereInput>
+  }, "flowersId_flowersBouquetsId">
+
+  export type FlowersBouquetsAndFlowersOrderByWithAggregationInput = {
+    flowersId?: SortOrder
+    flowersBouquetsId?: SortOrder
+    _count?: FlowersBouquetsAndFlowersCountOrderByAggregateInput
+    _avg?: FlowersBouquetsAndFlowersAvgOrderByAggregateInput
+    _max?: FlowersBouquetsAndFlowersMaxOrderByAggregateInput
+    _min?: FlowersBouquetsAndFlowersMinOrderByAggregateInput
+    _sum?: FlowersBouquetsAndFlowersSumOrderByAggregateInput
+  }
+
+  export type FlowersBouquetsAndFlowersScalarWhereWithAggregatesInput = {
+    AND?: FlowersBouquetsAndFlowersScalarWhereWithAggregatesInput | FlowersBouquetsAndFlowersScalarWhereWithAggregatesInput[]
+    OR?: FlowersBouquetsAndFlowersScalarWhereWithAggregatesInput[]
+    NOT?: FlowersBouquetsAndFlowersScalarWhereWithAggregatesInput | FlowersBouquetsAndFlowersScalarWhereWithAggregatesInput[]
+    flowersId?: IntWithAggregatesFilter<"FlowersBouquetsAndFlowers"> | number
+    flowersBouquetsId?: IntWithAggregatesFilter<"FlowersBouquetsAndFlowers"> | number
+  }
+
   export type UsersWhereInput = {
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
@@ -9514,6 +12024,7 @@ export namespace Prisma {
     price: number
     history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
     farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
+    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
   }
 
   export type FlowersUncheckedCreateInput = {
@@ -9523,6 +12034,7 @@ export namespace Prisma {
     price: number
     history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
     farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
   }
 
   export type FlowersUpdateInput = {
@@ -9531,6 +12043,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     history?: FlowersHistoryUpdateManyWithoutFlowerNestedInput
     farms?: FlowersFarmsAndFlowersUpdateManyWithoutFlowersNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput
   }
 
   export type FlowersUncheckedUpdateInput = {
@@ -9540,6 +12053,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     history?: FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput
     farms?: FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
   }
 
   export type FlowersCreateManyInput = {
@@ -9689,6 +12203,83 @@ export namespace Prisma {
   export type FlowersFarmsAndFlowersUncheckedUpdateManyInput = {
     flowersId?: IntFieldUpdateOperationsInput | number
     flowersFarmsId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsCreateInput = {
+    name: string
+    price: number
+    flowers?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersBouquetsInput
+  }
+
+  export type FlowersBouquetsUncheckedCreateInput = {
+    id?: number
+    name: string
+    price: number
+    flowers?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersBouquetsInput
+  }
+
+  export type FlowersBouquetsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    flowers?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersBouquetsNestedInput
+  }
+
+  export type FlowersBouquetsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    flowers?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersBouquetsNestedInput
+  }
+
+  export type FlowersBouquetsCreateManyInput = {
+    id?: number
+    name: string
+    price: number
+  }
+
+  export type FlowersBouquetsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsAndFlowersCreateInput = {
+    flowers: FlowersCreateNestedOneWithoutBouquetsInput
+    flowersBouquets: FlowersBouquetsCreateNestedOneWithoutFlowersInput
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedCreateInput = {
+    flowersId: number
+    flowersBouquetsId: number
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateInput = {
+    flowers?: FlowersUpdateOneRequiredWithoutBouquetsNestedInput
+    flowersBouquets?: FlowersBouquetsUpdateOneRequiredWithoutFlowersNestedInput
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+    flowersBouquetsId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsAndFlowersCreateManyInput = {
+    flowersId: number
+    flowersBouquetsId: number
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateManyMutationInput = {
+
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateManyInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+    flowersBouquetsId?: IntFieldUpdateOperationsInput | number
   }
 
   export type UsersCreateInput = {
@@ -9907,11 +12498,21 @@ export namespace Prisma {
     none?: FlowersFarmsAndFlowersWhereInput
   }
 
+  export type FlowersBouquetsAndFlowersListRelationFilter = {
+    every?: FlowersBouquetsAndFlowersWhereInput
+    some?: FlowersBouquetsAndFlowersWhereInput
+    none?: FlowersBouquetsAndFlowersWhereInput
+  }
+
   export type FlowersHistoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type FlowersFarmsAndFlowersOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FlowersBouquetsAndFlowersOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10050,6 +12651,69 @@ export namespace Prisma {
   export type FlowersFarmsAndFlowersSumOrderByAggregateInput = {
     flowersId?: SortOrder
     flowersFarmsId?: SortOrder
+  }
+
+  export type FlowersBouquetsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+  }
+
+  export type FlowersBouquetsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+  }
+
+  export type FlowersBouquetsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+  }
+
+  export type FlowersBouquetsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+  }
+
+  export type FlowersBouquetsSumOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+  }
+
+  export type FlowersBouquetsScalarRelationFilter = {
+    is?: FlowersBouquetsWhereInput
+    isNot?: FlowersBouquetsWhereInput
+  }
+
+  export type FlowersBouquetsAndFlowersFlowersIdFlowersBouquetsIdCompoundUniqueInput = {
+    flowersId: number
+    flowersBouquetsId: number
+  }
+
+  export type FlowersBouquetsAndFlowersCountOrderByAggregateInput = {
+    flowersId?: SortOrder
+    flowersBouquetsId?: SortOrder
+  }
+
+  export type FlowersBouquetsAndFlowersAvgOrderByAggregateInput = {
+    flowersId?: SortOrder
+    flowersBouquetsId?: SortOrder
+  }
+
+  export type FlowersBouquetsAndFlowersMaxOrderByAggregateInput = {
+    flowersId?: SortOrder
+    flowersBouquetsId?: SortOrder
+  }
+
+  export type FlowersBouquetsAndFlowersMinOrderByAggregateInput = {
+    flowersId?: SortOrder
+    flowersBouquetsId?: SortOrder
+  }
+
+  export type FlowersBouquetsAndFlowersSumOrderByAggregateInput = {
+    flowersId?: SortOrder
+    flowersBouquetsId?: SortOrder
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -10203,6 +12867,13 @@ export namespace Prisma {
     connect?: FlowersFarmsAndFlowersWhereUniqueInput | FlowersFarmsAndFlowersWhereUniqueInput[]
   }
 
+  export type FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+  }
+
   export type FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput = {
     create?: XOR<FlowersHistoryCreateWithoutFlowerInput, FlowersHistoryUncheckedCreateWithoutFlowerInput> | FlowersHistoryCreateWithoutFlowerInput[] | FlowersHistoryUncheckedCreateWithoutFlowerInput[]
     connectOrCreate?: FlowersHistoryCreateOrConnectWithoutFlowerInput | FlowersHistoryCreateOrConnectWithoutFlowerInput[]
@@ -10215,6 +12886,13 @@ export namespace Prisma {
     connectOrCreate?: FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput[]
     createMany?: FlowersFarmsAndFlowersCreateManyFlowersInputEnvelope
     connect?: FlowersFarmsAndFlowersWhereUniqueInput | FlowersFarmsAndFlowersWhereUniqueInput[]
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
   }
 
   export type FlowersHistoryUpdateManyWithoutFlowerNestedInput = {
@@ -10245,6 +12923,20 @@ export namespace Prisma {
     deleteMany?: FlowersFarmsAndFlowersScalarWhereInput | FlowersFarmsAndFlowersScalarWhereInput[]
   }
 
+  export type FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput[]
+    upsert?: FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersInput | FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope
+    set?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    disconnect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    delete?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    update?: FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput | FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput[]
+    updateMany?: FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersInput | FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersInput[]
+    deleteMany?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
+  }
+
   export type FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput = {
     create?: XOR<FlowersHistoryCreateWithoutFlowerInput, FlowersHistoryUncheckedCreateWithoutFlowerInput> | FlowersHistoryCreateWithoutFlowerInput[] | FlowersHistoryUncheckedCreateWithoutFlowerInput[]
     connectOrCreate?: FlowersHistoryCreateOrConnectWithoutFlowerInput | FlowersHistoryCreateOrConnectWithoutFlowerInput[]
@@ -10271,6 +12963,20 @@ export namespace Prisma {
     update?: FlowersFarmsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput | FlowersFarmsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput[]
     updateMany?: FlowersFarmsAndFlowersUpdateManyWithWhereWithoutFlowersInput | FlowersFarmsAndFlowersUpdateManyWithWhereWithoutFlowersInput[]
     deleteMany?: FlowersFarmsAndFlowersScalarWhereInput | FlowersFarmsAndFlowersScalarWhereInput[]
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput[]
+    upsert?: FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersInput | FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope
+    set?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    disconnect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    delete?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    update?: FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput | FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput[]
+    updateMany?: FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersInput | FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersInput[]
+    deleteMany?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
   }
 
   export type FlowersCreateNestedOneWithoutHistoryInput = {
@@ -10355,6 +13061,76 @@ export namespace Prisma {
     upsert?: FlowersFarmsUpsertWithoutFlowersInput
     connect?: FlowersFarmsWhereUniqueInput
     update?: XOR<XOR<FlowersFarmsUpdateToOneWithWhereWithoutFlowersInput, FlowersFarmsUpdateWithoutFlowersInput>, FlowersFarmsUncheckedUpdateWithoutFlowersInput>
+  }
+
+  export type FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersBouquetsInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInputEnvelope
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersBouquetsInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInputEnvelope
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateManyWithoutFlowersBouquetsNestedInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput[]
+    upsert?: FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersBouquetsInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInputEnvelope
+    set?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    disconnect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    delete?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    update?: FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersBouquetsInput[]
+    updateMany?: FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersBouquetsInput[]
+    deleteMany?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersBouquetsNestedInput = {
+    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput[]
+    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput[]
+    upsert?: FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersBouquetsInput[]
+    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInputEnvelope
+    set?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    disconnect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    delete?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+    update?: FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersBouquetsInput[]
+    updateMany?: FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersBouquetsInput | FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersBouquetsInput[]
+    deleteMany?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
+  }
+
+  export type FlowersCreateNestedOneWithoutBouquetsInput = {
+    create?: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
+    connectOrCreate?: FlowersCreateOrConnectWithoutBouquetsInput
+    connect?: FlowersWhereUniqueInput
+  }
+
+  export type FlowersBouquetsCreateNestedOneWithoutFlowersInput = {
+    create?: XOR<FlowersBouquetsCreateWithoutFlowersInput, FlowersBouquetsUncheckedCreateWithoutFlowersInput>
+    connectOrCreate?: FlowersBouquetsCreateOrConnectWithoutFlowersInput
+    connect?: FlowersBouquetsWhereUniqueInput
+  }
+
+  export type FlowersUpdateOneRequiredWithoutBouquetsNestedInput = {
+    create?: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
+    connectOrCreate?: FlowersCreateOrConnectWithoutBouquetsInput
+    upsert?: FlowersUpsertWithoutBouquetsInput
+    connect?: FlowersWhereUniqueInput
+    update?: XOR<XOR<FlowersUpdateToOneWithWhereWithoutBouquetsInput, FlowersUpdateWithoutBouquetsInput>, FlowersUncheckedUpdateWithoutBouquetsInput>
+  }
+
+  export type FlowersBouquetsUpdateOneRequiredWithoutFlowersNestedInput = {
+    create?: XOR<FlowersBouquetsCreateWithoutFlowersInput, FlowersBouquetsUncheckedCreateWithoutFlowersInput>
+    connectOrCreate?: FlowersBouquetsCreateOrConnectWithoutFlowersInput
+    upsert?: FlowersBouquetsUpsertWithoutFlowersInput
+    connect?: FlowersBouquetsWhereUniqueInput
+    update?: XOR<XOR<FlowersBouquetsUpdateToOneWithWhereWithoutFlowersInput, FlowersBouquetsUpdateWithoutFlowersInput>, FlowersBouquetsUncheckedUpdateWithoutFlowersInput>
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -10528,6 +13304,24 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FlowersBouquetsAndFlowersCreateWithoutFlowersInput = {
+    flowersBouquets: FlowersBouquetsCreateNestedOneWithoutFlowersInput
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput = {
+    flowersBouquetsId: number
+  }
+
+  export type FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput = {
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    create: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope = {
+    data: FlowersBouquetsAndFlowersCreateManyFlowersInput | FlowersBouquetsAndFlowersCreateManyFlowersInput[]
+    skipDuplicates?: boolean
+  }
+
   export type FlowersHistoryUpsertWithWhereUniqueWithoutFlowerInput = {
     where: FlowersHistoryWhereUniqueInput
     update: XOR<FlowersHistoryUpdateWithoutFlowerInput, FlowersHistoryUncheckedUpdateWithoutFlowerInput>
@@ -10578,11 +13372,36 @@ export namespace Prisma {
     flowersFarmsId?: IntFilter<"FlowersFarmsAndFlowers"> | number
   }
 
+  export type FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersInput = {
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    update: XOR<FlowersBouquetsAndFlowersUpdateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedUpdateWithoutFlowersInput>
+    create: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput = {
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    data: XOR<FlowersBouquetsAndFlowersUpdateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedUpdateWithoutFlowersInput>
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersInput = {
+    where: FlowersBouquetsAndFlowersScalarWhereInput
+    data: XOR<FlowersBouquetsAndFlowersUpdateManyMutationInput, FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersInput>
+  }
+
+  export type FlowersBouquetsAndFlowersScalarWhereInput = {
+    AND?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
+    OR?: FlowersBouquetsAndFlowersScalarWhereInput[]
+    NOT?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
+    flowersId?: IntFilter<"FlowersBouquetsAndFlowers"> | number
+    flowersBouquetsId?: IntFilter<"FlowersBouquetsAndFlowers"> | number
+  }
+
   export type FlowersCreateWithoutHistoryInput = {
     color: string
     name: string
     price: number
     farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
+    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
   }
 
   export type FlowersUncheckedCreateWithoutHistoryInput = {
@@ -10591,6 +13410,7 @@ export namespace Prisma {
     name: string
     price: number
     farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
   }
 
   export type FlowersCreateOrConnectWithoutHistoryInput = {
@@ -10614,6 +13434,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     farms?: FlowersFarmsAndFlowersUpdateManyWithoutFlowersNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput
   }
 
   export type FlowersUncheckedUpdateWithoutHistoryInput = {
@@ -10622,6 +13443,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     farms?: FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
   }
 
   export type FlowersFarmsAndFlowersCreateWithoutFlowersFarmsInput = {
@@ -10663,6 +13485,7 @@ export namespace Prisma {
     name: string
     price: number
     history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
+    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
   }
 
   export type FlowersUncheckedCreateWithoutFarmsInput = {
@@ -10671,6 +13494,7 @@ export namespace Prisma {
     name: string
     price: number
     history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
   }
 
   export type FlowersCreateOrConnectWithoutFarmsInput = {
@@ -10712,6 +13536,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     history?: FlowersHistoryUpdateManyWithoutFlowerNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput
   }
 
   export type FlowersUncheckedUpdateWithoutFarmsInput = {
@@ -10720,6 +13545,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     history?: FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
   }
 
   export type FlowersFarmsUpsertWithoutFlowersInput = {
@@ -10746,6 +13572,128 @@ export namespace Prisma {
     rate?: IntFieldUpdateOperationsInput | number
   }
 
+  export type FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput = {
+    flowers: FlowersCreateNestedOneWithoutBouquetsInput
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput = {
+    flowersId: number
+  }
+
+  export type FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersBouquetsInput = {
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    create: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput>
+  }
+
+  export type FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInputEnvelope = {
+    data: FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInput | FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersBouquetsInput = {
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    update: XOR<FlowersBouquetsAndFlowersUpdateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedUpdateWithoutFlowersBouquetsInput>
+    create: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersBouquetsInput>
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersBouquetsInput = {
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    data: XOR<FlowersBouquetsAndFlowersUpdateWithoutFlowersBouquetsInput, FlowersBouquetsAndFlowersUncheckedUpdateWithoutFlowersBouquetsInput>
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersBouquetsInput = {
+    where: FlowersBouquetsAndFlowersScalarWhereInput
+    data: XOR<FlowersBouquetsAndFlowersUpdateManyMutationInput, FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersBouquetsInput>
+  }
+
+  export type FlowersCreateWithoutBouquetsInput = {
+    color: string
+    name: string
+    price: number
+    history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
+    farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
+  }
+
+  export type FlowersUncheckedCreateWithoutBouquetsInput = {
+    id?: number
+    color: string
+    name: string
+    price: number
+    history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
+    farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
+  }
+
+  export type FlowersCreateOrConnectWithoutBouquetsInput = {
+    where: FlowersWhereUniqueInput
+    create: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
+  }
+
+  export type FlowersBouquetsCreateWithoutFlowersInput = {
+    name: string
+    price: number
+  }
+
+  export type FlowersBouquetsUncheckedCreateWithoutFlowersInput = {
+    id?: number
+    name: string
+    price: number
+  }
+
+  export type FlowersBouquetsCreateOrConnectWithoutFlowersInput = {
+    where: FlowersBouquetsWhereUniqueInput
+    create: XOR<FlowersBouquetsCreateWithoutFlowersInput, FlowersBouquetsUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersUpsertWithoutBouquetsInput = {
+    update: XOR<FlowersUpdateWithoutBouquetsInput, FlowersUncheckedUpdateWithoutBouquetsInput>
+    create: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
+    where?: FlowersWhereInput
+  }
+
+  export type FlowersUpdateToOneWithWhereWithoutBouquetsInput = {
+    where?: FlowersWhereInput
+    data: XOR<FlowersUpdateWithoutBouquetsInput, FlowersUncheckedUpdateWithoutBouquetsInput>
+  }
+
+  export type FlowersUpdateWithoutBouquetsInput = {
+    color?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    history?: FlowersHistoryUpdateManyWithoutFlowerNestedInput
+    farms?: FlowersFarmsAndFlowersUpdateManyWithoutFlowersNestedInput
+  }
+
+  export type FlowersUncheckedUpdateWithoutBouquetsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    history?: FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput
+    farms?: FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
+  }
+
+  export type FlowersBouquetsUpsertWithoutFlowersInput = {
+    update: XOR<FlowersBouquetsUpdateWithoutFlowersInput, FlowersBouquetsUncheckedUpdateWithoutFlowersInput>
+    create: XOR<FlowersBouquetsCreateWithoutFlowersInput, FlowersBouquetsUncheckedCreateWithoutFlowersInput>
+    where?: FlowersBouquetsWhereInput
+  }
+
+  export type FlowersBouquetsUpdateToOneWithWhereWithoutFlowersInput = {
+    where?: FlowersBouquetsWhereInput
+    data: XOR<FlowersBouquetsUpdateWithoutFlowersInput, FlowersBouquetsUncheckedUpdateWithoutFlowersInput>
+  }
+
+  export type FlowersBouquetsUpdateWithoutFlowersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsUncheckedUpdateWithoutFlowersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+  }
+
   export type FlowersHistoryCreateManyFlowerInput = {
     id?: number
     date: number
@@ -10754,6 +13702,10 @@ export namespace Prisma {
 
   export type FlowersFarmsAndFlowersCreateManyFlowersInput = {
     flowersFarmsId: number
+  }
+
+  export type FlowersBouquetsAndFlowersCreateManyFlowersInput = {
+    flowersBouquetsId: number
   }
 
   export type FlowersHistoryUpdateWithoutFlowerInput = {
@@ -10785,6 +13737,18 @@ export namespace Prisma {
     flowersFarmsId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type FlowersBouquetsAndFlowersUpdateWithoutFlowersInput = {
+    flowersBouquets?: FlowersBouquetsUpdateOneRequiredWithoutFlowersNestedInput
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateWithoutFlowersInput = {
+    flowersBouquetsId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersInput = {
+    flowersBouquetsId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type FlowersFarmsAndFlowersCreateManyFlowersFarmsInput = {
     flowersId: number
   }
@@ -10798,6 +13762,22 @@ export namespace Prisma {
   }
 
   export type FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersFarmsInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsAndFlowersCreateManyFlowersBouquetsInput = {
+    flowersId: number
+  }
+
+  export type FlowersBouquetsAndFlowersUpdateWithoutFlowersBouquetsInput = {
+    flowers?: FlowersUpdateOneRequiredWithoutBouquetsNestedInput
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateWithoutFlowersBouquetsInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersBouquetsInput = {
     flowersId?: IntFieldUpdateOperationsInput | number
   }
 

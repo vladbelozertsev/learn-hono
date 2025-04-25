@@ -5,6 +5,7 @@ model Flowers {
   price         Int
   history       FlowersHistory[]
   farms         FlowersFarmsAndFlowers[]
+  bouquets      FlowersBouquetsAndFlowers[]
 }
 
 model FlowersHistory {
@@ -29,4 +30,19 @@ model FlowersFarmsAndFlowers {
   flowersFarms   FlowersFarms @relation(fields: [flowersFarmsId], references: [id])
   flowersFarmsId Int 
   @@id([flowersId, flowersFarmsId])
+}
+
+model FlowersBouquets {
+  id      Int @id @default(autoincrement())
+  name    String
+  price   Int
+  flowers FlowersBouquetsAndFlowers[]
+}
+
+model FlowersBouquetsAndFlowers {
+  flowers           Flowers @relation(fields: [flowersId], references: [id])
+  flowersId         Int
+  flowersBouquets   FlowersBouquets @relation(fields: [flowersBouquetsId], references: [id])
+  flowersBouquetsId Int 
+  @@id([flowersId, flowersBouquetsId])
 }
