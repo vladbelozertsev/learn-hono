@@ -1,6 +1,22 @@
 import { SQLQuery, sql } from "bun";
 
-export const INTERSECT = (column: string, select: any[]) => {
+type Select = {
+  select: string;
+  from: string;
+  where: string;
+  in: number[];
+};
+
+export const INTERSECT = (column: string, data: Select[]) => {
+  const select = data.map((item) => {
+    if (!item.in.length) return null;
+    return sql`
+      SELECT ${sql(item.select)}
+      FROM ${sql(item.from)}
+      WHERE ${sql(item.where)} IN ${sql(item.in)}
+    `;
+  });
+
   const arr = select.filter((item) => !!item);
   if (!arr.length) return sql``;
 

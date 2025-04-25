@@ -5,34 +5,27 @@ import { sql } from "bun";
 
 app.get("api/flowers", async (c) => {
   const select = SELECT(c, "Flowers", ["hist"]);
-  const farms = queryIds(c, "farms");
-  const bouquets = queryIds(c, "bouquets");
 
-  // prettier-ignore
-  const flowersFarms = farms.length && sql`
-    SELECT "flowersId"
-    FROM "FlowersFarmsAndFlowers"
-    WHERE "flowersFarmsId" IN ${sql(farms)}
-  `;
-
-  const flowersBouquets = sql`
-    SELECT "flowersId"
-    FROM "FlowersBouquetsAndFlowers"
-    WHERE "flowersBouquetsId" IN ${sql(bouquets)}
-  `;
-
-  const intersect = [
-    farms.length && flowersFarms, //
-    bouquets.length && flowersBouquets,
-  ];
+  const and = INTERSECT("id", [
+    {
+      in: queryIds(c, "farms"),
+      select: "flowersId",
+      from: "FlowersFarmsAndFlowers",
+      where: "flowersFarmsId",
+    },
+    {
+      in: queryIds(c, "bouquets"),
+      select: "flowersId",
+      from: "FlowersBouquetsAndFlowers",
+      where: "flowersBouquetsId",
+    },
+  ]);
 
   const flowers: Flowers[] = await sql`
     ${select.SQL}
-    ${WHERE(c, INTERSECT("id", intersect))}
+    ${WHERE(c, and)}
     ${PAGE(c)}
   `;
-
-  console.log("first, flowers", flowers);
 
   if (!select.join || select.join.hist) {
     let history: { [key: string]: FlowersHistory[] } = await sql`
