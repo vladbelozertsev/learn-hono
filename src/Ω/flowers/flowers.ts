@@ -8,16 +8,16 @@ app.get("api/flowers", async (c) => {
 
   const and = INTERSECT("id", [
     {
-      in: queryIds(c, "farms"),
       select: "flowersId",
       from: "FlowersFarmsAndFlowers",
       where: "flowersFarmsId",
+      in: queryIds(c, "farms"),
     },
     {
-      in: queryIds(c, "bouquets"),
       select: "flowersId",
       from: "FlowersBouquetsAndFlowers",
       where: "flowersBouquetsId",
+      in: queryIds(c, "bouquets"),
     },
   ]);
 
