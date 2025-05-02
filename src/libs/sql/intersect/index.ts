@@ -4,7 +4,7 @@ type Select = {
   select: string;
   from: string;
   where: string;
-  in: number[];
+  in: (string | number | boolean)[];
 };
 
 export const INTERSECT = (column: string, data: Select[]) => {
@@ -18,7 +18,7 @@ export const INTERSECT = (column: string, data: Select[]) => {
   });
 
   const arr = select.filter((item) => !!item);
-  if (!arr.length) return sql``;
+  if (!arr.length) return;
 
   return arr.reduce((acc, cur, index) => {
     if (arr.length === 1) return sql`${acc}${cur})`;

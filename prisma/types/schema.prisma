@@ -1,7 +1,16 @@
-model Files {
-  id       Int    @id @default(autoincrement())
-  name     String @unique
-  createAt Int
+model PublicFiles {
+  id       Int               @id @default(autoincrement())
+  name     String            @unique
+  size     Int
+  uploadAt DateTime          @default(now())
+  flowers  FlowersAndFiles[]
+}
+
+model PrivateFiles {
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  size     Int
+  uploadAt DateTime @default(now())
 }
 
 model Flowers {
@@ -9,6 +18,7 @@ model Flowers {
   color    String
   name     String
   price    Int
+  imgs     FlowersAndFiles[]
   history  FlowersHistory[]
   farms    FlowersFarmsAndFlowers[]
   bouquets FlowersBouquetsAndFlowers[]
@@ -53,6 +63,15 @@ model FlowersBouquetsAndFlowers {
   flowersBouquetsId Int
 
   @@id([flowersId, flowersBouquetsId])
+}
+
+model FlowersAndFiles {
+  flowers       Flowers     @relation(fields: [flowersId], references: [id])
+  flowersId     Int
+  publicFiles   PublicFiles @relation(fields: [publicFilesId], references: [id])
+  publicFilesId Int
+
+  @@id([flowersId, publicFilesId])
 }
 
 datasource db {

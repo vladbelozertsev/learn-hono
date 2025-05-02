@@ -1,5 +1,5 @@
+import { COUNT, INTERSECT, PAGE, SELECT, WHERE } from "../../libs/sql";
 import { Flowers, FlowersHistory } from "../../../prisma/types";
-import { INTERSECT, PAGE, SELECT, WHERE } from "../../libs/sql";
 import { groupBy, queryIds } from "../../libs/helpers/utils";
 import { sql } from "bun";
 
@@ -21,23 +21,29 @@ app.get("api/flowers", async (c) => {
     },
   ]);
 
-  const flowers: Flowers[] = await sql`
-    ${select.SQL}
-    ${WHERE(c, and)}
-    ${PAGE(c)}
-  `;
+  const flowers = await COUNT<Flowers[]>(c, {
+    select: [select.SQL, select.COUNT],
+    where: WHERE(c, and),
+    page: PAGE(c),
+  });
 
   if (!select.join || select.join.hist) {
-    let history: { [key: string]: FlowersHistory[] } = await sql`
+    const history: { [key: string]: FlowersHistory[] } = await sql`
       SELECT * FROM "FlowersHistory"
       WHERE "flowersId" IN ${sql(flowers.map((f) => f.id))}
     `.then((arr) => groupBy("flowersId", arr));
-    return c.json({ data: flowers.map((f) => ({ ...f, hist: history[f.id] })) });
+    return c.json({
+      data: flowers.map((f) => ({
+        ...f,
+        hist: history[f.id],
+        img: "http://localhost:3000/public/1742829153-5cbec2c72f241d.jpg",
+      })),
+    });
   }
 
-  return c.json({ data: flowers });
+  flowers.map((f) => ({ ...f, img: "http://localhost:3000/public/1742829153-5cbec2c72f241d.jpg" }));
+
+  return c.json(flowers);
 });
 
-///
-
-///https://stackoverflow.com/questions/349559/sql-how-to-search-a-many-to-many-relationship
+// https://stackoverflow.com/questions/349559/sql-how-to-search-a-many-to-many-relationship

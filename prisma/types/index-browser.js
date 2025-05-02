@@ -117,10 +117,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.FilesScalarFieldEnum = {
+exports.Prisma.PublicFilesScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  createAt: 'createAt'
+  size: 'size',
+  uploadAt: 'uploadAt'
+};
+
+exports.Prisma.PrivateFilesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  size: 'size',
+  uploadAt: 'uploadAt'
 };
 
 exports.Prisma.FlowersScalarFieldEnum = {
@@ -160,6 +168,11 @@ exports.Prisma.FlowersBouquetsAndFlowersScalarFieldEnum = {
   flowersBouquetsId: 'flowersBouquetsId'
 };
 
+exports.Prisma.FlowersAndFilesScalarFieldEnum = {
+  flowersId: 'flowersId',
+  publicFilesId: 'publicFilesId'
+};
+
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -194,13 +207,15 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Files: 'Files',
+  PublicFiles: 'PublicFiles',
+  PrivateFiles: 'PrivateFiles',
   Flowers: 'Flowers',
   FlowersHistory: 'FlowersHistory',
   FlowersFarms: 'FlowersFarms',
   FlowersFarmsAndFlowers: 'FlowersFarmsAndFlowers',
   FlowersBouquets: 'FlowersBouquets',
   FlowersBouquetsAndFlowers: 'FlowersBouquetsAndFlowers',
+  FlowersAndFiles: 'FlowersAndFiles',
   Users: 'Users',
   UsersFiles: 'UsersFiles'
 };

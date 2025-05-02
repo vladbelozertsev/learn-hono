@@ -16,13 +16,13 @@ const filterSchema = z
   .array();
 
 export const WHERE = (c: Context<any, any, any>, and?: SQLQuery) => {
-  const filterJSON = c.req.query("filter");
+  const filterJSON = atobURL(c.req.query("filter"));
   if (!filterJSON) return and ? sql`WHERE ${and}` : sql``;
 
   const filters = filterSchema.safeParse(safeParseJSON(filterJSON));
 
-  if (!filters.success || !filters.data) {
-    console.error("WHERE ZOD ERROR", filters.error);
+  if (!filters.success || !filters.data?.length) {
+    if (filters.error) console.error("SQL_WHERE", filters.error);
     return and ? sql`WHERE ${and}` : sql``;
   }
 
@@ -30,9 +30,10 @@ export const WHERE = (c: Context<any, any, any>, and?: SQLQuery) => {
     .map(getSQLFilter)
     .filter((sqlQuery) => !!sqlQuery)
     .reduce((acc, cur, index) => {
-      if (!index) return sql`WHERE ${acc}`;
+      if (!index && and) return sql`WHERE ${and} and ${cur}`;
+      if (!index) return sql`WHERE ${cur}`;
       return sql`${acc} AND ${cur}`;
-    }, and || sql``);
+    }, sql``);
 };
 
 /**

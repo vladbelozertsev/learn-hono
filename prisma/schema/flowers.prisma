@@ -3,6 +3,7 @@ model Flowers {
   color         String
   name          String
   price         Int
+  imgs          FlowersAndFiles[]
   history       FlowersHistory[]
   farms         FlowersFarmsAndFlowers[]
   bouquets      FlowersBouquetsAndFlowers[]
@@ -45,4 +46,12 @@ model FlowersBouquetsAndFlowers {
   flowersBouquets   FlowersBouquets @relation(fields: [flowersBouquetsId], references: [id])
   flowersBouquetsId Int 
   @@id([flowersId, flowersBouquetsId])
+}
+
+model FlowersAndFiles {
+  flowers           Flowers @relation(fields: [flowersId], references: [id])
+  flowersId         Int
+  publicFiles       PublicFiles @relation(fields: [publicFilesId], references: [id])
+  publicFilesId     Int
+  @@id([flowersId, publicFilesId])
 }

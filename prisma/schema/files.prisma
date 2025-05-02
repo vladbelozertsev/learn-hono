@@ -1,5 +1,14 @@
-model Files {
+model PublicFiles {
   id        Int      @id @default(autoincrement())
   name      String   @unique
-  createAt  Int
+  size      Int
+  uploadAt  DateTime @default(now())
+  flowers   FlowersAndFiles[]
+}
+
+model PrivateFiles {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  size      Int
+  uploadAt  DateTime @default(now())
 }

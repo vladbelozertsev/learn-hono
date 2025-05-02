@@ -14,10 +14,15 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Files
+ * Model PublicFiles
  * 
  */
-export type Files = $Result.DefaultSelection<Prisma.$FilesPayload>
+export type PublicFiles = $Result.DefaultSelection<Prisma.$PublicFilesPayload>
+/**
+ * Model PrivateFiles
+ * 
+ */
+export type PrivateFiles = $Result.DefaultSelection<Prisma.$PrivateFilesPayload>
 /**
  * Model Flowers
  * 
@@ -49,6 +54,11 @@ export type FlowersBouquets = $Result.DefaultSelection<Prisma.$FlowersBouquetsPa
  */
 export type FlowersBouquetsAndFlowers = $Result.DefaultSelection<Prisma.$FlowersBouquetsAndFlowersPayload>
 /**
+ * Model FlowersAndFiles
+ * 
+ */
+export type FlowersAndFiles = $Result.DefaultSelection<Prisma.$FlowersAndFilesPayload>
+/**
  * Model Users
  * 
  */
@@ -66,8 +76,8 @@ export type UsersFiles = $Result.DefaultSelection<Prisma.$UsersFilesPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Files
- * const files = await prisma.files.findMany()
+ * // Fetch zero or more PublicFiles
+ * const publicFiles = await prisma.publicFiles.findMany()
  * ```
  *
  *
@@ -87,8 +97,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Files
-   * const files = await prisma.files.findMany()
+   * // Fetch zero or more PublicFiles
+   * const publicFiles = await prisma.publicFiles.findMany()
    * ```
    *
    *
@@ -185,14 +195,24 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.files`: Exposes CRUD operations for the **Files** model.
+   * `prisma.publicFiles`: Exposes CRUD operations for the **PublicFiles** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Files
-    * const files = await prisma.files.findMany()
+    * // Fetch zero or more PublicFiles
+    * const publicFiles = await prisma.publicFiles.findMany()
     * ```
     */
-  get files(): Prisma.FilesDelegate<ExtArgs, ClientOptions>;
+  get publicFiles(): Prisma.PublicFilesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.privateFiles`: Exposes CRUD operations for the **PrivateFiles** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PrivateFiles
+    * const privateFiles = await prisma.privateFiles.findMany()
+    * ```
+    */
+  get privateFiles(): Prisma.PrivateFilesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.flowers`: Exposes CRUD operations for the **Flowers** model.
@@ -253,6 +273,16 @@ export class PrismaClient<
     * ```
     */
   get flowersBouquetsAndFlowers(): Prisma.FlowersBouquetsAndFlowersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.flowersAndFiles`: Exposes CRUD operations for the **FlowersAndFiles** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FlowersAndFiles
+    * const flowersAndFiles = await prisma.flowersAndFiles.findMany()
+    * ```
+    */
+  get flowersAndFiles(): Prisma.FlowersAndFilesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.users`: Exposes CRUD operations for the **Users** model.
@@ -713,13 +743,15 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Files: 'Files',
+    PublicFiles: 'PublicFiles',
+    PrivateFiles: 'PrivateFiles',
     Flowers: 'Flowers',
     FlowersHistory: 'FlowersHistory',
     FlowersFarms: 'FlowersFarms',
     FlowersFarmsAndFlowers: 'FlowersFarmsAndFlowers',
     FlowersBouquets: 'FlowersBouquets',
     FlowersBouquetsAndFlowers: 'FlowersBouquetsAndFlowers',
+    FlowersAndFiles: 'FlowersAndFiles',
     Users: 'Users',
     UsersFiles: 'UsersFiles'
   };
@@ -740,81 +772,155 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "files" | "flowers" | "flowersHistory" | "flowersFarms" | "flowersFarmsAndFlowers" | "flowersBouquets" | "flowersBouquetsAndFlowers" | "users" | "usersFiles"
+      modelProps: "publicFiles" | "privateFiles" | "flowers" | "flowersHistory" | "flowersFarms" | "flowersFarmsAndFlowers" | "flowersBouquets" | "flowersBouquetsAndFlowers" | "flowersAndFiles" | "users" | "usersFiles"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Files: {
-        payload: Prisma.$FilesPayload<ExtArgs>
-        fields: Prisma.FilesFieldRefs
+      PublicFiles: {
+        payload: Prisma.$PublicFilesPayload<ExtArgs>
+        fields: Prisma.PublicFilesFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.FilesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload> | null
+            args: Prisma.PublicFilesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.FilesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>
+            args: Prisma.PublicFilesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>
           }
           findFirst: {
-            args: Prisma.FilesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload> | null
+            args: Prisma.PublicFilesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.FilesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>
+            args: Prisma.PublicFilesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>
           }
           findMany: {
-            args: Prisma.FilesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>[]
+            args: Prisma.PublicFilesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>[]
           }
           create: {
-            args: Prisma.FilesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>
+            args: Prisma.PublicFilesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>
           }
           createMany: {
-            args: Prisma.FilesCreateManyArgs<ExtArgs>
+            args: Prisma.PublicFilesCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.FilesCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>[]
+            args: Prisma.PublicFilesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>[]
           }
           delete: {
-            args: Prisma.FilesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>
+            args: Prisma.PublicFilesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>
           }
           update: {
-            args: Prisma.FilesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>
+            args: Prisma.PublicFilesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>
           }
           deleteMany: {
-            args: Prisma.FilesDeleteManyArgs<ExtArgs>
+            args: Prisma.PublicFilesDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.FilesUpdateManyArgs<ExtArgs>
+            args: Prisma.PublicFilesUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.FilesUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>[]
+            args: Prisma.PublicFilesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>[]
           }
           upsert: {
-            args: Prisma.FilesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilesPayload>
+            args: Prisma.PublicFilesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicFilesPayload>
           }
           aggregate: {
-            args: Prisma.FilesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateFiles>
+            args: Prisma.PublicFilesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePublicFiles>
           }
           groupBy: {
-            args: Prisma.FilesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<FilesGroupByOutputType>[]
+            args: Prisma.PublicFilesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PublicFilesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.FilesCountArgs<ExtArgs>
-            result: $Utils.Optional<FilesCountAggregateOutputType> | number
+            args: Prisma.PublicFilesCountArgs<ExtArgs>
+            result: $Utils.Optional<PublicFilesCountAggregateOutputType> | number
+          }
+        }
+      }
+      PrivateFiles: {
+        payload: Prisma.$PrivateFilesPayload<ExtArgs>
+        fields: Prisma.PrivateFilesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PrivateFilesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PrivateFilesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>
+          }
+          findFirst: {
+            args: Prisma.PrivateFilesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PrivateFilesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>
+          }
+          findMany: {
+            args: Prisma.PrivateFilesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>[]
+          }
+          create: {
+            args: Prisma.PrivateFilesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>
+          }
+          createMany: {
+            args: Prisma.PrivateFilesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PrivateFilesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>[]
+          }
+          delete: {
+            args: Prisma.PrivateFilesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>
+          }
+          update: {
+            args: Prisma.PrivateFilesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>
+          }
+          deleteMany: {
+            args: Prisma.PrivateFilesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PrivateFilesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PrivateFilesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>[]
+          }
+          upsert: {
+            args: Prisma.PrivateFilesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PrivateFilesPayload>
+          }
+          aggregate: {
+            args: Prisma.PrivateFilesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePrivateFiles>
+          }
+          groupBy: {
+            args: Prisma.PrivateFilesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PrivateFilesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PrivateFilesCountArgs<ExtArgs>
+            result: $Utils.Optional<PrivateFilesCountAggregateOutputType> | number
           }
         }
       }
@@ -1262,6 +1368,80 @@ export namespace Prisma {
           }
         }
       }
+      FlowersAndFiles: {
+        payload: Prisma.$FlowersAndFilesPayload<ExtArgs>
+        fields: Prisma.FlowersAndFilesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FlowersAndFilesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FlowersAndFilesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>
+          }
+          findFirst: {
+            args: Prisma.FlowersAndFilesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FlowersAndFilesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>
+          }
+          findMany: {
+            args: Prisma.FlowersAndFilesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>[]
+          }
+          create: {
+            args: Prisma.FlowersAndFilesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>
+          }
+          createMany: {
+            args: Prisma.FlowersAndFilesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FlowersAndFilesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>[]
+          }
+          delete: {
+            args: Prisma.FlowersAndFilesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>
+          }
+          update: {
+            args: Prisma.FlowersAndFilesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>
+          }
+          deleteMany: {
+            args: Prisma.FlowersAndFilesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FlowersAndFilesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FlowersAndFilesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>[]
+          }
+          upsert: {
+            args: Prisma.FlowersAndFilesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlowersAndFilesPayload>
+          }
+          aggregate: {
+            args: Prisma.FlowersAndFilesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFlowersAndFiles>
+          }
+          groupBy: {
+            args: Prisma.FlowersAndFilesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FlowersAndFilesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FlowersAndFilesCountArgs<ExtArgs>
+            result: $Utils.Optional<FlowersAndFilesCountAggregateOutputType> | number
+          }
+        }
+      }
       Users: {
         payload: Prisma.$UsersPayload<ExtArgs>
         fields: Prisma.UsersFieldRefs
@@ -1494,13 +1674,15 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    files?: FilesOmit
+    publicFiles?: PublicFilesOmit
+    privateFiles?: PrivateFilesOmit
     flowers?: FlowersOmit
     flowersHistory?: FlowersHistoryOmit
     flowersFarms?: FlowersFarmsOmit
     flowersFarmsAndFlowers?: FlowersFarmsAndFlowersOmit
     flowersBouquets?: FlowersBouquetsOmit
     flowersBouquetsAndFlowers?: FlowersBouquetsAndFlowersOmit
+    flowersAndFiles?: FlowersAndFilesOmit
     users?: UsersOmit
     usersFiles?: UsersFilesOmit
   }
@@ -1593,16 +1775,49 @@ export namespace Prisma {
 
 
   /**
+   * Count Type PublicFilesCountOutputType
+   */
+
+  export type PublicFilesCountOutputType = {
+    flowers: number
+  }
+
+  export type PublicFilesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | PublicFilesCountOutputTypeCountFlowersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PublicFilesCountOutputType without action
+   */
+  export type PublicFilesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFilesCountOutputType
+     */
+    select?: PublicFilesCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PublicFilesCountOutputType without action
+   */
+  export type PublicFilesCountOutputTypeCountFlowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlowersAndFilesWhereInput
+  }
+
+
+  /**
    * Count Type FlowersCountOutputType
    */
 
   export type FlowersCountOutputType = {
+    imgs: number
     history: number
     farms: number
     bouquets: number
   }
 
   export type FlowersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    imgs?: boolean | FlowersCountOutputTypeCountImgsArgs
     history?: boolean | FlowersCountOutputTypeCountHistoryArgs
     farms?: boolean | FlowersCountOutputTypeCountFarmsArgs
     bouquets?: boolean | FlowersCountOutputTypeCountBouquetsArgs
@@ -1617,6 +1832,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the FlowersCountOutputType
      */
     select?: FlowersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FlowersCountOutputType without action
+   */
+  export type FlowersCountOutputTypeCountImgsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlowersAndFilesWhereInput
   }
 
   /**
@@ -1708,350 +1930,372 @@ export namespace Prisma {
    */
 
   /**
-   * Model Files
+   * Model PublicFiles
    */
 
-  export type AggregateFiles = {
-    _count: FilesCountAggregateOutputType | null
-    _avg: FilesAvgAggregateOutputType | null
-    _sum: FilesSumAggregateOutputType | null
-    _min: FilesMinAggregateOutputType | null
-    _max: FilesMaxAggregateOutputType | null
+  export type AggregatePublicFiles = {
+    _count: PublicFilesCountAggregateOutputType | null
+    _avg: PublicFilesAvgAggregateOutputType | null
+    _sum: PublicFilesSumAggregateOutputType | null
+    _min: PublicFilesMinAggregateOutputType | null
+    _max: PublicFilesMaxAggregateOutputType | null
   }
 
-  export type FilesAvgAggregateOutputType = {
+  export type PublicFilesAvgAggregateOutputType = {
     id: number | null
-    createAt: number | null
+    size: number | null
   }
 
-  export type FilesSumAggregateOutputType = {
+  export type PublicFilesSumAggregateOutputType = {
     id: number | null
-    createAt: number | null
+    size: number | null
   }
 
-  export type FilesMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    createAt: number | null
-  }
-
-  export type FilesMaxAggregateOutputType = {
+  export type PublicFilesMinAggregateOutputType = {
     id: number | null
     name: string | null
-    createAt: number | null
+    size: number | null
+    uploadAt: Date | null
   }
 
-  export type FilesCountAggregateOutputType = {
+  export type PublicFilesMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    size: number | null
+    uploadAt: Date | null
+  }
+
+  export type PublicFilesCountAggregateOutputType = {
     id: number
     name: number
-    createAt: number
+    size: number
+    uploadAt: number
     _all: number
   }
 
 
-  export type FilesAvgAggregateInputType = {
+  export type PublicFilesAvgAggregateInputType = {
     id?: true
-    createAt?: true
+    size?: true
   }
 
-  export type FilesSumAggregateInputType = {
+  export type PublicFilesSumAggregateInputType = {
     id?: true
-    createAt?: true
+    size?: true
   }
 
-  export type FilesMinAggregateInputType = {
+  export type PublicFilesMinAggregateInputType = {
     id?: true
     name?: true
-    createAt?: true
+    size?: true
+    uploadAt?: true
   }
 
-  export type FilesMaxAggregateInputType = {
+  export type PublicFilesMaxAggregateInputType = {
     id?: true
     name?: true
-    createAt?: true
+    size?: true
+    uploadAt?: true
   }
 
-  export type FilesCountAggregateInputType = {
+  export type PublicFilesCountAggregateInputType = {
     id?: true
     name?: true
-    createAt?: true
+    size?: true
+    uploadAt?: true
     _all?: true
   }
 
-  export type FilesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PublicFilesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Files to aggregate.
+     * Filter which PublicFiles to aggregate.
      */
-    where?: FilesWhereInput
+    where?: PublicFilesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Files to fetch.
+     * Determine the order of PublicFiles to fetch.
      */
-    orderBy?: FilesOrderByWithRelationInput | FilesOrderByWithRelationInput[]
+    orderBy?: PublicFilesOrderByWithRelationInput | PublicFilesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: FilesWhereUniqueInput
+    cursor?: PublicFilesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Files from the position of the cursor.
+     * Take `±n` PublicFiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Files.
+     * Skip the first `n` PublicFiles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Files
+     * Count returned PublicFiles
     **/
-    _count?: true | FilesCountAggregateInputType
+    _count?: true | PublicFilesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: FilesAvgAggregateInputType
+    _avg?: PublicFilesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: FilesSumAggregateInputType
+    _sum?: PublicFilesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: FilesMinAggregateInputType
+    _min?: PublicFilesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: FilesMaxAggregateInputType
+    _max?: PublicFilesMaxAggregateInputType
   }
 
-  export type GetFilesAggregateType<T extends FilesAggregateArgs> = {
-        [P in keyof T & keyof AggregateFiles]: P extends '_count' | 'count'
+  export type GetPublicFilesAggregateType<T extends PublicFilesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePublicFiles]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateFiles[P]>
-      : GetScalarType<T[P], AggregateFiles[P]>
+        : GetScalarType<T[P], AggregatePublicFiles[P]>
+      : GetScalarType<T[P], AggregatePublicFiles[P]>
   }
 
 
 
 
-  export type FilesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FilesWhereInput
-    orderBy?: FilesOrderByWithAggregationInput | FilesOrderByWithAggregationInput[]
-    by: FilesScalarFieldEnum[] | FilesScalarFieldEnum
-    having?: FilesScalarWhereWithAggregatesInput
+  export type PublicFilesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicFilesWhereInput
+    orderBy?: PublicFilesOrderByWithAggregationInput | PublicFilesOrderByWithAggregationInput[]
+    by: PublicFilesScalarFieldEnum[] | PublicFilesScalarFieldEnum
+    having?: PublicFilesScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: FilesCountAggregateInputType | true
-    _avg?: FilesAvgAggregateInputType
-    _sum?: FilesSumAggregateInputType
-    _min?: FilesMinAggregateInputType
-    _max?: FilesMaxAggregateInputType
+    _count?: PublicFilesCountAggregateInputType | true
+    _avg?: PublicFilesAvgAggregateInputType
+    _sum?: PublicFilesSumAggregateInputType
+    _min?: PublicFilesMinAggregateInputType
+    _max?: PublicFilesMaxAggregateInputType
   }
 
-  export type FilesGroupByOutputType = {
+  export type PublicFilesGroupByOutputType = {
     id: number
     name: string
-    createAt: number
-    _count: FilesCountAggregateOutputType | null
-    _avg: FilesAvgAggregateOutputType | null
-    _sum: FilesSumAggregateOutputType | null
-    _min: FilesMinAggregateOutputType | null
-    _max: FilesMaxAggregateOutputType | null
+    size: number
+    uploadAt: Date
+    _count: PublicFilesCountAggregateOutputType | null
+    _avg: PublicFilesAvgAggregateOutputType | null
+    _sum: PublicFilesSumAggregateOutputType | null
+    _min: PublicFilesMinAggregateOutputType | null
+    _max: PublicFilesMaxAggregateOutputType | null
   }
 
-  type GetFilesGroupByPayload<T extends FilesGroupByArgs> = Prisma.PrismaPromise<
+  type GetPublicFilesGroupByPayload<T extends PublicFilesGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<FilesGroupByOutputType, T['by']> &
+      PickEnumerable<PublicFilesGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof FilesGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PublicFilesGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], FilesGroupByOutputType[P]>
-            : GetScalarType<T[P], FilesGroupByOutputType[P]>
+              : GetScalarType<T[P], PublicFilesGroupByOutputType[P]>
+            : GetScalarType<T[P], PublicFilesGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type FilesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PublicFilesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    createAt?: boolean
-  }, ExtArgs["result"]["files"]>
+    size?: boolean
+    uploadAt?: boolean
+    flowers?: boolean | PublicFiles$flowersArgs<ExtArgs>
+    _count?: boolean | PublicFilesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["publicFiles"]>
 
-  export type FilesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PublicFilesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    createAt?: boolean
-  }, ExtArgs["result"]["files"]>
+    size?: boolean
+    uploadAt?: boolean
+  }, ExtArgs["result"]["publicFiles"]>
 
-  export type FilesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PublicFilesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    createAt?: boolean
-  }, ExtArgs["result"]["files"]>
+    size?: boolean
+    uploadAt?: boolean
+  }, ExtArgs["result"]["publicFiles"]>
 
-  export type FilesSelectScalar = {
+  export type PublicFilesSelectScalar = {
     id?: boolean
     name?: boolean
-    createAt?: boolean
+    size?: boolean
+    uploadAt?: boolean
   }
 
-  export type FilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createAt", ExtArgs["result"]["files"]>
+  export type PublicFilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "size" | "uploadAt", ExtArgs["result"]["publicFiles"]>
+  export type PublicFilesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | PublicFiles$flowersArgs<ExtArgs>
+    _count?: boolean | PublicFilesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PublicFilesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PublicFilesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $FilesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Files"
-    objects: {}
+  export type $PublicFilesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PublicFiles"
+    objects: {
+      flowers: Prisma.$FlowersAndFilesPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      createAt: number
-    }, ExtArgs["result"]["files"]>
+      size: number
+      uploadAt: Date
+    }, ExtArgs["result"]["publicFiles"]>
     composites: {}
   }
 
-  type FilesGetPayload<S extends boolean | null | undefined | FilesDefaultArgs> = $Result.GetResult<Prisma.$FilesPayload, S>
+  type PublicFilesGetPayload<S extends boolean | null | undefined | PublicFilesDefaultArgs> = $Result.GetResult<Prisma.$PublicFilesPayload, S>
 
-  type FilesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<FilesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: FilesCountAggregateInputType | true
+  type PublicFilesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PublicFilesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PublicFilesCountAggregateInputType | true
     }
 
-  export interface FilesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Files'], meta: { name: 'Files' } }
+  export interface PublicFilesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PublicFiles'], meta: { name: 'PublicFiles' } }
     /**
-     * Find zero or one Files that matches the filter.
-     * @param {FilesFindUniqueArgs} args - Arguments to find a Files
+     * Find zero or one PublicFiles that matches the filter.
+     * @param {PublicFilesFindUniqueArgs} args - Arguments to find a PublicFiles
      * @example
-     * // Get one Files
-     * const files = await prisma.files.findUnique({
+     * // Get one PublicFiles
+     * const publicFiles = await prisma.publicFiles.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends FilesFindUniqueArgs>(args: SelectSubset<T, FilesFindUniqueArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PublicFilesFindUniqueArgs>(args: SelectSubset<T, PublicFilesFindUniqueArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Files that matches the filter or throw an error with `error.code='P2025'`
+     * Find one PublicFiles that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {FilesFindUniqueOrThrowArgs} args - Arguments to find a Files
+     * @param {PublicFilesFindUniqueOrThrowArgs} args - Arguments to find a PublicFiles
      * @example
-     * // Get one Files
-     * const files = await prisma.files.findUniqueOrThrow({
+     * // Get one PublicFiles
+     * const publicFiles = await prisma.publicFiles.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends FilesFindUniqueOrThrowArgs>(args: SelectSubset<T, FilesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PublicFilesFindUniqueOrThrowArgs>(args: SelectSubset<T, PublicFilesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Files that matches the filter.
+     * Find the first PublicFiles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilesFindFirstArgs} args - Arguments to find a Files
+     * @param {PublicFilesFindFirstArgs} args - Arguments to find a PublicFiles
      * @example
-     * // Get one Files
-     * const files = await prisma.files.findFirst({
+     * // Get one PublicFiles
+     * const publicFiles = await prisma.publicFiles.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends FilesFindFirstArgs>(args?: SelectSubset<T, FilesFindFirstArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PublicFilesFindFirstArgs>(args?: SelectSubset<T, PublicFilesFindFirstArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Files that matches the filter or
+     * Find the first PublicFiles that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilesFindFirstOrThrowArgs} args - Arguments to find a Files
+     * @param {PublicFilesFindFirstOrThrowArgs} args - Arguments to find a PublicFiles
      * @example
-     * // Get one Files
-     * const files = await prisma.files.findFirstOrThrow({
+     * // Get one PublicFiles
+     * const publicFiles = await prisma.publicFiles.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends FilesFindFirstOrThrowArgs>(args?: SelectSubset<T, FilesFindFirstOrThrowArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PublicFilesFindFirstOrThrowArgs>(args?: SelectSubset<T, PublicFilesFindFirstOrThrowArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Files that matches the filter.
+     * Find zero or more PublicFiles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PublicFilesFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Files
-     * const files = await prisma.files.findMany()
+     * // Get all PublicFiles
+     * const publicFiles = await prisma.publicFiles.findMany()
      * 
-     * // Get first 10 Files
-     * const files = await prisma.files.findMany({ take: 10 })
+     * // Get first 10 PublicFiles
+     * const publicFiles = await prisma.publicFiles.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const filesWithIdOnly = await prisma.files.findMany({ select: { id: true } })
+     * const publicFilesWithIdOnly = await prisma.publicFiles.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends FilesFindManyArgs>(args?: SelectSubset<T, FilesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PublicFilesFindManyArgs>(args?: SelectSubset<T, PublicFilesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Files.
-     * @param {FilesCreateArgs} args - Arguments to create a Files.
+     * Create a PublicFiles.
+     * @param {PublicFilesCreateArgs} args - Arguments to create a PublicFiles.
      * @example
-     * // Create one Files
-     * const Files = await prisma.files.create({
+     * // Create one PublicFiles
+     * const PublicFiles = await prisma.publicFiles.create({
      *   data: {
-     *     // ... data to create a Files
+     *     // ... data to create a PublicFiles
      *   }
      * })
      * 
      */
-    create<T extends FilesCreateArgs>(args: SelectSubset<T, FilesCreateArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PublicFilesCreateArgs>(args: SelectSubset<T, PublicFilesCreateArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Files.
-     * @param {FilesCreateManyArgs} args - Arguments to create many Files.
+     * Create many PublicFiles.
+     * @param {PublicFilesCreateManyArgs} args - Arguments to create many PublicFiles.
      * @example
-     * // Create many Files
-     * const files = await prisma.files.createMany({
+     * // Create many PublicFiles
+     * const publicFiles = await prisma.publicFiles.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends FilesCreateManyArgs>(args?: SelectSubset<T, FilesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PublicFilesCreateManyArgs>(args?: SelectSubset<T, PublicFilesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Files and returns the data saved in the database.
-     * @param {FilesCreateManyAndReturnArgs} args - Arguments to create many Files.
+     * Create many PublicFiles and returns the data saved in the database.
+     * @param {PublicFilesCreateManyAndReturnArgs} args - Arguments to create many PublicFiles.
      * @example
-     * // Create many Files
-     * const files = await prisma.files.createManyAndReturn({
+     * // Create many PublicFiles
+     * const publicFiles = await prisma.publicFiles.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Files and only return the `id`
-     * const filesWithIdOnly = await prisma.files.createManyAndReturn({
+     * // Create many PublicFiles and only return the `id`
+     * const publicFilesWithIdOnly = await prisma.publicFiles.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2061,28 +2305,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends FilesCreateManyAndReturnArgs>(args?: SelectSubset<T, FilesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends PublicFilesCreateManyAndReturnArgs>(args?: SelectSubset<T, PublicFilesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Files.
-     * @param {FilesDeleteArgs} args - Arguments to delete one Files.
+     * Delete a PublicFiles.
+     * @param {PublicFilesDeleteArgs} args - Arguments to delete one PublicFiles.
      * @example
-     * // Delete one Files
-     * const Files = await prisma.files.delete({
+     * // Delete one PublicFiles
+     * const PublicFiles = await prisma.publicFiles.delete({
      *   where: {
-     *     // ... filter to delete one Files
+     *     // ... filter to delete one PublicFiles
      *   }
      * })
      * 
      */
-    delete<T extends FilesDeleteArgs>(args: SelectSubset<T, FilesDeleteArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends PublicFilesDeleteArgs>(args: SelectSubset<T, PublicFilesDeleteArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Files.
-     * @param {FilesUpdateArgs} args - Arguments to update one Files.
+     * Update one PublicFiles.
+     * @param {PublicFilesUpdateArgs} args - Arguments to update one PublicFiles.
      * @example
-     * // Update one Files
-     * const files = await prisma.files.update({
+     * // Update one PublicFiles
+     * const publicFiles = await prisma.publicFiles.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2092,30 +2336,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends FilesUpdateArgs>(args: SelectSubset<T, FilesUpdateArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends PublicFilesUpdateArgs>(args: SelectSubset<T, PublicFilesUpdateArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Files.
-     * @param {FilesDeleteManyArgs} args - Arguments to filter Files to delete.
+     * Delete zero or more PublicFiles.
+     * @param {PublicFilesDeleteManyArgs} args - Arguments to filter PublicFiles to delete.
      * @example
-     * // Delete a few Files
-     * const { count } = await prisma.files.deleteMany({
+     * // Delete a few PublicFiles
+     * const { count } = await prisma.publicFiles.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends FilesDeleteManyArgs>(args?: SelectSubset<T, FilesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PublicFilesDeleteManyArgs>(args?: SelectSubset<T, PublicFilesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Files.
+     * Update zero or more PublicFiles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PublicFilesUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Files
-     * const files = await prisma.files.updateMany({
+     * // Update many PublicFiles
+     * const publicFiles = await prisma.publicFiles.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2125,14 +2369,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends FilesUpdateManyArgs>(args: SelectSubset<T, FilesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PublicFilesUpdateManyArgs>(args: SelectSubset<T, PublicFilesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Files and returns the data updated in the database.
-     * @param {FilesUpdateManyAndReturnArgs} args - Arguments to update many Files.
+     * Update zero or more PublicFiles and returns the data updated in the database.
+     * @param {PublicFilesUpdateManyAndReturnArgs} args - Arguments to update many PublicFiles.
      * @example
-     * // Update many Files
-     * const files = await prisma.files.updateManyAndReturn({
+     * // Update many PublicFiles
+     * const publicFiles = await prisma.publicFiles.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2141,8 +2385,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Files and only return the `id`
-     * const filesWithIdOnly = await prisma.files.updateManyAndReturn({
+     * // Update zero or more PublicFiles and only return the `id`
+     * const publicFilesWithIdOnly = await prisma.publicFiles.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2155,56 +2399,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends FilesUpdateManyAndReturnArgs>(args: SelectSubset<T, FilesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends PublicFilesUpdateManyAndReturnArgs>(args: SelectSubset<T, PublicFilesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Files.
-     * @param {FilesUpsertArgs} args - Arguments to update or create a Files.
+     * Create or update one PublicFiles.
+     * @param {PublicFilesUpsertArgs} args - Arguments to update or create a PublicFiles.
      * @example
-     * // Update or create a Files
-     * const files = await prisma.files.upsert({
+     * // Update or create a PublicFiles
+     * const publicFiles = await prisma.publicFiles.upsert({
      *   create: {
-     *     // ... data to create a Files
+     *     // ... data to create a PublicFiles
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Files we want to update
+     *     // ... the filter for the PublicFiles we want to update
      *   }
      * })
      */
-    upsert<T extends FilesUpsertArgs>(args: SelectSubset<T, FilesUpsertArgs<ExtArgs>>): Prisma__FilesClient<$Result.GetResult<Prisma.$FilesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PublicFilesUpsertArgs>(args: SelectSubset<T, PublicFilesUpsertArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Files.
+     * Count the number of PublicFiles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilesCountArgs} args - Arguments to filter Files to count.
+     * @param {PublicFilesCountArgs} args - Arguments to filter PublicFiles to count.
      * @example
-     * // Count the number of Files
-     * const count = await prisma.files.count({
+     * // Count the number of PublicFiles
+     * const count = await prisma.publicFiles.count({
      *   where: {
-     *     // ... the filter for the Files we want to count
+     *     // ... the filter for the PublicFiles we want to count
      *   }
      * })
     **/
-    count<T extends FilesCountArgs>(
-      args?: Subset<T, FilesCountArgs>,
+    count<T extends PublicFilesCountArgs>(
+      args?: Subset<T, PublicFilesCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], FilesCountAggregateOutputType>
+          : GetScalarType<T['select'], PublicFilesCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Files.
+     * Allows you to perform aggregations operations on a PublicFiles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PublicFilesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2224,13 +2468,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends FilesAggregateArgs>(args: Subset<T, FilesAggregateArgs>): Prisma.PrismaPromise<GetFilesAggregateType<T>>
+    aggregate<T extends PublicFilesAggregateArgs>(args: Subset<T, PublicFilesAggregateArgs>): Prisma.PrismaPromise<GetPublicFilesAggregateType<T>>
 
     /**
-     * Group by Files.
+     * Group by PublicFiles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilesGroupByArgs} args - Group by arguments.
+     * @param {PublicFilesGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2245,14 +2489,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends FilesGroupByArgs,
+      T extends PublicFilesGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: FilesGroupByArgs['orderBy'] }
-        : { orderBy?: FilesGroupByArgs['orderBy'] },
+        ? { orderBy: PublicFilesGroupByArgs['orderBy'] }
+        : { orderBy?: PublicFilesGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2301,20 +2545,1105 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, FilesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFilesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PublicFilesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPublicFilesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Files model
+   * Fields of the PublicFiles model
    */
-  readonly fields: FilesFieldRefs;
+  readonly fields: PublicFilesFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Files.
+   * The delegate class that acts as a "Promise-like" for PublicFiles.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__FilesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PublicFilesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    flowers<T extends PublicFiles$flowersArgs<ExtArgs> = {}>(args?: Subset<T, PublicFiles$flowersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PublicFiles model
+   */ 
+  interface PublicFilesFieldRefs {
+    readonly id: FieldRef<"PublicFiles", 'Int'>
+    readonly name: FieldRef<"PublicFiles", 'String'>
+    readonly size: FieldRef<"PublicFiles", 'Int'>
+    readonly uploadAt: FieldRef<"PublicFiles", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PublicFiles findUnique
+   */
+  export type PublicFilesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicFiles to fetch.
+     */
+    where: PublicFilesWhereUniqueInput
+  }
+
+  /**
+   * PublicFiles findUniqueOrThrow
+   */
+  export type PublicFilesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicFiles to fetch.
+     */
+    where: PublicFilesWhereUniqueInput
+  }
+
+  /**
+   * PublicFiles findFirst
+   */
+  export type PublicFilesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicFiles to fetch.
+     */
+    where?: PublicFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicFiles to fetch.
+     */
+    orderBy?: PublicFilesOrderByWithRelationInput | PublicFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PublicFiles.
+     */
+    cursor?: PublicFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicFiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PublicFiles.
+     */
+    distinct?: PublicFilesScalarFieldEnum | PublicFilesScalarFieldEnum[]
+  }
+
+  /**
+   * PublicFiles findFirstOrThrow
+   */
+  export type PublicFilesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicFiles to fetch.
+     */
+    where?: PublicFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicFiles to fetch.
+     */
+    orderBy?: PublicFilesOrderByWithRelationInput | PublicFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PublicFiles.
+     */
+    cursor?: PublicFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicFiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PublicFiles.
+     */
+    distinct?: PublicFilesScalarFieldEnum | PublicFilesScalarFieldEnum[]
+  }
+
+  /**
+   * PublicFiles findMany
+   */
+  export type PublicFilesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicFiles to fetch.
+     */
+    where?: PublicFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicFiles to fetch.
+     */
+    orderBy?: PublicFilesOrderByWithRelationInput | PublicFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PublicFiles.
+     */
+    cursor?: PublicFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicFiles.
+     */
+    skip?: number
+    distinct?: PublicFilesScalarFieldEnum | PublicFilesScalarFieldEnum[]
+  }
+
+  /**
+   * PublicFiles create
+   */
+  export type PublicFilesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PublicFiles.
+     */
+    data: XOR<PublicFilesCreateInput, PublicFilesUncheckedCreateInput>
+  }
+
+  /**
+   * PublicFiles createMany
+   */
+  export type PublicFilesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PublicFiles.
+     */
+    data: PublicFilesCreateManyInput | PublicFilesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PublicFiles createManyAndReturn
+   */
+  export type PublicFilesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * The data used to create many PublicFiles.
+     */
+    data: PublicFilesCreateManyInput | PublicFilesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PublicFiles update
+   */
+  export type PublicFilesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PublicFiles.
+     */
+    data: XOR<PublicFilesUpdateInput, PublicFilesUncheckedUpdateInput>
+    /**
+     * Choose, which PublicFiles to update.
+     */
+    where: PublicFilesWhereUniqueInput
+  }
+
+  /**
+   * PublicFiles updateMany
+   */
+  export type PublicFilesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PublicFiles.
+     */
+    data: XOR<PublicFilesUpdateManyMutationInput, PublicFilesUncheckedUpdateManyInput>
+    /**
+     * Filter which PublicFiles to update
+     */
+    where?: PublicFilesWhereInput
+    /**
+     * Limit how many PublicFiles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PublicFiles updateManyAndReturn
+   */
+  export type PublicFilesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * The data used to update PublicFiles.
+     */
+    data: XOR<PublicFilesUpdateManyMutationInput, PublicFilesUncheckedUpdateManyInput>
+    /**
+     * Filter which PublicFiles to update
+     */
+    where?: PublicFilesWhereInput
+    /**
+     * Limit how many PublicFiles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PublicFiles upsert
+   */
+  export type PublicFilesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PublicFiles to update in case it exists.
+     */
+    where: PublicFilesWhereUniqueInput
+    /**
+     * In case the PublicFiles found by the `where` argument doesn't exist, create a new PublicFiles with this data.
+     */
+    create: XOR<PublicFilesCreateInput, PublicFilesUncheckedCreateInput>
+    /**
+     * In case the PublicFiles was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PublicFilesUpdateInput, PublicFilesUncheckedUpdateInput>
+  }
+
+  /**
+   * PublicFiles delete
+   */
+  export type PublicFilesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+    /**
+     * Filter which PublicFiles to delete.
+     */
+    where: PublicFilesWhereUniqueInput
+  }
+
+  /**
+   * PublicFiles deleteMany
+   */
+  export type PublicFilesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PublicFiles to delete
+     */
+    where?: PublicFilesWhereInput
+    /**
+     * Limit how many PublicFiles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PublicFiles.flowers
+   */
+  export type PublicFiles$flowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    where?: FlowersAndFilesWhereInput
+    orderBy?: FlowersAndFilesOrderByWithRelationInput | FlowersAndFilesOrderByWithRelationInput[]
+    cursor?: FlowersAndFilesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlowersAndFilesScalarFieldEnum | FlowersAndFilesScalarFieldEnum[]
+  }
+
+  /**
+   * PublicFiles without action
+   */
+  export type PublicFilesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicFiles
+     */
+    select?: PublicFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicFiles
+     */
+    omit?: PublicFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicFilesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PrivateFiles
+   */
+
+  export type AggregatePrivateFiles = {
+    _count: PrivateFilesCountAggregateOutputType | null
+    _avg: PrivateFilesAvgAggregateOutputType | null
+    _sum: PrivateFilesSumAggregateOutputType | null
+    _min: PrivateFilesMinAggregateOutputType | null
+    _max: PrivateFilesMaxAggregateOutputType | null
+  }
+
+  export type PrivateFilesAvgAggregateOutputType = {
+    id: number | null
+    size: number | null
+  }
+
+  export type PrivateFilesSumAggregateOutputType = {
+    id: number | null
+    size: number | null
+  }
+
+  export type PrivateFilesMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    size: number | null
+    uploadAt: Date | null
+  }
+
+  export type PrivateFilesMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    size: number | null
+    uploadAt: Date | null
+  }
+
+  export type PrivateFilesCountAggregateOutputType = {
+    id: number
+    name: number
+    size: number
+    uploadAt: number
+    _all: number
+  }
+
+
+  export type PrivateFilesAvgAggregateInputType = {
+    id?: true
+    size?: true
+  }
+
+  export type PrivateFilesSumAggregateInputType = {
+    id?: true
+    size?: true
+  }
+
+  export type PrivateFilesMinAggregateInputType = {
+    id?: true
+    name?: true
+    size?: true
+    uploadAt?: true
+  }
+
+  export type PrivateFilesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    size?: true
+    uploadAt?: true
+  }
+
+  export type PrivateFilesCountAggregateInputType = {
+    id?: true
+    name?: true
+    size?: true
+    uploadAt?: true
+    _all?: true
+  }
+
+  export type PrivateFilesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PrivateFiles to aggregate.
+     */
+    where?: PrivateFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PrivateFiles to fetch.
+     */
+    orderBy?: PrivateFilesOrderByWithRelationInput | PrivateFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PrivateFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PrivateFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PrivateFiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PrivateFiles
+    **/
+    _count?: true | PrivateFilesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PrivateFilesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PrivateFilesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PrivateFilesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PrivateFilesMaxAggregateInputType
+  }
+
+  export type GetPrivateFilesAggregateType<T extends PrivateFilesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrivateFiles]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrivateFiles[P]>
+      : GetScalarType<T[P], AggregatePrivateFiles[P]>
+  }
+
+
+
+
+  export type PrivateFilesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PrivateFilesWhereInput
+    orderBy?: PrivateFilesOrderByWithAggregationInput | PrivateFilesOrderByWithAggregationInput[]
+    by: PrivateFilesScalarFieldEnum[] | PrivateFilesScalarFieldEnum
+    having?: PrivateFilesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PrivateFilesCountAggregateInputType | true
+    _avg?: PrivateFilesAvgAggregateInputType
+    _sum?: PrivateFilesSumAggregateInputType
+    _min?: PrivateFilesMinAggregateInputType
+    _max?: PrivateFilesMaxAggregateInputType
+  }
+
+  export type PrivateFilesGroupByOutputType = {
+    id: number
+    name: string
+    size: number
+    uploadAt: Date
+    _count: PrivateFilesCountAggregateOutputType | null
+    _avg: PrivateFilesAvgAggregateOutputType | null
+    _sum: PrivateFilesSumAggregateOutputType | null
+    _min: PrivateFilesMinAggregateOutputType | null
+    _max: PrivateFilesMaxAggregateOutputType | null
+  }
+
+  type GetPrivateFilesGroupByPayload<T extends PrivateFilesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PrivateFilesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PrivateFilesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PrivateFilesGroupByOutputType[P]>
+            : GetScalarType<T[P], PrivateFilesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PrivateFilesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    size?: boolean
+    uploadAt?: boolean
+  }, ExtArgs["result"]["privateFiles"]>
+
+  export type PrivateFilesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    size?: boolean
+    uploadAt?: boolean
+  }, ExtArgs["result"]["privateFiles"]>
+
+  export type PrivateFilesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    size?: boolean
+    uploadAt?: boolean
+  }, ExtArgs["result"]["privateFiles"]>
+
+  export type PrivateFilesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    size?: boolean
+    uploadAt?: boolean
+  }
+
+  export type PrivateFilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "size" | "uploadAt", ExtArgs["result"]["privateFiles"]>
+
+  export type $PrivateFilesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PrivateFiles"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      size: number
+      uploadAt: Date
+    }, ExtArgs["result"]["privateFiles"]>
+    composites: {}
+  }
+
+  type PrivateFilesGetPayload<S extends boolean | null | undefined | PrivateFilesDefaultArgs> = $Result.GetResult<Prisma.$PrivateFilesPayload, S>
+
+  type PrivateFilesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PrivateFilesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PrivateFilesCountAggregateInputType | true
+    }
+
+  export interface PrivateFilesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PrivateFiles'], meta: { name: 'PrivateFiles' } }
+    /**
+     * Find zero or one PrivateFiles that matches the filter.
+     * @param {PrivateFilesFindUniqueArgs} args - Arguments to find a PrivateFiles
+     * @example
+     * // Get one PrivateFiles
+     * const privateFiles = await prisma.privateFiles.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PrivateFilesFindUniqueArgs>(args: SelectSubset<T, PrivateFilesFindUniqueArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PrivateFiles that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PrivateFilesFindUniqueOrThrowArgs} args - Arguments to find a PrivateFiles
+     * @example
+     * // Get one PrivateFiles
+     * const privateFiles = await prisma.privateFiles.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PrivateFilesFindUniqueOrThrowArgs>(args: SelectSubset<T, PrivateFilesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PrivateFiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrivateFilesFindFirstArgs} args - Arguments to find a PrivateFiles
+     * @example
+     * // Get one PrivateFiles
+     * const privateFiles = await prisma.privateFiles.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PrivateFilesFindFirstArgs>(args?: SelectSubset<T, PrivateFilesFindFirstArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PrivateFiles that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrivateFilesFindFirstOrThrowArgs} args - Arguments to find a PrivateFiles
+     * @example
+     * // Get one PrivateFiles
+     * const privateFiles = await prisma.privateFiles.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PrivateFilesFindFirstOrThrowArgs>(args?: SelectSubset<T, PrivateFilesFindFirstOrThrowArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PrivateFiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrivateFilesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PrivateFiles
+     * const privateFiles = await prisma.privateFiles.findMany()
+     * 
+     * // Get first 10 PrivateFiles
+     * const privateFiles = await prisma.privateFiles.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const privateFilesWithIdOnly = await prisma.privateFiles.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PrivateFilesFindManyArgs>(args?: SelectSubset<T, PrivateFilesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PrivateFiles.
+     * @param {PrivateFilesCreateArgs} args - Arguments to create a PrivateFiles.
+     * @example
+     * // Create one PrivateFiles
+     * const PrivateFiles = await prisma.privateFiles.create({
+     *   data: {
+     *     // ... data to create a PrivateFiles
+     *   }
+     * })
+     * 
+     */
+    create<T extends PrivateFilesCreateArgs>(args: SelectSubset<T, PrivateFilesCreateArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PrivateFiles.
+     * @param {PrivateFilesCreateManyArgs} args - Arguments to create many PrivateFiles.
+     * @example
+     * // Create many PrivateFiles
+     * const privateFiles = await prisma.privateFiles.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PrivateFilesCreateManyArgs>(args?: SelectSubset<T, PrivateFilesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PrivateFiles and returns the data saved in the database.
+     * @param {PrivateFilesCreateManyAndReturnArgs} args - Arguments to create many PrivateFiles.
+     * @example
+     * // Create many PrivateFiles
+     * const privateFiles = await prisma.privateFiles.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PrivateFiles and only return the `id`
+     * const privateFilesWithIdOnly = await prisma.privateFiles.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PrivateFilesCreateManyAndReturnArgs>(args?: SelectSubset<T, PrivateFilesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PrivateFiles.
+     * @param {PrivateFilesDeleteArgs} args - Arguments to delete one PrivateFiles.
+     * @example
+     * // Delete one PrivateFiles
+     * const PrivateFiles = await prisma.privateFiles.delete({
+     *   where: {
+     *     // ... filter to delete one PrivateFiles
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PrivateFilesDeleteArgs>(args: SelectSubset<T, PrivateFilesDeleteArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PrivateFiles.
+     * @param {PrivateFilesUpdateArgs} args - Arguments to update one PrivateFiles.
+     * @example
+     * // Update one PrivateFiles
+     * const privateFiles = await prisma.privateFiles.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PrivateFilesUpdateArgs>(args: SelectSubset<T, PrivateFilesUpdateArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PrivateFiles.
+     * @param {PrivateFilesDeleteManyArgs} args - Arguments to filter PrivateFiles to delete.
+     * @example
+     * // Delete a few PrivateFiles
+     * const { count } = await prisma.privateFiles.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PrivateFilesDeleteManyArgs>(args?: SelectSubset<T, PrivateFilesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PrivateFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrivateFilesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PrivateFiles
+     * const privateFiles = await prisma.privateFiles.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PrivateFilesUpdateManyArgs>(args: SelectSubset<T, PrivateFilesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PrivateFiles and returns the data updated in the database.
+     * @param {PrivateFilesUpdateManyAndReturnArgs} args - Arguments to update many PrivateFiles.
+     * @example
+     * // Update many PrivateFiles
+     * const privateFiles = await prisma.privateFiles.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PrivateFiles and only return the `id`
+     * const privateFilesWithIdOnly = await prisma.privateFiles.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PrivateFilesUpdateManyAndReturnArgs>(args: SelectSubset<T, PrivateFilesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PrivateFiles.
+     * @param {PrivateFilesUpsertArgs} args - Arguments to update or create a PrivateFiles.
+     * @example
+     * // Update or create a PrivateFiles
+     * const privateFiles = await prisma.privateFiles.upsert({
+     *   create: {
+     *     // ... data to create a PrivateFiles
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PrivateFiles we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PrivateFilesUpsertArgs>(args: SelectSubset<T, PrivateFilesUpsertArgs<ExtArgs>>): Prisma__PrivateFilesClient<$Result.GetResult<Prisma.$PrivateFilesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PrivateFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrivateFilesCountArgs} args - Arguments to filter PrivateFiles to count.
+     * @example
+     * // Count the number of PrivateFiles
+     * const count = await prisma.privateFiles.count({
+     *   where: {
+     *     // ... the filter for the PrivateFiles we want to count
+     *   }
+     * })
+    **/
+    count<T extends PrivateFilesCountArgs>(
+      args?: Subset<T, PrivateFilesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PrivateFilesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PrivateFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrivateFilesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PrivateFilesAggregateArgs>(args: Subset<T, PrivateFilesAggregateArgs>): Prisma.PrismaPromise<GetPrivateFilesAggregateType<T>>
+
+    /**
+     * Group by PrivateFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrivateFilesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PrivateFilesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PrivateFilesGroupByArgs['orderBy'] }
+        : { orderBy?: PrivateFilesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PrivateFilesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrivateFilesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PrivateFiles model
+   */
+  readonly fields: PrivateFilesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PrivateFiles.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PrivateFilesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2342,375 +3671,376 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Files model
+   * Fields of the PrivateFiles model
    */ 
-  interface FilesFieldRefs {
-    readonly id: FieldRef<"Files", 'Int'>
-    readonly name: FieldRef<"Files", 'String'>
-    readonly createAt: FieldRef<"Files", 'Int'>
+  interface PrivateFilesFieldRefs {
+    readonly id: FieldRef<"PrivateFiles", 'Int'>
+    readonly name: FieldRef<"PrivateFiles", 'String'>
+    readonly size: FieldRef<"PrivateFiles", 'Int'>
+    readonly uploadAt: FieldRef<"PrivateFiles", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Files findUnique
+   * PrivateFiles findUnique
    */
-  export type FilesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * Filter, which Files to fetch.
+     * Filter, which PrivateFiles to fetch.
      */
-    where: FilesWhereUniqueInput
+    where: PrivateFilesWhereUniqueInput
   }
 
   /**
-   * Files findUniqueOrThrow
+   * PrivateFiles findUniqueOrThrow
    */
-  export type FilesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * Filter, which Files to fetch.
+     * Filter, which PrivateFiles to fetch.
      */
-    where: FilesWhereUniqueInput
+    where: PrivateFilesWhereUniqueInput
   }
 
   /**
-   * Files findFirst
+   * PrivateFiles findFirst
    */
-  export type FilesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * Filter, which Files to fetch.
+     * Filter, which PrivateFiles to fetch.
      */
-    where?: FilesWhereInput
+    where?: PrivateFilesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Files to fetch.
+     * Determine the order of PrivateFiles to fetch.
      */
-    orderBy?: FilesOrderByWithRelationInput | FilesOrderByWithRelationInput[]
+    orderBy?: PrivateFilesOrderByWithRelationInput | PrivateFilesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Files.
+     * Sets the position for searching for PrivateFiles.
      */
-    cursor?: FilesWhereUniqueInput
+    cursor?: PrivateFilesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Files from the position of the cursor.
+     * Take `±n` PrivateFiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Files.
+     * Skip the first `n` PrivateFiles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Files.
+     * Filter by unique combinations of PrivateFiles.
      */
-    distinct?: FilesScalarFieldEnum | FilesScalarFieldEnum[]
+    distinct?: PrivateFilesScalarFieldEnum | PrivateFilesScalarFieldEnum[]
   }
 
   /**
-   * Files findFirstOrThrow
+   * PrivateFiles findFirstOrThrow
    */
-  export type FilesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * Filter, which Files to fetch.
+     * Filter, which PrivateFiles to fetch.
      */
-    where?: FilesWhereInput
+    where?: PrivateFilesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Files to fetch.
+     * Determine the order of PrivateFiles to fetch.
      */
-    orderBy?: FilesOrderByWithRelationInput | FilesOrderByWithRelationInput[]
+    orderBy?: PrivateFilesOrderByWithRelationInput | PrivateFilesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Files.
+     * Sets the position for searching for PrivateFiles.
      */
-    cursor?: FilesWhereUniqueInput
+    cursor?: PrivateFilesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Files from the position of the cursor.
+     * Take `±n` PrivateFiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Files.
+     * Skip the first `n` PrivateFiles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Files.
+     * Filter by unique combinations of PrivateFiles.
      */
-    distinct?: FilesScalarFieldEnum | FilesScalarFieldEnum[]
+    distinct?: PrivateFilesScalarFieldEnum | PrivateFilesScalarFieldEnum[]
   }
 
   /**
-   * Files findMany
+   * PrivateFiles findMany
    */
-  export type FilesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * Filter, which Files to fetch.
+     * Filter, which PrivateFiles to fetch.
      */
-    where?: FilesWhereInput
+    where?: PrivateFilesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Files to fetch.
+     * Determine the order of PrivateFiles to fetch.
      */
-    orderBy?: FilesOrderByWithRelationInput | FilesOrderByWithRelationInput[]
+    orderBy?: PrivateFilesOrderByWithRelationInput | PrivateFilesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Files.
+     * Sets the position for listing PrivateFiles.
      */
-    cursor?: FilesWhereUniqueInput
+    cursor?: PrivateFilesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Files from the position of the cursor.
+     * Take `±n` PrivateFiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Files.
+     * Skip the first `n` PrivateFiles.
      */
     skip?: number
-    distinct?: FilesScalarFieldEnum | FilesScalarFieldEnum[]
+    distinct?: PrivateFilesScalarFieldEnum | PrivateFilesScalarFieldEnum[]
   }
 
   /**
-   * Files create
+   * PrivateFiles create
    */
-  export type FilesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * The data needed to create a Files.
+     * The data needed to create a PrivateFiles.
      */
-    data: XOR<FilesCreateInput, FilesUncheckedCreateInput>
+    data: XOR<PrivateFilesCreateInput, PrivateFilesUncheckedCreateInput>
   }
 
   /**
-   * Files createMany
+   * PrivateFiles createMany
    */
-  export type FilesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Files.
+     * The data used to create many PrivateFiles.
      */
-    data: FilesCreateManyInput | FilesCreateManyInput[]
+    data: PrivateFilesCreateManyInput | PrivateFilesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Files createManyAndReturn
+   * PrivateFiles createManyAndReturn
    */
-  export type FilesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelectCreateManyAndReturn<ExtArgs> | null
+    select?: PrivateFilesSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * The data used to create many Files.
+     * The data used to create many PrivateFiles.
      */
-    data: FilesCreateManyInput | FilesCreateManyInput[]
+    data: PrivateFilesCreateManyInput | PrivateFilesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Files update
+   * PrivateFiles update
    */
-  export type FilesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * The data needed to update a Files.
+     * The data needed to update a PrivateFiles.
      */
-    data: XOR<FilesUpdateInput, FilesUncheckedUpdateInput>
+    data: XOR<PrivateFilesUpdateInput, PrivateFilesUncheckedUpdateInput>
     /**
-     * Choose, which Files to update.
+     * Choose, which PrivateFiles to update.
      */
-    where: FilesWhereUniqueInput
+    where: PrivateFilesWhereUniqueInput
   }
 
   /**
-   * Files updateMany
+   * PrivateFiles updateMany
    */
-  export type FilesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Files.
+     * The data used to update PrivateFiles.
      */
-    data: XOR<FilesUpdateManyMutationInput, FilesUncheckedUpdateManyInput>
+    data: XOR<PrivateFilesUpdateManyMutationInput, PrivateFilesUncheckedUpdateManyInput>
     /**
-     * Filter which Files to update
+     * Filter which PrivateFiles to update
      */
-    where?: FilesWhereInput
+    where?: PrivateFilesWhereInput
     /**
-     * Limit how many Files to update.
+     * Limit how many PrivateFiles to update.
      */
     limit?: number
   }
 
   /**
-   * Files updateManyAndReturn
+   * PrivateFiles updateManyAndReturn
    */
-  export type FilesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: PrivateFilesSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * The data used to update Files.
+     * The data used to update PrivateFiles.
      */
-    data: XOR<FilesUpdateManyMutationInput, FilesUncheckedUpdateManyInput>
+    data: XOR<PrivateFilesUpdateManyMutationInput, PrivateFilesUncheckedUpdateManyInput>
     /**
-     * Filter which Files to update
+     * Filter which PrivateFiles to update
      */
-    where?: FilesWhereInput
+    where?: PrivateFilesWhereInput
     /**
-     * Limit how many Files to update.
+     * Limit how many PrivateFiles to update.
      */
     limit?: number
   }
 
   /**
-   * Files upsert
+   * PrivateFiles upsert
    */
-  export type FilesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * The filter to search for the Files to update in case it exists.
+     * The filter to search for the PrivateFiles to update in case it exists.
      */
-    where: FilesWhereUniqueInput
+    where: PrivateFilesWhereUniqueInput
     /**
-     * In case the Files found by the `where` argument doesn't exist, create a new Files with this data.
+     * In case the PrivateFiles found by the `where` argument doesn't exist, create a new PrivateFiles with this data.
      */
-    create: XOR<FilesCreateInput, FilesUncheckedCreateInput>
+    create: XOR<PrivateFilesCreateInput, PrivateFilesUncheckedCreateInput>
     /**
-     * In case the Files was found with the provided `where` argument, update it with this data.
+     * In case the PrivateFiles was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<FilesUpdateInput, FilesUncheckedUpdateInput>
+    update: XOR<PrivateFilesUpdateInput, PrivateFilesUncheckedUpdateInput>
   }
 
   /**
-   * Files delete
+   * PrivateFiles delete
    */
-  export type FilesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
     /**
-     * Filter which Files to delete.
+     * Filter which PrivateFiles to delete.
      */
-    where: FilesWhereUniqueInput
+    where: PrivateFilesWhereUniqueInput
   }
 
   /**
-   * Files deleteMany
+   * PrivateFiles deleteMany
    */
-  export type FilesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Files to delete
+     * Filter which PrivateFiles to delete
      */
-    where?: FilesWhereInput
+    where?: PrivateFilesWhereInput
     /**
-     * Limit how many Files to delete.
+     * Limit how many PrivateFiles to delete.
      */
     limit?: number
   }
 
   /**
-   * Files without action
+   * PrivateFiles without action
    */
-  export type FilesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PrivateFilesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Files
+     * Select specific fields to fetch from the PrivateFiles
      */
-    select?: FilesSelect<ExtArgs> | null
+    select?: PrivateFilesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Files
+     * Omit specific fields from the PrivateFiles
      */
-    omit?: FilesOmit<ExtArgs> | null
+    omit?: PrivateFilesOmit<ExtArgs> | null
   }
 
 
@@ -2908,6 +4238,7 @@ export namespace Prisma {
     color?: boolean
     name?: boolean
     price?: boolean
+    imgs?: boolean | Flowers$imgsArgs<ExtArgs>
     history?: boolean | Flowers$historyArgs<ExtArgs>
     farms?: boolean | Flowers$farmsArgs<ExtArgs>
     bouquets?: boolean | Flowers$bouquetsArgs<ExtArgs>
@@ -2937,6 +4268,7 @@ export namespace Prisma {
 
   export type FlowersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "color" | "name" | "price", ExtArgs["result"]["flowers"]>
   export type FlowersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    imgs?: boolean | Flowers$imgsArgs<ExtArgs>
     history?: boolean | Flowers$historyArgs<ExtArgs>
     farms?: boolean | Flowers$farmsArgs<ExtArgs>
     bouquets?: boolean | Flowers$bouquetsArgs<ExtArgs>
@@ -2948,6 +4280,7 @@ export namespace Prisma {
   export type $FlowersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Flowers"
     objects: {
+      imgs: Prisma.$FlowersAndFilesPayload<ExtArgs>[]
       history: Prisma.$FlowersHistoryPayload<ExtArgs>[]
       farms: Prisma.$FlowersFarmsAndFlowersPayload<ExtArgs>[]
       bouquets: Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>[]
@@ -3351,6 +4684,7 @@ export namespace Prisma {
    */
   export interface Prisma__FlowersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    imgs<T extends Flowers$imgsArgs<ExtArgs> = {}>(args?: Subset<T, Flowers$imgsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     history<T extends Flowers$historyArgs<ExtArgs> = {}>(args?: Subset<T, Flowers$historyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     farms<T extends Flowers$farmsArgs<ExtArgs> = {}>(args?: Subset<T, Flowers$farmsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersFarmsAndFlowersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bouquets<T extends Flowers$bouquetsArgs<ExtArgs> = {}>(args?: Subset<T, Flowers$bouquetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersBouquetsAndFlowersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3772,6 +5106,30 @@ export namespace Prisma {
      * Limit how many Flowers to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Flowers.imgs
+   */
+  export type Flowers$imgsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    where?: FlowersAndFilesWhereInput
+    orderBy?: FlowersAndFilesOrderByWithRelationInput | FlowersAndFilesOrderByWithRelationInput[]
+    cursor?: FlowersAndFilesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlowersAndFilesScalarFieldEnum | FlowersAndFilesScalarFieldEnum[]
   }
 
   /**
@@ -9264,6 +10622,1071 @@ export namespace Prisma {
 
 
   /**
+   * Model FlowersAndFiles
+   */
+
+  export type AggregateFlowersAndFiles = {
+    _count: FlowersAndFilesCountAggregateOutputType | null
+    _avg: FlowersAndFilesAvgAggregateOutputType | null
+    _sum: FlowersAndFilesSumAggregateOutputType | null
+    _min: FlowersAndFilesMinAggregateOutputType | null
+    _max: FlowersAndFilesMaxAggregateOutputType | null
+  }
+
+  export type FlowersAndFilesAvgAggregateOutputType = {
+    flowersId: number | null
+    publicFilesId: number | null
+  }
+
+  export type FlowersAndFilesSumAggregateOutputType = {
+    flowersId: number | null
+    publicFilesId: number | null
+  }
+
+  export type FlowersAndFilesMinAggregateOutputType = {
+    flowersId: number | null
+    publicFilesId: number | null
+  }
+
+  export type FlowersAndFilesMaxAggregateOutputType = {
+    flowersId: number | null
+    publicFilesId: number | null
+  }
+
+  export type FlowersAndFilesCountAggregateOutputType = {
+    flowersId: number
+    publicFilesId: number
+    _all: number
+  }
+
+
+  export type FlowersAndFilesAvgAggregateInputType = {
+    flowersId?: true
+    publicFilesId?: true
+  }
+
+  export type FlowersAndFilesSumAggregateInputType = {
+    flowersId?: true
+    publicFilesId?: true
+  }
+
+  export type FlowersAndFilesMinAggregateInputType = {
+    flowersId?: true
+    publicFilesId?: true
+  }
+
+  export type FlowersAndFilesMaxAggregateInputType = {
+    flowersId?: true
+    publicFilesId?: true
+  }
+
+  export type FlowersAndFilesCountAggregateInputType = {
+    flowersId?: true
+    publicFilesId?: true
+    _all?: true
+  }
+
+  export type FlowersAndFilesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlowersAndFiles to aggregate.
+     */
+    where?: FlowersAndFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersAndFiles to fetch.
+     */
+    orderBy?: FlowersAndFilesOrderByWithRelationInput | FlowersAndFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FlowersAndFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersAndFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersAndFiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FlowersAndFiles
+    **/
+    _count?: true | FlowersAndFilesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FlowersAndFilesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FlowersAndFilesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FlowersAndFilesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FlowersAndFilesMaxAggregateInputType
+  }
+
+  export type GetFlowersAndFilesAggregateType<T extends FlowersAndFilesAggregateArgs> = {
+        [P in keyof T & keyof AggregateFlowersAndFiles]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFlowersAndFiles[P]>
+      : GetScalarType<T[P], AggregateFlowersAndFiles[P]>
+  }
+
+
+
+
+  export type FlowersAndFilesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlowersAndFilesWhereInput
+    orderBy?: FlowersAndFilesOrderByWithAggregationInput | FlowersAndFilesOrderByWithAggregationInput[]
+    by: FlowersAndFilesScalarFieldEnum[] | FlowersAndFilesScalarFieldEnum
+    having?: FlowersAndFilesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FlowersAndFilesCountAggregateInputType | true
+    _avg?: FlowersAndFilesAvgAggregateInputType
+    _sum?: FlowersAndFilesSumAggregateInputType
+    _min?: FlowersAndFilesMinAggregateInputType
+    _max?: FlowersAndFilesMaxAggregateInputType
+  }
+
+  export type FlowersAndFilesGroupByOutputType = {
+    flowersId: number
+    publicFilesId: number
+    _count: FlowersAndFilesCountAggregateOutputType | null
+    _avg: FlowersAndFilesAvgAggregateOutputType | null
+    _sum: FlowersAndFilesSumAggregateOutputType | null
+    _min: FlowersAndFilesMinAggregateOutputType | null
+    _max: FlowersAndFilesMaxAggregateOutputType | null
+  }
+
+  type GetFlowersAndFilesGroupByPayload<T extends FlowersAndFilesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FlowersAndFilesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FlowersAndFilesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FlowersAndFilesGroupByOutputType[P]>
+            : GetScalarType<T[P], FlowersAndFilesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FlowersAndFilesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    flowersId?: boolean
+    publicFilesId?: boolean
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    publicFiles?: boolean | PublicFilesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flowersAndFiles"]>
+
+  export type FlowersAndFilesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    flowersId?: boolean
+    publicFilesId?: boolean
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    publicFiles?: boolean | PublicFilesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flowersAndFiles"]>
+
+  export type FlowersAndFilesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    flowersId?: boolean
+    publicFilesId?: boolean
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    publicFiles?: boolean | PublicFilesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flowersAndFiles"]>
+
+  export type FlowersAndFilesSelectScalar = {
+    flowersId?: boolean
+    publicFilesId?: boolean
+  }
+
+  export type FlowersAndFilesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"flowersId" | "publicFilesId", ExtArgs["result"]["flowersAndFiles"]>
+  export type FlowersAndFilesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    publicFiles?: boolean | PublicFilesDefaultArgs<ExtArgs>
+  }
+  export type FlowersAndFilesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    publicFiles?: boolean | PublicFilesDefaultArgs<ExtArgs>
+  }
+  export type FlowersAndFilesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flowers?: boolean | FlowersDefaultArgs<ExtArgs>
+    publicFiles?: boolean | PublicFilesDefaultArgs<ExtArgs>
+  }
+
+  export type $FlowersAndFilesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FlowersAndFiles"
+    objects: {
+      flowers: Prisma.$FlowersPayload<ExtArgs>
+      publicFiles: Prisma.$PublicFilesPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      flowersId: number
+      publicFilesId: number
+    }, ExtArgs["result"]["flowersAndFiles"]>
+    composites: {}
+  }
+
+  type FlowersAndFilesGetPayload<S extends boolean | null | undefined | FlowersAndFilesDefaultArgs> = $Result.GetResult<Prisma.$FlowersAndFilesPayload, S>
+
+  type FlowersAndFilesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FlowersAndFilesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FlowersAndFilesCountAggregateInputType | true
+    }
+
+  export interface FlowersAndFilesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FlowersAndFiles'], meta: { name: 'FlowersAndFiles' } }
+    /**
+     * Find zero or one FlowersAndFiles that matches the filter.
+     * @param {FlowersAndFilesFindUniqueArgs} args - Arguments to find a FlowersAndFiles
+     * @example
+     * // Get one FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FlowersAndFilesFindUniqueArgs>(args: SelectSubset<T, FlowersAndFilesFindUniqueArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FlowersAndFiles that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FlowersAndFilesFindUniqueOrThrowArgs} args - Arguments to find a FlowersAndFiles
+     * @example
+     * // Get one FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FlowersAndFilesFindUniqueOrThrowArgs>(args: SelectSubset<T, FlowersAndFilesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlowersAndFiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersAndFilesFindFirstArgs} args - Arguments to find a FlowersAndFiles
+     * @example
+     * // Get one FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FlowersAndFilesFindFirstArgs>(args?: SelectSubset<T, FlowersAndFilesFindFirstArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlowersAndFiles that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersAndFilesFindFirstOrThrowArgs} args - Arguments to find a FlowersAndFiles
+     * @example
+     * // Get one FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FlowersAndFilesFindFirstOrThrowArgs>(args?: SelectSubset<T, FlowersAndFilesFindFirstOrThrowArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FlowersAndFiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersAndFilesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.findMany()
+     * 
+     * // Get first 10 FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.findMany({ take: 10 })
+     * 
+     * // Only select the `flowersId`
+     * const flowersAndFilesWithFlowersIdOnly = await prisma.flowersAndFiles.findMany({ select: { flowersId: true } })
+     * 
+     */
+    findMany<T extends FlowersAndFilesFindManyArgs>(args?: SelectSubset<T, FlowersAndFilesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FlowersAndFiles.
+     * @param {FlowersAndFilesCreateArgs} args - Arguments to create a FlowersAndFiles.
+     * @example
+     * // Create one FlowersAndFiles
+     * const FlowersAndFiles = await prisma.flowersAndFiles.create({
+     *   data: {
+     *     // ... data to create a FlowersAndFiles
+     *   }
+     * })
+     * 
+     */
+    create<T extends FlowersAndFilesCreateArgs>(args: SelectSubset<T, FlowersAndFilesCreateArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FlowersAndFiles.
+     * @param {FlowersAndFilesCreateManyArgs} args - Arguments to create many FlowersAndFiles.
+     * @example
+     * // Create many FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FlowersAndFilesCreateManyArgs>(args?: SelectSubset<T, FlowersAndFilesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FlowersAndFiles and returns the data saved in the database.
+     * @param {FlowersAndFilesCreateManyAndReturnArgs} args - Arguments to create many FlowersAndFiles.
+     * @example
+     * // Create many FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FlowersAndFiles and only return the `flowersId`
+     * const flowersAndFilesWithFlowersIdOnly = await prisma.flowersAndFiles.createManyAndReturn({
+     *   select: { flowersId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FlowersAndFilesCreateManyAndReturnArgs>(args?: SelectSubset<T, FlowersAndFilesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FlowersAndFiles.
+     * @param {FlowersAndFilesDeleteArgs} args - Arguments to delete one FlowersAndFiles.
+     * @example
+     * // Delete one FlowersAndFiles
+     * const FlowersAndFiles = await prisma.flowersAndFiles.delete({
+     *   where: {
+     *     // ... filter to delete one FlowersAndFiles
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FlowersAndFilesDeleteArgs>(args: SelectSubset<T, FlowersAndFilesDeleteArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FlowersAndFiles.
+     * @param {FlowersAndFilesUpdateArgs} args - Arguments to update one FlowersAndFiles.
+     * @example
+     * // Update one FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FlowersAndFilesUpdateArgs>(args: SelectSubset<T, FlowersAndFilesUpdateArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FlowersAndFiles.
+     * @param {FlowersAndFilesDeleteManyArgs} args - Arguments to filter FlowersAndFiles to delete.
+     * @example
+     * // Delete a few FlowersAndFiles
+     * const { count } = await prisma.flowersAndFiles.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FlowersAndFilesDeleteManyArgs>(args?: SelectSubset<T, FlowersAndFilesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlowersAndFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersAndFilesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FlowersAndFilesUpdateManyArgs>(args: SelectSubset<T, FlowersAndFilesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlowersAndFiles and returns the data updated in the database.
+     * @param {FlowersAndFilesUpdateManyAndReturnArgs} args - Arguments to update many FlowersAndFiles.
+     * @example
+     * // Update many FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FlowersAndFiles and only return the `flowersId`
+     * const flowersAndFilesWithFlowersIdOnly = await prisma.flowersAndFiles.updateManyAndReturn({
+     *   select: { flowersId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FlowersAndFilesUpdateManyAndReturnArgs>(args: SelectSubset<T, FlowersAndFilesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FlowersAndFiles.
+     * @param {FlowersAndFilesUpsertArgs} args - Arguments to update or create a FlowersAndFiles.
+     * @example
+     * // Update or create a FlowersAndFiles
+     * const flowersAndFiles = await prisma.flowersAndFiles.upsert({
+     *   create: {
+     *     // ... data to create a FlowersAndFiles
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FlowersAndFiles we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FlowersAndFilesUpsertArgs>(args: SelectSubset<T, FlowersAndFilesUpsertArgs<ExtArgs>>): Prisma__FlowersAndFilesClient<$Result.GetResult<Prisma.$FlowersAndFilesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FlowersAndFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersAndFilesCountArgs} args - Arguments to filter FlowersAndFiles to count.
+     * @example
+     * // Count the number of FlowersAndFiles
+     * const count = await prisma.flowersAndFiles.count({
+     *   where: {
+     *     // ... the filter for the FlowersAndFiles we want to count
+     *   }
+     * })
+    **/
+    count<T extends FlowersAndFilesCountArgs>(
+      args?: Subset<T, FlowersAndFilesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FlowersAndFilesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FlowersAndFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersAndFilesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FlowersAndFilesAggregateArgs>(args: Subset<T, FlowersAndFilesAggregateArgs>): Prisma.PrismaPromise<GetFlowersAndFilesAggregateType<T>>
+
+    /**
+     * Group by FlowersAndFiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlowersAndFilesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FlowersAndFilesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FlowersAndFilesGroupByArgs['orderBy'] }
+        : { orderBy?: FlowersAndFilesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FlowersAndFilesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFlowersAndFilesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FlowersAndFiles model
+   */
+  readonly fields: FlowersAndFilesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FlowersAndFiles.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FlowersAndFilesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    flowers<T extends FlowersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FlowersDefaultArgs<ExtArgs>>): Prisma__FlowersClient<$Result.GetResult<Prisma.$FlowersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    publicFiles<T extends PublicFilesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PublicFilesDefaultArgs<ExtArgs>>): Prisma__PublicFilesClient<$Result.GetResult<Prisma.$PublicFilesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FlowersAndFiles model
+   */ 
+  interface FlowersAndFilesFieldRefs {
+    readonly flowersId: FieldRef<"FlowersAndFiles", 'Int'>
+    readonly publicFilesId: FieldRef<"FlowersAndFiles", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FlowersAndFiles findUnique
+   */
+  export type FlowersAndFilesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersAndFiles to fetch.
+     */
+    where: FlowersAndFilesWhereUniqueInput
+  }
+
+  /**
+   * FlowersAndFiles findUniqueOrThrow
+   */
+  export type FlowersAndFilesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersAndFiles to fetch.
+     */
+    where: FlowersAndFilesWhereUniqueInput
+  }
+
+  /**
+   * FlowersAndFiles findFirst
+   */
+  export type FlowersAndFilesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersAndFiles to fetch.
+     */
+    where?: FlowersAndFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersAndFiles to fetch.
+     */
+    orderBy?: FlowersAndFilesOrderByWithRelationInput | FlowersAndFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlowersAndFiles.
+     */
+    cursor?: FlowersAndFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersAndFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersAndFiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlowersAndFiles.
+     */
+    distinct?: FlowersAndFilesScalarFieldEnum | FlowersAndFilesScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersAndFiles findFirstOrThrow
+   */
+  export type FlowersAndFilesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersAndFiles to fetch.
+     */
+    where?: FlowersAndFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersAndFiles to fetch.
+     */
+    orderBy?: FlowersAndFilesOrderByWithRelationInput | FlowersAndFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlowersAndFiles.
+     */
+    cursor?: FlowersAndFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersAndFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersAndFiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlowersAndFiles.
+     */
+    distinct?: FlowersAndFilesScalarFieldEnum | FlowersAndFilesScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersAndFiles findMany
+   */
+  export type FlowersAndFilesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * Filter, which FlowersAndFiles to fetch.
+     */
+    where?: FlowersAndFilesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlowersAndFiles to fetch.
+     */
+    orderBy?: FlowersAndFilesOrderByWithRelationInput | FlowersAndFilesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FlowersAndFiles.
+     */
+    cursor?: FlowersAndFilesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlowersAndFiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlowersAndFiles.
+     */
+    skip?: number
+    distinct?: FlowersAndFilesScalarFieldEnum | FlowersAndFilesScalarFieldEnum[]
+  }
+
+  /**
+   * FlowersAndFiles create
+   */
+  export type FlowersAndFilesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FlowersAndFiles.
+     */
+    data: XOR<FlowersAndFilesCreateInput, FlowersAndFilesUncheckedCreateInput>
+  }
+
+  /**
+   * FlowersAndFiles createMany
+   */
+  export type FlowersAndFilesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FlowersAndFiles.
+     */
+    data: FlowersAndFilesCreateManyInput | FlowersAndFilesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FlowersAndFiles createManyAndReturn
+   */
+  export type FlowersAndFilesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * The data used to create many FlowersAndFiles.
+     */
+    data: FlowersAndFilesCreateManyInput | FlowersAndFilesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FlowersAndFiles update
+   */
+  export type FlowersAndFilesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FlowersAndFiles.
+     */
+    data: XOR<FlowersAndFilesUpdateInput, FlowersAndFilesUncheckedUpdateInput>
+    /**
+     * Choose, which FlowersAndFiles to update.
+     */
+    where: FlowersAndFilesWhereUniqueInput
+  }
+
+  /**
+   * FlowersAndFiles updateMany
+   */
+  export type FlowersAndFilesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FlowersAndFiles.
+     */
+    data: XOR<FlowersAndFilesUpdateManyMutationInput, FlowersAndFilesUncheckedUpdateManyInput>
+    /**
+     * Filter which FlowersAndFiles to update
+     */
+    where?: FlowersAndFilesWhereInput
+    /**
+     * Limit how many FlowersAndFiles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlowersAndFiles updateManyAndReturn
+   */
+  export type FlowersAndFilesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * The data used to update FlowersAndFiles.
+     */
+    data: XOR<FlowersAndFilesUpdateManyMutationInput, FlowersAndFilesUncheckedUpdateManyInput>
+    /**
+     * Filter which FlowersAndFiles to update
+     */
+    where?: FlowersAndFilesWhereInput
+    /**
+     * Limit how many FlowersAndFiles to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FlowersAndFiles upsert
+   */
+  export type FlowersAndFilesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FlowersAndFiles to update in case it exists.
+     */
+    where: FlowersAndFilesWhereUniqueInput
+    /**
+     * In case the FlowersAndFiles found by the `where` argument doesn't exist, create a new FlowersAndFiles with this data.
+     */
+    create: XOR<FlowersAndFilesCreateInput, FlowersAndFilesUncheckedCreateInput>
+    /**
+     * In case the FlowersAndFiles was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FlowersAndFilesUpdateInput, FlowersAndFilesUncheckedUpdateInput>
+  }
+
+  /**
+   * FlowersAndFiles delete
+   */
+  export type FlowersAndFilesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+    /**
+     * Filter which FlowersAndFiles to delete.
+     */
+    where: FlowersAndFilesWhereUniqueInput
+  }
+
+  /**
+   * FlowersAndFiles deleteMany
+   */
+  export type FlowersAndFilesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlowersAndFiles to delete
+     */
+    where?: FlowersAndFilesWhereInput
+    /**
+     * Limit how many FlowersAndFiles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlowersAndFiles without action
+   */
+  export type FlowersAndFilesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlowersAndFiles
+     */
+    select?: FlowersAndFilesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlowersAndFiles
+     */
+    omit?: FlowersAndFilesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlowersAndFilesInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Users
    */
 
@@ -11352,13 +13775,24 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const FilesScalarFieldEnum: {
+  export const PublicFilesScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    createAt: 'createAt'
+    size: 'size',
+    uploadAt: 'uploadAt'
   };
 
-  export type FilesScalarFieldEnum = (typeof FilesScalarFieldEnum)[keyof typeof FilesScalarFieldEnum]
+  export type PublicFilesScalarFieldEnum = (typeof PublicFilesScalarFieldEnum)[keyof typeof PublicFilesScalarFieldEnum]
+
+
+  export const PrivateFilesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    size: 'size',
+    uploadAt: 'uploadAt'
+  };
+
+  export type PrivateFilesScalarFieldEnum = (typeof PrivateFilesScalarFieldEnum)[keyof typeof PrivateFilesScalarFieldEnum]
 
 
   export const FlowersScalarFieldEnum: {
@@ -11414,6 +13848,14 @@ export namespace Prisma {
   };
 
   export type FlowersBouquetsAndFlowersScalarFieldEnum = (typeof FlowersBouquetsAndFlowersScalarFieldEnum)[keyof typeof FlowersBouquetsAndFlowersScalarFieldEnum]
+
+
+  export const FlowersAndFilesScalarFieldEnum: {
+    flowersId: 'flowersId',
+    publicFilesId: 'publicFilesId'
+  };
+
+  export type FlowersAndFilesScalarFieldEnum = (typeof FlowersAndFilesScalarFieldEnum)[keyof typeof FlowersAndFilesScalarFieldEnum]
 
 
   export const UsersScalarFieldEnum: {
@@ -11497,6 +13939,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -11520,48 +13976,105 @@ export namespace Prisma {
    */
 
 
-  export type FilesWhereInput = {
-    AND?: FilesWhereInput | FilesWhereInput[]
-    OR?: FilesWhereInput[]
-    NOT?: FilesWhereInput | FilesWhereInput[]
-    id?: IntFilter<"Files"> | number
-    name?: StringFilter<"Files"> | string
-    createAt?: IntFilter<"Files"> | number
+  export type PublicFilesWhereInput = {
+    AND?: PublicFilesWhereInput | PublicFilesWhereInput[]
+    OR?: PublicFilesWhereInput[]
+    NOT?: PublicFilesWhereInput | PublicFilesWhereInput[]
+    id?: IntFilter<"PublicFiles"> | number
+    name?: StringFilter<"PublicFiles"> | string
+    size?: IntFilter<"PublicFiles"> | number
+    uploadAt?: DateTimeFilter<"PublicFiles"> | Date | string
+    flowers?: FlowersAndFilesListRelationFilter
   }
 
-  export type FilesOrderByWithRelationInput = {
+  export type PublicFilesOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    createAt?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
+    flowers?: FlowersAndFilesOrderByRelationAggregateInput
   }
 
-  export type FilesWhereUniqueInput = Prisma.AtLeast<{
+  export type PublicFilesWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     name?: string
-    AND?: FilesWhereInput | FilesWhereInput[]
-    OR?: FilesWhereInput[]
-    NOT?: FilesWhereInput | FilesWhereInput[]
-    createAt?: IntFilter<"Files"> | number
+    AND?: PublicFilesWhereInput | PublicFilesWhereInput[]
+    OR?: PublicFilesWhereInput[]
+    NOT?: PublicFilesWhereInput | PublicFilesWhereInput[]
+    size?: IntFilter<"PublicFiles"> | number
+    uploadAt?: DateTimeFilter<"PublicFiles"> | Date | string
+    flowers?: FlowersAndFilesListRelationFilter
   }, "id" | "name">
 
-  export type FilesOrderByWithAggregationInput = {
+  export type PublicFilesOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    createAt?: SortOrder
-    _count?: FilesCountOrderByAggregateInput
-    _avg?: FilesAvgOrderByAggregateInput
-    _max?: FilesMaxOrderByAggregateInput
-    _min?: FilesMinOrderByAggregateInput
-    _sum?: FilesSumOrderByAggregateInput
+    size?: SortOrder
+    uploadAt?: SortOrder
+    _count?: PublicFilesCountOrderByAggregateInput
+    _avg?: PublicFilesAvgOrderByAggregateInput
+    _max?: PublicFilesMaxOrderByAggregateInput
+    _min?: PublicFilesMinOrderByAggregateInput
+    _sum?: PublicFilesSumOrderByAggregateInput
   }
 
-  export type FilesScalarWhereWithAggregatesInput = {
-    AND?: FilesScalarWhereWithAggregatesInput | FilesScalarWhereWithAggregatesInput[]
-    OR?: FilesScalarWhereWithAggregatesInput[]
-    NOT?: FilesScalarWhereWithAggregatesInput | FilesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Files"> | number
-    name?: StringWithAggregatesFilter<"Files"> | string
-    createAt?: IntWithAggregatesFilter<"Files"> | number
+  export type PublicFilesScalarWhereWithAggregatesInput = {
+    AND?: PublicFilesScalarWhereWithAggregatesInput | PublicFilesScalarWhereWithAggregatesInput[]
+    OR?: PublicFilesScalarWhereWithAggregatesInput[]
+    NOT?: PublicFilesScalarWhereWithAggregatesInput | PublicFilesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PublicFiles"> | number
+    name?: StringWithAggregatesFilter<"PublicFiles"> | string
+    size?: IntWithAggregatesFilter<"PublicFiles"> | number
+    uploadAt?: DateTimeWithAggregatesFilter<"PublicFiles"> | Date | string
+  }
+
+  export type PrivateFilesWhereInput = {
+    AND?: PrivateFilesWhereInput | PrivateFilesWhereInput[]
+    OR?: PrivateFilesWhereInput[]
+    NOT?: PrivateFilesWhereInput | PrivateFilesWhereInput[]
+    id?: IntFilter<"PrivateFiles"> | number
+    name?: StringFilter<"PrivateFiles"> | string
+    size?: IntFilter<"PrivateFiles"> | number
+    uploadAt?: DateTimeFilter<"PrivateFiles"> | Date | string
+  }
+
+  export type PrivateFilesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
+  }
+
+  export type PrivateFilesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: PrivateFilesWhereInput | PrivateFilesWhereInput[]
+    OR?: PrivateFilesWhereInput[]
+    NOT?: PrivateFilesWhereInput | PrivateFilesWhereInput[]
+    size?: IntFilter<"PrivateFiles"> | number
+    uploadAt?: DateTimeFilter<"PrivateFiles"> | Date | string
+  }, "id" | "name">
+
+  export type PrivateFilesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
+    _count?: PrivateFilesCountOrderByAggregateInput
+    _avg?: PrivateFilesAvgOrderByAggregateInput
+    _max?: PrivateFilesMaxOrderByAggregateInput
+    _min?: PrivateFilesMinOrderByAggregateInput
+    _sum?: PrivateFilesSumOrderByAggregateInput
+  }
+
+  export type PrivateFilesScalarWhereWithAggregatesInput = {
+    AND?: PrivateFilesScalarWhereWithAggregatesInput | PrivateFilesScalarWhereWithAggregatesInput[]
+    OR?: PrivateFilesScalarWhereWithAggregatesInput[]
+    NOT?: PrivateFilesScalarWhereWithAggregatesInput | PrivateFilesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PrivateFiles"> | number
+    name?: StringWithAggregatesFilter<"PrivateFiles"> | string
+    size?: IntWithAggregatesFilter<"PrivateFiles"> | number
+    uploadAt?: DateTimeWithAggregatesFilter<"PrivateFiles"> | Date | string
   }
 
   export type FlowersWhereInput = {
@@ -11572,6 +14085,7 @@ export namespace Prisma {
     color?: StringFilter<"Flowers"> | string
     name?: StringFilter<"Flowers"> | string
     price?: IntFilter<"Flowers"> | number
+    imgs?: FlowersAndFilesListRelationFilter
     history?: FlowersHistoryListRelationFilter
     farms?: FlowersFarmsAndFlowersListRelationFilter
     bouquets?: FlowersBouquetsAndFlowersListRelationFilter
@@ -11582,6 +14096,7 @@ export namespace Prisma {
     color?: SortOrder
     name?: SortOrder
     price?: SortOrder
+    imgs?: FlowersAndFilesOrderByRelationAggregateInput
     history?: FlowersHistoryOrderByRelationAggregateInput
     farms?: FlowersFarmsAndFlowersOrderByRelationAggregateInput
     bouquets?: FlowersBouquetsAndFlowersOrderByRelationAggregateInput
@@ -11595,6 +14110,7 @@ export namespace Prisma {
     color?: StringFilter<"Flowers"> | string
     name?: StringFilter<"Flowers"> | string
     price?: IntFilter<"Flowers"> | number
+    imgs?: FlowersAndFilesListRelationFilter
     history?: FlowersHistoryListRelationFilter
     farms?: FlowersFarmsAndFlowersListRelationFilter
     bouquets?: FlowersBouquetsAndFlowersListRelationFilter
@@ -11865,6 +14381,52 @@ export namespace Prisma {
     flowersBouquetsId?: IntWithAggregatesFilter<"FlowersBouquetsAndFlowers"> | number
   }
 
+  export type FlowersAndFilesWhereInput = {
+    AND?: FlowersAndFilesWhereInput | FlowersAndFilesWhereInput[]
+    OR?: FlowersAndFilesWhereInput[]
+    NOT?: FlowersAndFilesWhereInput | FlowersAndFilesWhereInput[]
+    flowersId?: IntFilter<"FlowersAndFiles"> | number
+    publicFilesId?: IntFilter<"FlowersAndFiles"> | number
+    flowers?: XOR<FlowersScalarRelationFilter, FlowersWhereInput>
+    publicFiles?: XOR<PublicFilesScalarRelationFilter, PublicFilesWhereInput>
+  }
+
+  export type FlowersAndFilesOrderByWithRelationInput = {
+    flowersId?: SortOrder
+    publicFilesId?: SortOrder
+    flowers?: FlowersOrderByWithRelationInput
+    publicFiles?: PublicFilesOrderByWithRelationInput
+  }
+
+  export type FlowersAndFilesWhereUniqueInput = Prisma.AtLeast<{
+    flowersId_publicFilesId?: FlowersAndFilesFlowersIdPublicFilesIdCompoundUniqueInput
+    AND?: FlowersAndFilesWhereInput | FlowersAndFilesWhereInput[]
+    OR?: FlowersAndFilesWhereInput[]
+    NOT?: FlowersAndFilesWhereInput | FlowersAndFilesWhereInput[]
+    flowersId?: IntFilter<"FlowersAndFiles"> | number
+    publicFilesId?: IntFilter<"FlowersAndFiles"> | number
+    flowers?: XOR<FlowersScalarRelationFilter, FlowersWhereInput>
+    publicFiles?: XOR<PublicFilesScalarRelationFilter, PublicFilesWhereInput>
+  }, "flowersId_publicFilesId">
+
+  export type FlowersAndFilesOrderByWithAggregationInput = {
+    flowersId?: SortOrder
+    publicFilesId?: SortOrder
+    _count?: FlowersAndFilesCountOrderByAggregateInput
+    _avg?: FlowersAndFilesAvgOrderByAggregateInput
+    _max?: FlowersAndFilesMaxOrderByAggregateInput
+    _min?: FlowersAndFilesMinOrderByAggregateInput
+    _sum?: FlowersAndFilesSumOrderByAggregateInput
+  }
+
+  export type FlowersAndFilesScalarWhereWithAggregatesInput = {
+    AND?: FlowersAndFilesScalarWhereWithAggregatesInput | FlowersAndFilesScalarWhereWithAggregatesInput[]
+    OR?: FlowersAndFilesScalarWhereWithAggregatesInput[]
+    NOT?: FlowersAndFilesScalarWhereWithAggregatesInput | FlowersAndFilesScalarWhereWithAggregatesInput[]
+    flowersId?: IntWithAggregatesFilter<"FlowersAndFiles"> | number
+    publicFilesId?: IntWithAggregatesFilter<"FlowersAndFiles"> | number
+  }
+
   export type UsersWhereInput = {
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
@@ -11979,49 +14541,107 @@ export namespace Prisma {
     fileId?: IntWithAggregatesFilter<"UsersFiles"> | number
   }
 
-  export type FilesCreateInput = {
+  export type PublicFilesCreateInput = {
     name: string
-    createAt: number
+    size: number
+    uploadAt?: Date | string
+    flowers?: FlowersAndFilesCreateNestedManyWithoutPublicFilesInput
   }
 
-  export type FilesUncheckedCreateInput = {
+  export type PublicFilesUncheckedCreateInput = {
     id?: number
     name: string
-    createAt: number
+    size: number
+    uploadAt?: Date | string
+    flowers?: FlowersAndFilesUncheckedCreateNestedManyWithoutPublicFilesInput
   }
 
-  export type FilesUpdateInput = {
+  export type PublicFilesUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    createAt?: IntFieldUpdateOperationsInput | number
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    flowers?: FlowersAndFilesUpdateManyWithoutPublicFilesNestedInput
   }
 
-  export type FilesUncheckedUpdateInput = {
+  export type PublicFilesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    createAt?: IntFieldUpdateOperationsInput | number
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    flowers?: FlowersAndFilesUncheckedUpdateManyWithoutPublicFilesNestedInput
   }
 
-  export type FilesCreateManyInput = {
+  export type PublicFilesCreateManyInput = {
     id?: number
     name: string
-    createAt: number
+    size: number
+    uploadAt?: Date | string
   }
 
-  export type FilesUpdateManyMutationInput = {
+  export type PublicFilesUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    createAt?: IntFieldUpdateOperationsInput | number
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FilesUncheckedUpdateManyInput = {
+  export type PublicFilesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    createAt?: IntFieldUpdateOperationsInput | number
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PrivateFilesCreateInput = {
+    name: string
+    size: number
+    uploadAt?: Date | string
+  }
+
+  export type PrivateFilesUncheckedCreateInput = {
+    id?: number
+    name: string
+    size: number
+    uploadAt?: Date | string
+  }
+
+  export type PrivateFilesUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PrivateFilesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PrivateFilesCreateManyInput = {
+    id?: number
+    name: string
+    size: number
+    uploadAt?: Date | string
+  }
+
+  export type PrivateFilesUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PrivateFilesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FlowersCreateInput = {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
     history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
     farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
     bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
@@ -12032,6 +14652,7 @@ export namespace Prisma {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
     history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
     farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
     bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
@@ -12041,6 +14662,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUpdateManyWithoutFlowersNestedInput
     history?: FlowersHistoryUpdateManyWithoutFlowerNestedInput
     farms?: FlowersFarmsAndFlowersUpdateManyWithoutFlowersNestedInput
     bouquets?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput
@@ -12051,6 +14673,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUncheckedUpdateManyWithoutFlowersNestedInput
     history?: FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput
     farms?: FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
     bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
@@ -12282,6 +14905,40 @@ export namespace Prisma {
     flowersBouquetsId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type FlowersAndFilesCreateInput = {
+    flowers: FlowersCreateNestedOneWithoutImgsInput
+    publicFiles: PublicFilesCreateNestedOneWithoutFlowersInput
+  }
+
+  export type FlowersAndFilesUncheckedCreateInput = {
+    flowersId: number
+    publicFilesId: number
+  }
+
+  export type FlowersAndFilesUpdateInput = {
+    flowers?: FlowersUpdateOneRequiredWithoutImgsNestedInput
+    publicFiles?: PublicFilesUpdateOneRequiredWithoutFlowersNestedInput
+  }
+
+  export type FlowersAndFilesUncheckedUpdateInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+    publicFilesId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersAndFilesCreateManyInput = {
+    flowersId: number
+    publicFilesId: number
+  }
+
+  export type FlowersAndFilesUpdateManyMutationInput = {
+
+  }
+
+  export type FlowersAndFilesUncheckedUpdateManyInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+    publicFilesId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type UsersCreateInput = {
     email: string
     emailVerified?: boolean
@@ -12424,32 +15081,56 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type FilesCountOrderByAggregateInput = {
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type FlowersAndFilesListRelationFilter = {
+    every?: FlowersAndFilesWhereInput
+    some?: FlowersAndFilesWhereInput
+    none?: FlowersAndFilesWhereInput
+  }
+
+  export type FlowersAndFilesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PublicFilesCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createAt?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
   }
 
-  export type FilesAvgOrderByAggregateInput = {
+  export type PublicFilesAvgOrderByAggregateInput = {
     id?: SortOrder
-    createAt?: SortOrder
+    size?: SortOrder
   }
 
-  export type FilesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createAt?: SortOrder
-  }
-
-  export type FilesMinOrderByAggregateInput = {
+  export type PublicFilesMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createAt?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
   }
 
-  export type FilesSumOrderByAggregateInput = {
+  export type PublicFilesMinOrderByAggregateInput = {
     id?: SortOrder
-    createAt?: SortOrder
+    name?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
+  }
+
+  export type PublicFilesSumOrderByAggregateInput = {
+    id?: SortOrder
+    size?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -12484,6 +15165,51 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type PrivateFilesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
+  }
+
+  export type PrivateFilesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    size?: SortOrder
+  }
+
+  export type PrivateFilesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
+  }
+
+  export type PrivateFilesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    size?: SortOrder
+    uploadAt?: SortOrder
+  }
+
+  export type PrivateFilesSumOrderByAggregateInput = {
+    id?: SortOrder
+    size?: SortOrder
   }
 
   export type FlowersHistoryListRelationFilter = {
@@ -12716,6 +15442,41 @@ export namespace Prisma {
     flowersBouquetsId?: SortOrder
   }
 
+  export type PublicFilesScalarRelationFilter = {
+    is?: PublicFilesWhereInput
+    isNot?: PublicFilesWhereInput
+  }
+
+  export type FlowersAndFilesFlowersIdPublicFilesIdCompoundUniqueInput = {
+    flowersId: number
+    publicFilesId: number
+  }
+
+  export type FlowersAndFilesCountOrderByAggregateInput = {
+    flowersId?: SortOrder
+    publicFilesId?: SortOrder
+  }
+
+  export type FlowersAndFilesAvgOrderByAggregateInput = {
+    flowersId?: SortOrder
+    publicFilesId?: SortOrder
+  }
+
+  export type FlowersAndFilesMaxOrderByAggregateInput = {
+    flowersId?: SortOrder
+    publicFilesId?: SortOrder
+  }
+
+  export type FlowersAndFilesMinOrderByAggregateInput = {
+    flowersId?: SortOrder
+    publicFilesId?: SortOrder
+  }
+
+  export type FlowersAndFilesSumOrderByAggregateInput = {
+    flowersId?: SortOrder
+    publicFilesId?: SortOrder
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -12841,6 +15602,20 @@ export namespace Prisma {
     fileId?: SortOrder
   }
 
+  export type FlowersAndFilesCreateNestedManyWithoutPublicFilesInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutPublicFilesInput, FlowersAndFilesUncheckedCreateWithoutPublicFilesInput> | FlowersAndFilesCreateWithoutPublicFilesInput[] | FlowersAndFilesUncheckedCreateWithoutPublicFilesInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutPublicFilesInput | FlowersAndFilesCreateOrConnectWithoutPublicFilesInput[]
+    createMany?: FlowersAndFilesCreateManyPublicFilesInputEnvelope
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+  }
+
+  export type FlowersAndFilesUncheckedCreateNestedManyWithoutPublicFilesInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutPublicFilesInput, FlowersAndFilesUncheckedCreateWithoutPublicFilesInput> | FlowersAndFilesCreateWithoutPublicFilesInput[] | FlowersAndFilesUncheckedCreateWithoutPublicFilesInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutPublicFilesInput | FlowersAndFilesCreateOrConnectWithoutPublicFilesInput[]
+    createMany?: FlowersAndFilesCreateManyPublicFilesInputEnvelope
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -12851,6 +15626,45 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type FlowersAndFilesUpdateManyWithoutPublicFilesNestedInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutPublicFilesInput, FlowersAndFilesUncheckedCreateWithoutPublicFilesInput> | FlowersAndFilesCreateWithoutPublicFilesInput[] | FlowersAndFilesUncheckedCreateWithoutPublicFilesInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutPublicFilesInput | FlowersAndFilesCreateOrConnectWithoutPublicFilesInput[]
+    upsert?: FlowersAndFilesUpsertWithWhereUniqueWithoutPublicFilesInput | FlowersAndFilesUpsertWithWhereUniqueWithoutPublicFilesInput[]
+    createMany?: FlowersAndFilesCreateManyPublicFilesInputEnvelope
+    set?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    disconnect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    delete?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    update?: FlowersAndFilesUpdateWithWhereUniqueWithoutPublicFilesInput | FlowersAndFilesUpdateWithWhereUniqueWithoutPublicFilesInput[]
+    updateMany?: FlowersAndFilesUpdateManyWithWhereWithoutPublicFilesInput | FlowersAndFilesUpdateManyWithWhereWithoutPublicFilesInput[]
+    deleteMany?: FlowersAndFilesScalarWhereInput | FlowersAndFilesScalarWhereInput[]
+  }
+
+  export type FlowersAndFilesUncheckedUpdateManyWithoutPublicFilesNestedInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutPublicFilesInput, FlowersAndFilesUncheckedCreateWithoutPublicFilesInput> | FlowersAndFilesCreateWithoutPublicFilesInput[] | FlowersAndFilesUncheckedCreateWithoutPublicFilesInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutPublicFilesInput | FlowersAndFilesCreateOrConnectWithoutPublicFilesInput[]
+    upsert?: FlowersAndFilesUpsertWithWhereUniqueWithoutPublicFilesInput | FlowersAndFilesUpsertWithWhereUniqueWithoutPublicFilesInput[]
+    createMany?: FlowersAndFilesCreateManyPublicFilesInputEnvelope
+    set?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    disconnect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    delete?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    update?: FlowersAndFilesUpdateWithWhereUniqueWithoutPublicFilesInput | FlowersAndFilesUpdateWithWhereUniqueWithoutPublicFilesInput[]
+    updateMany?: FlowersAndFilesUpdateManyWithWhereWithoutPublicFilesInput | FlowersAndFilesUpdateManyWithWhereWithoutPublicFilesInput[]
+    deleteMany?: FlowersAndFilesScalarWhereInput | FlowersAndFilesScalarWhereInput[]
+  }
+
+  export type FlowersAndFilesCreateNestedManyWithoutFlowersInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput> | FlowersAndFilesCreateWithoutFlowersInput[] | FlowersAndFilesUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutFlowersInput | FlowersAndFilesCreateOrConnectWithoutFlowersInput[]
+    createMany?: FlowersAndFilesCreateManyFlowersInputEnvelope
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
   }
 
   export type FlowersHistoryCreateNestedManyWithoutFlowerInput = {
@@ -12874,6 +15688,13 @@ export namespace Prisma {
     connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
   }
 
+  export type FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput> | FlowersAndFilesCreateWithoutFlowersInput[] | FlowersAndFilesUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutFlowersInput | FlowersAndFilesCreateOrConnectWithoutFlowersInput[]
+    createMany?: FlowersAndFilesCreateManyFlowersInputEnvelope
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+  }
+
   export type FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput = {
     create?: XOR<FlowersHistoryCreateWithoutFlowerInput, FlowersHistoryUncheckedCreateWithoutFlowerInput> | FlowersHistoryCreateWithoutFlowerInput[] | FlowersHistoryUncheckedCreateWithoutFlowerInput[]
     connectOrCreate?: FlowersHistoryCreateOrConnectWithoutFlowerInput | FlowersHistoryCreateOrConnectWithoutFlowerInput[]
@@ -12893,6 +15714,20 @@ export namespace Prisma {
     connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput[]
     createMany?: FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope
     connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
+  }
+
+  export type FlowersAndFilesUpdateManyWithoutFlowersNestedInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput> | FlowersAndFilesCreateWithoutFlowersInput[] | FlowersAndFilesUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutFlowersInput | FlowersAndFilesCreateOrConnectWithoutFlowersInput[]
+    upsert?: FlowersAndFilesUpsertWithWhereUniqueWithoutFlowersInput | FlowersAndFilesUpsertWithWhereUniqueWithoutFlowersInput[]
+    createMany?: FlowersAndFilesCreateManyFlowersInputEnvelope
+    set?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    disconnect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    delete?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    update?: FlowersAndFilesUpdateWithWhereUniqueWithoutFlowersInput | FlowersAndFilesUpdateWithWhereUniqueWithoutFlowersInput[]
+    updateMany?: FlowersAndFilesUpdateManyWithWhereWithoutFlowersInput | FlowersAndFilesUpdateManyWithWhereWithoutFlowersInput[]
+    deleteMany?: FlowersAndFilesScalarWhereInput | FlowersAndFilesScalarWhereInput[]
   }
 
   export type FlowersHistoryUpdateManyWithoutFlowerNestedInput = {
@@ -12935,6 +15770,20 @@ export namespace Prisma {
     update?: FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput | FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput[]
     updateMany?: FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersInput | FlowersBouquetsAndFlowersUpdateManyWithWhereWithoutFlowersInput[]
     deleteMany?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
+  }
+
+  export type FlowersAndFilesUncheckedUpdateManyWithoutFlowersNestedInput = {
+    create?: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput> | FlowersAndFilesCreateWithoutFlowersInput[] | FlowersAndFilesUncheckedCreateWithoutFlowersInput[]
+    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutFlowersInput | FlowersAndFilesCreateOrConnectWithoutFlowersInput[]
+    upsert?: FlowersAndFilesUpsertWithWhereUniqueWithoutFlowersInput | FlowersAndFilesUpsertWithWhereUniqueWithoutFlowersInput[]
+    createMany?: FlowersAndFilesCreateManyFlowersInputEnvelope
+    set?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    disconnect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    delete?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
+    update?: FlowersAndFilesUpdateWithWhereUniqueWithoutFlowersInput | FlowersAndFilesUpdateWithWhereUniqueWithoutFlowersInput[]
+    updateMany?: FlowersAndFilesUpdateManyWithWhereWithoutFlowersInput | FlowersAndFilesUpdateManyWithWhereWithoutFlowersInput[]
+    deleteMany?: FlowersAndFilesScalarWhereInput | FlowersAndFilesScalarWhereInput[]
   }
 
   export type FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput = {
@@ -13133,6 +15982,34 @@ export namespace Prisma {
     update?: XOR<XOR<FlowersBouquetsUpdateToOneWithWhereWithoutFlowersInput, FlowersBouquetsUpdateWithoutFlowersInput>, FlowersBouquetsUncheckedUpdateWithoutFlowersInput>
   }
 
+  export type FlowersCreateNestedOneWithoutImgsInput = {
+    create?: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
+    connectOrCreate?: FlowersCreateOrConnectWithoutImgsInput
+    connect?: FlowersWhereUniqueInput
+  }
+
+  export type PublicFilesCreateNestedOneWithoutFlowersInput = {
+    create?: XOR<PublicFilesCreateWithoutFlowersInput, PublicFilesUncheckedCreateWithoutFlowersInput>
+    connectOrCreate?: PublicFilesCreateOrConnectWithoutFlowersInput
+    connect?: PublicFilesWhereUniqueInput
+  }
+
+  export type FlowersUpdateOneRequiredWithoutImgsNestedInput = {
+    create?: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
+    connectOrCreate?: FlowersCreateOrConnectWithoutImgsInput
+    upsert?: FlowersUpsertWithoutImgsInput
+    connect?: FlowersWhereUniqueInput
+    update?: XOR<XOR<FlowersUpdateToOneWithWhereWithoutImgsInput, FlowersUpdateWithoutImgsInput>, FlowersUncheckedUpdateWithoutImgsInput>
+  }
+
+  export type PublicFilesUpdateOneRequiredWithoutFlowersNestedInput = {
+    create?: XOR<PublicFilesCreateWithoutFlowersInput, PublicFilesUncheckedCreateWithoutFlowersInput>
+    connectOrCreate?: PublicFilesCreateOrConnectWithoutFlowersInput
+    upsert?: PublicFilesUpsertWithoutFlowersInput
+    connect?: PublicFilesWhereUniqueInput
+    update?: XOR<XOR<PublicFilesUpdateToOneWithWhereWithoutFlowersInput, PublicFilesUpdateWithoutFlowersInput>, PublicFilesUncheckedUpdateWithoutFlowersInput>
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -13164,6 +16041,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -13208,6 +16096,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -13265,6 +16167,66 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type FlowersAndFilesCreateWithoutPublicFilesInput = {
+    flowers: FlowersCreateNestedOneWithoutImgsInput
+  }
+
+  export type FlowersAndFilesUncheckedCreateWithoutPublicFilesInput = {
+    flowersId: number
+  }
+
+  export type FlowersAndFilesCreateOrConnectWithoutPublicFilesInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    create: XOR<FlowersAndFilesCreateWithoutPublicFilesInput, FlowersAndFilesUncheckedCreateWithoutPublicFilesInput>
+  }
+
+  export type FlowersAndFilesCreateManyPublicFilesInputEnvelope = {
+    data: FlowersAndFilesCreateManyPublicFilesInput | FlowersAndFilesCreateManyPublicFilesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FlowersAndFilesUpsertWithWhereUniqueWithoutPublicFilesInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    update: XOR<FlowersAndFilesUpdateWithoutPublicFilesInput, FlowersAndFilesUncheckedUpdateWithoutPublicFilesInput>
+    create: XOR<FlowersAndFilesCreateWithoutPublicFilesInput, FlowersAndFilesUncheckedCreateWithoutPublicFilesInput>
+  }
+
+  export type FlowersAndFilesUpdateWithWhereUniqueWithoutPublicFilesInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    data: XOR<FlowersAndFilesUpdateWithoutPublicFilesInput, FlowersAndFilesUncheckedUpdateWithoutPublicFilesInput>
+  }
+
+  export type FlowersAndFilesUpdateManyWithWhereWithoutPublicFilesInput = {
+    where: FlowersAndFilesScalarWhereInput
+    data: XOR<FlowersAndFilesUpdateManyMutationInput, FlowersAndFilesUncheckedUpdateManyWithoutPublicFilesInput>
+  }
+
+  export type FlowersAndFilesScalarWhereInput = {
+    AND?: FlowersAndFilesScalarWhereInput | FlowersAndFilesScalarWhereInput[]
+    OR?: FlowersAndFilesScalarWhereInput[]
+    NOT?: FlowersAndFilesScalarWhereInput | FlowersAndFilesScalarWhereInput[]
+    flowersId?: IntFilter<"FlowersAndFiles"> | number
+    publicFilesId?: IntFilter<"FlowersAndFiles"> | number
+  }
+
+  export type FlowersAndFilesCreateWithoutFlowersInput = {
+    publicFiles: PublicFilesCreateNestedOneWithoutFlowersInput
+  }
+
+  export type FlowersAndFilesUncheckedCreateWithoutFlowersInput = {
+    publicFilesId: number
+  }
+
+  export type FlowersAndFilesCreateOrConnectWithoutFlowersInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    create: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersAndFilesCreateManyFlowersInputEnvelope = {
+    data: FlowersAndFilesCreateManyFlowersInput | FlowersAndFilesCreateManyFlowersInput[]
+    skipDuplicates?: boolean
+  }
+
   export type FlowersHistoryCreateWithoutFlowerInput = {
     date: number
     price: number
@@ -13320,6 +16282,22 @@ export namespace Prisma {
   export type FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope = {
     data: FlowersBouquetsAndFlowersCreateManyFlowersInput | FlowersBouquetsAndFlowersCreateManyFlowersInput[]
     skipDuplicates?: boolean
+  }
+
+  export type FlowersAndFilesUpsertWithWhereUniqueWithoutFlowersInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    update: XOR<FlowersAndFilesUpdateWithoutFlowersInput, FlowersAndFilesUncheckedUpdateWithoutFlowersInput>
+    create: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersAndFilesUpdateWithWhereUniqueWithoutFlowersInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    data: XOR<FlowersAndFilesUpdateWithoutFlowersInput, FlowersAndFilesUncheckedUpdateWithoutFlowersInput>
+  }
+
+  export type FlowersAndFilesUpdateManyWithWhereWithoutFlowersInput = {
+    where: FlowersAndFilesScalarWhereInput
+    data: XOR<FlowersAndFilesUpdateManyMutationInput, FlowersAndFilesUncheckedUpdateManyWithoutFlowersInput>
   }
 
   export type FlowersHistoryUpsertWithWhereUniqueWithoutFlowerInput = {
@@ -13400,6 +16378,7 @@ export namespace Prisma {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
     farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
     bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
   }
@@ -13409,6 +16388,7 @@ export namespace Prisma {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
     farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
     bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
   }
@@ -13433,6 +16413,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUpdateManyWithoutFlowersNestedInput
     farms?: FlowersFarmsAndFlowersUpdateManyWithoutFlowersNestedInput
     bouquets?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput
   }
@@ -13442,6 +16423,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUncheckedUpdateManyWithoutFlowersNestedInput
     farms?: FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
     bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
   }
@@ -13484,6 +16466,7 @@ export namespace Prisma {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
     history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
     bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
   }
@@ -13493,6 +16476,7 @@ export namespace Prisma {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
     history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
     bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
   }
@@ -13535,6 +16519,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUpdateManyWithoutFlowersNestedInput
     history?: FlowersHistoryUpdateManyWithoutFlowerNestedInput
     bouquets?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput
   }
@@ -13544,6 +16529,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUncheckedUpdateManyWithoutFlowersNestedInput
     history?: FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput
     bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
   }
@@ -13610,6 +16596,7 @@ export namespace Prisma {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
     history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
     farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
   }
@@ -13619,6 +16606,7 @@ export namespace Prisma {
     color: string
     name: string
     price: number
+    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
     history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
     farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
   }
@@ -13659,6 +16647,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUpdateManyWithoutFlowersNestedInput
     history?: FlowersHistoryUpdateManyWithoutFlowerNestedInput
     farms?: FlowersFarmsAndFlowersUpdateManyWithoutFlowersNestedInput
   }
@@ -13668,6 +16657,7 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    imgs?: FlowersAndFilesUncheckedUpdateManyWithoutFlowersNestedInput
     history?: FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput
     farms?: FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
   }
@@ -13694,6 +16684,122 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
   }
 
+  export type FlowersCreateWithoutImgsInput = {
+    color: string
+    name: string
+    price: number
+    history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
+    farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
+    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
+  }
+
+  export type FlowersUncheckedCreateWithoutImgsInput = {
+    id?: number
+    color: string
+    name: string
+    price: number
+    history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
+    farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
+  }
+
+  export type FlowersCreateOrConnectWithoutImgsInput = {
+    where: FlowersWhereUniqueInput
+    create: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
+  }
+
+  export type PublicFilesCreateWithoutFlowersInput = {
+    name: string
+    size: number
+    uploadAt?: Date | string
+  }
+
+  export type PublicFilesUncheckedCreateWithoutFlowersInput = {
+    id?: number
+    name: string
+    size: number
+    uploadAt?: Date | string
+  }
+
+  export type PublicFilesCreateOrConnectWithoutFlowersInput = {
+    where: PublicFilesWhereUniqueInput
+    create: XOR<PublicFilesCreateWithoutFlowersInput, PublicFilesUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersUpsertWithoutImgsInput = {
+    update: XOR<FlowersUpdateWithoutImgsInput, FlowersUncheckedUpdateWithoutImgsInput>
+    create: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
+    where?: FlowersWhereInput
+  }
+
+  export type FlowersUpdateToOneWithWhereWithoutImgsInput = {
+    where?: FlowersWhereInput
+    data: XOR<FlowersUpdateWithoutImgsInput, FlowersUncheckedUpdateWithoutImgsInput>
+  }
+
+  export type FlowersUpdateWithoutImgsInput = {
+    color?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    history?: FlowersHistoryUpdateManyWithoutFlowerNestedInput
+    farms?: FlowersFarmsAndFlowersUpdateManyWithoutFlowersNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUpdateManyWithoutFlowersNestedInput
+  }
+
+  export type FlowersUncheckedUpdateWithoutImgsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    history?: FlowersHistoryUncheckedUpdateManyWithoutFlowerNestedInput
+    farms?: FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
+    bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
+  }
+
+  export type PublicFilesUpsertWithoutFlowersInput = {
+    update: XOR<PublicFilesUpdateWithoutFlowersInput, PublicFilesUncheckedUpdateWithoutFlowersInput>
+    create: XOR<PublicFilesCreateWithoutFlowersInput, PublicFilesUncheckedCreateWithoutFlowersInput>
+    where?: PublicFilesWhereInput
+  }
+
+  export type PublicFilesUpdateToOneWithWhereWithoutFlowersInput = {
+    where?: PublicFilesWhereInput
+    data: XOR<PublicFilesUpdateWithoutFlowersInput, PublicFilesUncheckedUpdateWithoutFlowersInput>
+  }
+
+  export type PublicFilesUpdateWithoutFlowersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicFilesUncheckedUpdateWithoutFlowersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FlowersAndFilesCreateManyPublicFilesInput = {
+    flowersId: number
+  }
+
+  export type FlowersAndFilesUpdateWithoutPublicFilesInput = {
+    flowers?: FlowersUpdateOneRequiredWithoutImgsNestedInput
+  }
+
+  export type FlowersAndFilesUncheckedUpdateWithoutPublicFilesInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersAndFilesUncheckedUpdateManyWithoutPublicFilesInput = {
+    flowersId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersAndFilesCreateManyFlowersInput = {
+    publicFilesId: number
+  }
+
   export type FlowersHistoryCreateManyFlowerInput = {
     id?: number
     date: number
@@ -13706,6 +16812,18 @@ export namespace Prisma {
 
   export type FlowersBouquetsAndFlowersCreateManyFlowersInput = {
     flowersBouquetsId: number
+  }
+
+  export type FlowersAndFilesUpdateWithoutFlowersInput = {
+    publicFiles?: PublicFilesUpdateOneRequiredWithoutFlowersNestedInput
+  }
+
+  export type FlowersAndFilesUncheckedUpdateWithoutFlowersInput = {
+    publicFilesId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FlowersAndFilesUncheckedUpdateManyWithoutFlowersInput = {
+    publicFilesId?: IntFieldUpdateOperationsInput | number
   }
 
   export type FlowersHistoryUpdateWithoutFlowerInput = {
