@@ -6,7 +6,7 @@
     "db-gen:dev": "dotenv -e .env.development bunx prisma generate",
     "db-migrate:prod": "dotenv -e .env.production bunx prisma migrate deploy",
     "db-migrate:dev": "dotenv -e .env.development bunx prisma migrate dev --name",
-    "db-reset:dev": "dotenv -e .env.development bunx prisma migrate reset",
+    "db-migrate-reset:dev": "dotenv -e .env.development bunx prisma migrate reset",
     "dev": "NODE_ENV=development bun run --hot src/app/index.ts",
     "build": "NODE_ENV=production bun build src/app/index.ts --target bun --outdir ./build --minify",
     "start": "NODE_ENV=production bun run build/index.js --target bun"
@@ -26,6 +26,6 @@
     "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
     "@types/pdfkit": "^0.13.9",
-    "prisma": "^6.5.0"
+    "prisma": "^6.7.0"
   }
 }

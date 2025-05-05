@@ -1,0 +1,108 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL_PRISMA")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  output          = "./types"
+}
+
+model Users {
+  id            Int     @id @default(autoincrement())
+  email         String
+  emailVerified Boolean @default(false)
+  name          String
+  password      String?
+  signature     String?
+  role          String  @default("user")
+  oauth         String?
+  oauthId       String?
+}
+
+model UsersFiles {
+  userId Int
+  fileId Int
+  @@id([userId, fileId])
+}
+
+model Flowers {
+  id            Int     @id @default(autoincrement())
+  color         String
+  name          String
+  price         Int
+  varietyId     Int
+  imgs          FlowersAndFiles[]
+  history       FlowersHistory[]
+  farms         FlowersFarmsAndFlowers[]
+  bouquets      FlowersBouquetsAndFlowers[]
+  variety       FlowersVariety @relation(fields: [varietyId], references: [id])
+}
+
+model FlowersVariety {
+  id        Int     @id @default(autoincrement())
+  title     String  @unique
+  flowers   Flowers[]
+}
+
+model FlowersHistory {
+  id        Int     @id @default(autoincrement())
+  flowersId Int
+  date      Int
+  price     Int
+  flower    Flowers @relation(fields: [flowersId], references: [id])
+}
+
+model FlowersFarms {
+  id      Int @id @default(autoincrement())
+  name    String
+  country String
+  rate    Int
+  flowers FlowersFarmsAndFlowers[]
+}
+
+model FlowersFarmsAndFlowers {
+  flowers        Flowers @relation(fields: [flowersId], references: [id])
+  flowersId      Int
+  flowersFarms   FlowersFarms @relation(fields: [flowersFarmsId], references: [id])
+  flowersFarmsId Int 
+  @@id([flowersId, flowersFarmsId])
+}
+
+model FlowersBouquets {
+  id      Int @id @default(autoincrement())
+  name    String
+  price   Int
+  flowers FlowersBouquetsAndFlowers[]
+}
+
+model FlowersBouquetsAndFlowers {
+  flowers           Flowers @relation(fields: [flowersId], references: [id])
+  flowersId         Int
+  flowersBouquets   FlowersBouquets @relation(fields: [flowersBouquetsId], references: [id])
+  flowersBouquetsId Int 
+  @@id([flowersId, flowersBouquetsId])
+}
+
+model FlowersAndFiles {
+  flowers           Flowers @relation(fields: [flowersId], references: [id])
+  flowersId         Int
+  publicFiles       PublicFiles @relation(fields: [publicFilesId], references: [id])
+  publicFilesId     Int
+  @@id([flowersId, publicFilesId])
+}
+
+model PublicFiles {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  size      Int
+  uploadAt  DateTime @default(now())
+  flowers   FlowersAndFiles[]
+}
+
+model PrivateFiles {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  size      Int
+  uploadAt  DateTime @default(now())
+}

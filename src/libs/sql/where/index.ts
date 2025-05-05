@@ -13,7 +13,6 @@ const filterSchema = z
       z.string().nonempty().or(z.number()).or(z.boolean()).array(),
     ]),
   ])
-  .array()
   .array();
 
 export const WHERE = (c: Context<any, any, any>, and?: SQLQuery) => {
@@ -22,28 +21,18 @@ export const WHERE = (c: Context<any, any, any>, and?: SQLQuery) => {
 
   const filters = filterSchema.safeParse(safeParseJSON(filterJSON));
 
-  if (!filters.success || !filters.data?.flat().length) {
+  if (!filters.success || !filters.data?.length) {
     if (filters.error) console.error("SQL_WHERE", filters.error);
     return and ? sql`WHERE ${and}` : sql``;
   }
 
-  const getAnd = (arr: (typeof filters)["data"][0]) => {
-    return arr
-      .map(getSQLFilter)
-      .filter((sqlQuery) => !!sqlQuery)
-      .reduce((acc, cur, index) => {
-        if (!index && and) return sql`${and} AND ${cur}`;
-        if (!index) return sql`${cur}`;
-        return sql`${acc} AND ${cur}`;
-      }, sql``);
-  };
-
   return filters.data
-    .map(getAnd)
+    .map(getSQLFilter)
     .filter((sqlQuery) => !!sqlQuery)
     .reduce((acc, cur, index) => {
-      if (!index) return sql`WHERE (${cur})`;
-      return sql`${acc} OR (${cur})`;
+      if (!index && and) return sql`WHERE ${and} AND ${cur}`;
+      if (!index) return sql`WHERE ${cur}`;
+      return sql`${acc} AND ${cur}`;
     }, sql``);
 };
 
