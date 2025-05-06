@@ -6,7 +6,7 @@ export const COUNT = async <T>(
   c: Context<any, any, any>,
   data: {
     exposeHeaders?: string[];
-    select: [SQLQuery, SQLQuery];
+    select: SQLQuery[];
     where: SQLQuery;
     page: SQLQuery;
   }

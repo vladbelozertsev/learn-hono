@@ -1,4 +1,5 @@
 import { COUNT, INTERSECT, PAGE, SELECT, WHERE } from "../../libs/sql";
+import { Flower } from "./types/flower";
 import { Flowers, FlowersHistory } from "../../../prisma/types";
 import { groupBy, queryIds } from "../../libs/helpers/utils";
 import { sql } from "bun";
@@ -21,8 +22,8 @@ app.get("api/flowers", async (c) => {
     },
   ]);
 
-  const flowers = await COUNT<Flowers[]>(c, {
-    select: [select.SQL, select.COUNT],
+  const flowers = await COUNT<Flower["value"][]>(c, {
+    select: select.sql,
     where: WHERE(c, and),
     page: PAGE(c),
   });
@@ -41,9 +42,7 @@ app.get("api/flowers", async (c) => {
     });
   }
 
-  flowers.map((f) => ({ ...f, img: "http://localhost:3000/public/1742829153-5cbec2c72f241d.jpg" }));
-
-  return c.json(flowers);
+  return c.json<Flower["valid"]>({ data: flowers });
 });
 
 // https://stackoverflow.com/questions/349559/sql-how-to-search-a-many-to-many-relationship

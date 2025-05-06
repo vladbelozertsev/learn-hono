@@ -10,8 +10,9 @@ const selectSchema = z
 
 export const SELECT = (c: Context<any, any, any>, from: string, exclude?: string[]) => {
   const result = (SQL?: SQLQuery, join?: { [key: string]: boolean }) => {
-    const COUNT = sql`SELECT COUNT(*) FROM ${sql(from)}`;
-    return { SQL: SQL || sql`SELECT * FROM ${sql(from)}`, COUNT, join };
+    const main = SQL || sql`SELECT * FROM ${sql(from)}`;
+    const count = sql`SELECT COUNT(*) FROM ${sql(from)}`;
+    return { sql: [main, count], join };
   };
 
   const selectJSON = atobURL(c.req.query("select"));

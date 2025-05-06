@@ -35,7 +35,7 @@ const vt = async (token: string, role?: string) => {
 app.get("api/auth/refresh", bearerAuth({ verifyToken: (tk) => vt(tk) }), async (c) => {
   const tokenJwt = c.req.header().authorization.split(" ")[1];
   const tokens = await getTokens(tokenJwt);
-  return c.json(tokens);
+  return c.json({ data: { tokens } });
 });
 
 app.get(
@@ -50,6 +50,6 @@ app.get(
     const { accessToken, refreshToken } = await getTokens(tokenJwt);
     const maxAge = +(process.env.JWT_REFRESH_TOKEN_LIFE_TIME_S || 0);
     setSecureCookie(c, "refresh_token", refreshToken, { maxAge });
-    return c.json({ accessToken });
+    return c.json({ data: { accessToken } });
   }
 );
