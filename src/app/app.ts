@@ -10,10 +10,10 @@ _app.get("public/*", serveStatic({}));
 
 _app.get("private/*", privatemw, serveStatic({}));
 
-_app.post("public", admin, async (ctx) => {
-  const result = await upload({ ctx, dir: "public" });
+_app.post("public", async (c) => {
+  const result = await upload({ c, dir: "public" });
   const filtered = result.filter((r) => r.status === "fulfilled");
-  return ctx.json(filtered.map((r) => r.value?.url));
+  return c.json(filtered.map((r) => r.value?.file.id));
 });
 
 if (process.env.URL_ORIGIN) {

@@ -1,4 +1,4 @@
-import { SQLQuery, sql } from "bun";
+import { sql } from "bun";
 
 type Select = {
   select: string;

@@ -1,7 +1,7 @@
 import { COUNT, INTERSECT, PAGE, SELECT, WHERE } from "../../libs/sql";
 import { Flower } from "./types/flower";
-import { Flowers, FlowersHistory } from "../../../prisma/types";
-import { groupBy, queryIds } from "../../libs/helpers/utils";
+import { FlowersAndFiles, FlowersHistory, PublicFiles } from "../../../prisma/types";
+import { getImgs, groupBy, queryIds } from "../../libs/helpers/utils";
 import { sql } from "bun";
 
 app.get("api/flowers", async (c) => {
@@ -22,7 +22,7 @@ app.get("api/flowers", async (c) => {
     },
   ]);
 
-  const flowers = await COUNT<Flower["value"][]>(c, {
+  let flowers = await COUNT<Flower["value"][]>(c, {
     select: select.sql,
     where: WHERE(c, and),
     page: PAGE(c),
@@ -33,12 +33,21 @@ app.get("api/flowers", async (c) => {
       SELECT * FROM "FlowersHistory"
       WHERE "flowersId" IN ${sql(flowers.map((f) => f.id))}
     `.then((arr) => groupBy("flowersId", arr));
-    return c.json({
-      data: flowers.map((f) => ({
-        ...f,
-        hist: history[f.id],
-        img: "http://localhost:3000/public/1742829153-5cbec2c72f241d.jpg",
-      })),
+    flowers = flowers.map((f) => ({ ...f, hist: history[f.id] }));
+  }
+
+  if (!select.join || select.join.imgs) {
+    const sqlImgs: { [key: string]: (FlowersAndFiles & PublicFiles)[] } = await sql`
+      SELECT *
+      FROM "FlowersAndFiles"
+      INNER JOIN "PublicFiles"
+      ON ${sql("FlowersAndFiles.publicFilesId")} = ${sql("PublicFiles.id")}
+      WHERE "flowersId" IN ${sql(flowers.map((f) => f.id))}
+    `.then((arr) => groupBy("flowersId", arr));
+
+    flowers = flowers.map((f) => {
+      const imgs = getImgs(sqlImgs[f.id]);
+      return { ...f, imgs };
     });
   }
 

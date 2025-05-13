@@ -1,5 +1,6 @@
 import { Context } from "hono";
 import { CookieOptions } from "hono/utils/cookie";
+import { PublicFiles } from "../../../../prisma/types";
 import { setCookie } from "hono/cookie";
 
 export const withset = <T>(prams: T) => {
@@ -81,6 +82,11 @@ export const groupBy = <T extends { [key: string]: unknown }>(field?: string | n
     if (!isStringOrNumber(cur[field])) return acc;
     return { ...acc, [key]: (acc[key] || []).concat(cur) };
   }, {} as { [key: string]: T[] });
+};
+
+export const getImgs = (arr: PublicFiles[]) => {
+  if (!Array.isArray(arr)) return [];
+  return arr.map((img) => `${process.env.URL}/public/${img.name}`);
 };
 
 export const queryIds = (c: Context<any, any, any>, name: string) => {
