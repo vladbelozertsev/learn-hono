@@ -1,5 +1,5 @@
 import { Equal } from "../../../libs/types/valid";
-import { Flowers } from "../../../../prisma/types";
+import { Flowers } from "../../../libs/prisma";
 
 export type Flower = Equal<
   Flowers,

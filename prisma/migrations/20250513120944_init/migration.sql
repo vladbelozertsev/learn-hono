@@ -1,27 +1,4 @@
 -- CreateTable
-CREATE TABLE "Users" (
-    "id" SERIAL NOT NULL,
-    "email" TEXT NOT NULL,
-    "emailVerified" BOOLEAN NOT NULL DEFAULT false,
-    "name" TEXT NOT NULL,
-    "password" TEXT,
-    "signature" TEXT,
-    "role" TEXT NOT NULL DEFAULT 'user',
-    "oauth" TEXT,
-    "oauthId" TEXT,
-
-    CONSTRAINT "Users_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "UsersFiles" (
-    "userId" INTEGER NOT NULL,
-    "fileId" INTEGER NOT NULL,
-
-    CONSTRAINT "UsersFiles_pkey" PRIMARY KEY ("userId","fileId")
-);
-
--- CreateTable
 CREATE TABLE "Flowers" (
     "id" SERIAL NOT NULL,
     "color" TEXT NOT NULL,
@@ -89,8 +66,32 @@ CREATE TABLE "FlowersBouquetsAndFlowers" (
 CREATE TABLE "FlowersAndFiles" (
     "flowersId" INTEGER NOT NULL,
     "publicFilesId" INTEGER NOT NULL,
+    "publicFilesName" TEXT NOT NULL,
 
     CONSTRAINT "FlowersAndFiles_pkey" PRIMARY KEY ("flowersId","publicFilesId")
+);
+
+-- CreateTable
+CREATE TABLE "Users" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "emailVerified" BOOLEAN NOT NULL DEFAULT false,
+    "name" TEXT NOT NULL,
+    "password" TEXT,
+    "signature" TEXT,
+    "role" TEXT NOT NULL DEFAULT 'user',
+    "oauth" TEXT,
+    "oauthId" TEXT,
+
+    CONSTRAINT "Users_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "UsersFiles" (
+    "userId" INTEGER NOT NULL,
+    "fileId" INTEGER NOT NULL,
+
+    CONSTRAINT "UsersFiles_pkey" PRIMARY KEY ("userId","fileId")
 );
 
 -- CreateTable
@@ -112,6 +113,9 @@ CREATE TABLE "PrivateFiles" (
 
     CONSTRAINT "PrivateFiles_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "FlowersVariety_title_key" ON "FlowersVariety"("title");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "PublicFiles_name_key" ON "PublicFiles"("name");

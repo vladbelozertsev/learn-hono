@@ -1,6 +1,6 @@
 import { COUNT, INTERSECT, PAGE, SELECT, WHERE } from "../../libs/sql";
 import { Flower } from "./types/flower";
-import { FlowersAndFiles, FlowersHistory, PublicFiles } from "../../../prisma/types";
+import { FlowersAndFiles, FlowersHistory, PublicFiles } from "../../libs/prisma";
 import { getImgs, groupBy, queryIds } from "../../libs/helpers/utils";
 import { sql } from "bun";
 

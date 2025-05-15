@@ -1,7 +1,7 @@
 import type { Context } from "hono";
 import type { mimeTypes } from "./mime-types.js";
 import { HTTPException } from "hono/http-exception";
-import { PrivateFiles, PublicFiles } from "../../../../prisma/types";
+import { PrivateFiles, PublicFiles } from "../../../libs/prisma";
 import { onFile } from "./save-file.js";
 import { sql } from "bun";
 

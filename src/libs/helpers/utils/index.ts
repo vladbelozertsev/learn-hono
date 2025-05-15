@@ -1,6 +1,6 @@
 import { Context } from "hono";
 import { CookieOptions } from "hono/utils/cookie";
-import { PublicFiles } from "../../../../prisma/types";
+import { PublicFiles } from "../../../libs/prisma";
 import { setCookie } from "hono/cookie";
 
 export const withset = <T>(prams: T) => {

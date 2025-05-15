@@ -1,0 +1,75 @@
+model Flowers {
+  id            Int     @id @default(autoincrement())
+  color         String
+  name          String
+  price         Int
+  varietyId     Int
+  imgs          FlowersAndFiles[]
+  history       FlowersHistory[]
+  farms         FlowersFarmsAndFlowers[]
+  bouquets      FlowersBouquetsAndFlowers[]
+  variety       FlowersVariety @relation(fields: [varietyId], references: [id])
+}
+
+model FlowersVariety {
+  id        Int     @id @default(autoincrement())
+  title     String  @unique
+  flowers   Flowers[]
+}
+
+model FlowersHistory {
+  id        Int     @id @default(autoincrement())
+  flowersId Int
+  date      Int
+  price     Int
+  flower    Flowers @relation(fields: [flowersId], references: [id])
+}
+
+model FlowersFarms {
+  id      Int @id @default(autoincrement())
+  name    String
+  country String
+  rate    Int
+  flowers FlowersFarmsAndFlowers[]
+}
+
+model FlowersFarmsAndFlowers {
+  flowers        Flowers      @relation(fields: [flowersId], references: [id])
+  flowersId      Int
+  flowersFarms   FlowersFarms @relation(fields: [flowersFarmsId], references: [id])
+  flowersFarmsId Int 
+  @@id([flowersId, flowersFarmsId])
+}
+
+model FlowersBouquets {
+  id      Int @id @default(autoincrement())
+  name    String
+  price   Int
+  flowers FlowersBouquetsAndFlowers[]
+}
+
+model FlowersBouquetsAndFlowers {
+  flowers           Flowers @relation(fields: [flowersId], references: [id])
+  flowersId         Int
+  flowersBouquets   FlowersBouquets @relation(fields: [flowersBouquetsId], references: [id])
+  flowersBouquetsId Int 
+  @@id([flowersId, flowersBouquetsId])
+}
+
+model FlowersAndFiles {
+  flowers          Flowers     @relation(fields: [flowerId], references: [id])
+  flowerId         Int
+  publicFiles      PublicFiles @relation(fields: [publicFileName], references: [name])
+  publicFileName   String
+  @@id([flowerId, publicFileName])
+}
+
+model Test {
+  id Int @id @default(autoincrement())
+  ddd1 String
+}
+
+model Test2 {
+  id Int @id @default(autoincrement())
+  ddd1 String
+}

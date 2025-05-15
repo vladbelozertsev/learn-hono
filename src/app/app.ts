@@ -1,20 +1,14 @@
 import { Hono } from "hono";
-import { admin } from "../libs/mws/admin";
 import { cors } from "hono/cors";
 import { privatemw } from "../libs/mws/private";
 import { serveStatic } from "hono/bun";
-import { upload } from "../libs/helpers/upload";
 
 export const _app = new Hono();
 _app.get("public/*", serveStatic({}));
 
 _app.get("private/*", privatemw, serveStatic({}));
 
-_app.post("public", async (c) => {
-  const result = await upload({ c, dir: "public" });
-  const filtered = result.filter((r) => r.status === "fulfilled");
-  return c.json(filtered.map((r) => r.value?.file.id));
-});
+console.log(process.env.NODE_ENV);
 
 if (process.env.URL_ORIGIN) {
   _app.use(

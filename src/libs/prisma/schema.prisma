@@ -1,30 +1,16 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("POSTGRES_URL_PRISMA")
+model PublicFiles {
+  id       Int               @id @default(autoincrement())
+  name     String            @unique
+  size     Int
+  uploadAt DateTime          @default(now())
+  flowers  FlowersAndFiles[]
 }
 
-generator client {
-  provider = "prisma-client-js"
-  output   = "./types"
-}
-
-model Users {
-  id            Int     @id @default(autoincrement())
-  email         String
-  emailVerified Boolean @default(false)
-  name          String
-  password      String?
-  signature     String?
-  role          String  @default("user")
-  oauth         String?
-  oauthId       String?
-}
-
-model UsersFiles {
-  userId Int
-  fileId Int
-
-  @@id([userId, fileId])
+model PrivateFiles {
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  size     Int
+  uploadAt DateTime @default(now())
 }
 
 model Flowers {
@@ -88,25 +74,49 @@ model FlowersBouquetsAndFlowers {
 }
 
 model FlowersAndFiles {
-  flowers       Flowers     @relation(fields: [flowersId], references: [id])
-  flowersId     Int
-  publicFiles   PublicFiles @relation(fields: [publicFilesId], references: [id])
-  publicFilesId Int
+  flowers        Flowers     @relation(fields: [flowerId], references: [id])
+  flowerId       Int
+  publicFiles    PublicFiles @relation(fields: [publicFileName], references: [name])
+  publicFileName String
 
-  @@id([flowersId, publicFilesId])
+  @@id([flowerId, publicFileName])
 }
 
-model PublicFiles {
-  id       Int               @id @default(autoincrement())
-  name     String            @unique
-  size     Int
-  uploadAt DateTime          @default(now())
-  flowers  FlowersAndFiles[]
+model Test {
+  id   Int    @id @default(autoincrement())
+  ddd1 String
 }
 
-model PrivateFiles {
-  id       Int      @id @default(autoincrement())
-  name     String   @unique
-  size     Int
-  uploadAt DateTime @default(now())
+model Test2 {
+  id   Int    @id @default(autoincrement())
+  ddd1 String
+}
+
+model Users {
+  id            Int     @id @default(autoincrement())
+  email         String
+  emailVerified Boolean @default(false)
+  name          String
+  password      String?
+  signature     String?
+  role          String  @default("user")
+  oauth         String?
+  oauthId       String?
+}
+
+model UsersFiles {
+  userId Int
+  fileId Int
+
+  @@id([userId, fileId])
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL_PRISMA")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/libs/prisma"
 }

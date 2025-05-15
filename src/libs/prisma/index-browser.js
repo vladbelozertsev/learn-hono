@@ -120,21 +120,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UsersScalarFieldEnum = {
+exports.Prisma.PublicFilesScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  emailVerified: 'emailVerified',
   name: 'name',
-  password: 'password',
-  signature: 'signature',
-  role: 'role',
-  oauth: 'oauth',
-  oauthId: 'oauthId'
+  size: 'size',
+  uploadAt: 'uploadAt'
 };
 
-exports.Prisma.UsersFilesScalarFieldEnum = {
-  userId: 'userId',
-  fileId: 'fileId'
+exports.Prisma.PrivateFilesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  size: 'size',
+  uploadAt: 'uploadAt'
 };
 
 exports.Prisma.FlowersScalarFieldEnum = {
@@ -181,22 +178,35 @@ exports.Prisma.FlowersBouquetsAndFlowersScalarFieldEnum = {
 };
 
 exports.Prisma.FlowersAndFilesScalarFieldEnum = {
-  flowersId: 'flowersId',
-  publicFilesId: 'publicFilesId'
+  flowerId: 'flowerId',
+  publicFileName: 'publicFileName'
 };
 
-exports.Prisma.PublicFilesScalarFieldEnum = {
+exports.Prisma.TestScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  size: 'size',
-  uploadAt: 'uploadAt'
+  ddd1: 'ddd1'
 };
 
-exports.Prisma.PrivateFilesScalarFieldEnum = {
+exports.Prisma.Test2ScalarFieldEnum = {
   id: 'id',
+  ddd1: 'ddd1'
+};
+
+exports.Prisma.UsersScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  emailVerified: 'emailVerified',
   name: 'name',
-  size: 'size',
-  uploadAt: 'uploadAt'
+  password: 'password',
+  signature: 'signature',
+  role: 'role',
+  oauth: 'oauth',
+  oauthId: 'oauthId'
+};
+
+exports.Prisma.UsersFilesScalarFieldEnum = {
+  userId: 'userId',
+  fileId: 'fileId'
 };
 
 exports.Prisma.SortOrder = {
@@ -216,8 +226,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Users: 'Users',
-  UsersFiles: 'UsersFiles',
+  PublicFiles: 'PublicFiles',
+  PrivateFiles: 'PrivateFiles',
   Flowers: 'Flowers',
   FlowersVariety: 'FlowersVariety',
   FlowersHistory: 'FlowersHistory',
@@ -226,8 +236,10 @@ exports.Prisma.ModelName = {
   FlowersBouquets: 'FlowersBouquets',
   FlowersBouquetsAndFlowers: 'FlowersBouquetsAndFlowers',
   FlowersAndFiles: 'FlowersAndFiles',
-  PublicFiles: 'PublicFiles',
-  PrivateFiles: 'PrivateFiles'
+  Test: 'Test',
+  Test2: 'Test2',
+  Users: 'Users',
+  UsersFiles: 'UsersFiles'
 };
 
 /**

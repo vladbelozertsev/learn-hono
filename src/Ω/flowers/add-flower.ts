@@ -30,8 +30,8 @@ app.post("api/flowers", formv, async (c) => {
 
   await upload(c, {
     dir: "public",
-    onFile: async ({ id: publicFilesId }) => {
-      const data = { flowersId: flower.id, publicFilesId };
+    onFile: async ({ name: publicFileName }) => {
+      const data = { flowersId: flower.id, publicFileName };
       await sql`INSERT INTO "FlowersAndFiles" ${sql(data)}`;
       console.log("onFile2");
     },

@@ -1,4 +1,7 @@
 import "./add-flower";
-import "./flowers";
-import "./flowers-varieties";
+import "./add-flower-variety";
+import "./chg-flower-variety";
+import "./del-flower-variety";
+import "./get-flowers";
+import "./get-flowers-varieties";
 import "./pdf";

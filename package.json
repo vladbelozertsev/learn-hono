@@ -1,12 +1,17 @@
 {
   "name": "server",
+  "prisma": {
+    "schema": "./prisma"
+  },
   "scripts": {
     "ts": "tsc --skipLibCheck --noEmit",
     "tsw": "tsc --skipLibCheck --noEmit --watch",
-    "db-gen:dev": "dotenv -e .env.development bunx prisma generate",
-    "db-migrate:prod": "dotenv -e .env.production bunx prisma migrate deploy",
-    "db-migrate:dev": "dotenv -e .env.development bunx prisma migrate dev --name",
-    "db-migrate-reset:dev": "dotenv -e .env.development bunx prisma migrate reset",
+    "p-gen:dev": "NODE_ENV=development bunx prisma generate",
+    "p-push:dev": "NODE_ENV=development bunx prisma db push",
+    "p-migrate:dev": "NODE_ENV=development bunx prisma migrate dev",
+    "p-migrate-create:dev": "NODE_ENV=development bunx prisma migrate dev --create-only",
+    "p-migrate-reset:dev": "NODE_ENV=development bunx prisma migrate reset",
+    "p-migrate:prod": "NODE_ENV=production bunx prisma migrate deploy",
     "dev": "NODE_ENV=development bun run --hot src/app/index.ts",
     "build": "NODE_ENV=production bun build src/app/index.ts --target bun --outdir ./build --minify",
     "start": "NODE_ENV=production bun run build/index.js --target bun"
@@ -24,7 +29,6 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/bun": "latest",
     "@types/pdfkit": "^0.13.9",
     "prisma": "^6.7.0"
   }
