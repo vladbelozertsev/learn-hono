@@ -5,7 +5,11 @@ import { fileURL, groupBy, queryIds } from "../../libs/helpers/utils";
 import { sql } from "bun";
 
 app.get("api/flowers", async (c) => {
-  const select = SELECT(c, "Flowers", ["hist"]);
+  const select = SELECT<Flower["value"]>(c, {
+    from: "Flowers",
+    select: ["asd", "dsdsd", "dfdfdf"],
+    exclude: ["hist"],
+  });
 
   const and = INTERSECT("id", [
     {
