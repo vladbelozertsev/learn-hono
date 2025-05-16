@@ -143,8 +143,11 @@ exports.Prisma.FlowersScalarFieldEnum = {
 };
 
 exports.Prisma.FlowersVarietyScalarFieldEnum = {
-  id: 'id',
-  title: 'title'
+  id: 'id'
+};
+
+exports.Prisma.LanguagesScalarFieldEnum = {
+  id: 'id'
 };
 
 exports.Prisma.FlowersHistoryScalarFieldEnum = {
@@ -230,6 +233,7 @@ exports.Prisma.ModelName = {
   PrivateFiles: 'PrivateFiles',
   Flowers: 'Flowers',
   FlowersVariety: 'FlowersVariety',
+  Languages: 'Languages',
   FlowersHistory: 'FlowersHistory',
   FlowersFarms: 'FlowersFarms',
   FlowersFarmsAndFlowers: 'FlowersFarmsAndFlowers',

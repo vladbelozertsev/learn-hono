@@ -10,21 +10,21 @@ const formv = validator({
   schema: z.object({
     color: z.string().nonempty().transform(sanitize),
     name: z.string().nonempty().transform(sanitize),
-    price: z.string().refine((v) => !isNaN(+v)),
-    varietyId: z.string().refine((v) => !isNaN(+v)),
+    price: z
+      .string()
+      .refine((v) => !isNaN(+v))
+      .transform((p) => +p),
+    varietyId: z
+      .string()
+      .refine((v) => Number.isInteger(+v))
+      .transform((id) => +id),
   }),
 });
 
 app.post("api/flowers", formv, async (c) => {
-  const form = await c.req.formData();
-  const color = form.get("color") as string;
-  const name = form.get("name") as string;
-  const price = +form.get("price")!;
-  const varietyId = +form.get("varietyId")!;
-
   const [flower]: [Flower["value"]] = await sql`
     INSERT INTO "Flowers"
-    ${sql({ color, name, price, varietyId })}
+    ${sql(c.req.valid("form"))}
     RETURNING *
   `;
 

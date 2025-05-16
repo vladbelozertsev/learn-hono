@@ -5,6 +5,5 @@ export type FlowerVariety = Equal<
   PrismaFlowersVariety,
   {
     id: number;
-    title: string;
   }
 >;

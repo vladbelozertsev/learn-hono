@@ -4,6 +4,7 @@ model Flowers {
   name          String
   price         Int
   varietyId     Int
+  test123       Unsupported("hstore")
   imgs          FlowersAndFiles[]
   history       FlowersHistory[]
   farms         FlowersFarmsAndFlowers[]
@@ -13,8 +14,17 @@ model Flowers {
 
 model FlowersVariety {
   id        Int     @id @default(autoincrement())
-  title     String  @unique
+  title     Unsupported("hstore")
   flowers   Flowers[]
+}
+
+// model Dictionary {
+//   languageId O
+//   languages Languages @relation(fields: [languageId], references: [id])
+// }
+
+model Languages {
+  id String @id @unique
 }
 
 model FlowersHistory {

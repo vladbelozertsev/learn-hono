@@ -34,6 +34,11 @@ export type Flowers = $Result.DefaultSelection<Prisma.$FlowersPayload>
  */
 export type FlowersVariety = $Result.DefaultSelection<Prisma.$FlowersVarietyPayload>
 /**
+ * Model Languages
+ * 
+ */
+export type Languages = $Result.DefaultSelection<Prisma.$LanguagesPayload>
+/**
  * Model FlowersHistory
  * 
  */
@@ -248,6 +253,16 @@ export class PrismaClient<
     * ```
     */
   get flowersVariety(): Prisma.FlowersVarietyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.languages`: Exposes CRUD operations for the **Languages** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Languages
+    * const languages = await prisma.languages.findMany()
+    * ```
+    */
+  get languages(): Prisma.LanguagesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.flowersHistory`: Exposes CRUD operations for the **FlowersHistory** model.
@@ -792,6 +807,7 @@ export namespace Prisma {
     PrivateFiles: 'PrivateFiles',
     Flowers: 'Flowers',
     FlowersVariety: 'FlowersVariety',
+    Languages: 'Languages',
     FlowersHistory: 'FlowersHistory',
     FlowersFarms: 'FlowersFarms',
     FlowersFarmsAndFlowers: 'FlowersFarmsAndFlowers',
@@ -820,7 +836,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "publicFiles" | "privateFiles" | "flowers" | "flowersVariety" | "flowersHistory" | "flowersFarms" | "flowersFarmsAndFlowers" | "flowersBouquets" | "flowersBouquetsAndFlowers" | "flowersAndFiles" | "test" | "test2" | "users" | "usersFiles"
+      modelProps: "publicFiles" | "privateFiles" | "flowers" | "flowersVariety" | "languages" | "flowersHistory" | "flowersFarms" | "flowersFarmsAndFlowers" | "flowersBouquets" | "flowersBouquetsAndFlowers" | "flowersAndFiles" | "test" | "test2" | "users" | "usersFiles"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -996,18 +1012,6 @@ export namespace Prisma {
             args: Prisma.FlowersFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$FlowersPayload>[]
           }
-          create: {
-            args: Prisma.FlowersCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FlowersPayload>
-          }
-          createMany: {
-            args: Prisma.FlowersCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.FlowersCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FlowersPayload>[]
-          }
           delete: {
             args: Prisma.FlowersDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$FlowersPayload>
@@ -1027,10 +1031,6 @@ export namespace Prisma {
           updateManyAndReturn: {
             args: Prisma.FlowersUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$FlowersPayload>[]
-          }
-          upsert: {
-            args: Prisma.FlowersUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FlowersPayload>
           }
           aggregate: {
             args: Prisma.FlowersAggregateArgs<ExtArgs>
@@ -1070,18 +1070,6 @@ export namespace Prisma {
             args: Prisma.FlowersVarietyFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$FlowersVarietyPayload>[]
           }
-          create: {
-            args: Prisma.FlowersVarietyCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FlowersVarietyPayload>
-          }
-          createMany: {
-            args: Prisma.FlowersVarietyCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.FlowersVarietyCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FlowersVarietyPayload>[]
-          }
           delete: {
             args: Prisma.FlowersVarietyDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$FlowersVarietyPayload>
@@ -1102,10 +1090,6 @@ export namespace Prisma {
             args: Prisma.FlowersVarietyUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$FlowersVarietyPayload>[]
           }
-          upsert: {
-            args: Prisma.FlowersVarietyUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FlowersVarietyPayload>
-          }
           aggregate: {
             args: Prisma.FlowersVarietyAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateFlowersVariety>
@@ -1117,6 +1101,80 @@ export namespace Prisma {
           count: {
             args: Prisma.FlowersVarietyCountArgs<ExtArgs>
             result: $Utils.Optional<FlowersVarietyCountAggregateOutputType> | number
+          }
+        }
+      }
+      Languages: {
+        payload: Prisma.$LanguagesPayload<ExtArgs>
+        fields: Prisma.LanguagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LanguagesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LanguagesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>
+          }
+          findFirst: {
+            args: Prisma.LanguagesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LanguagesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>
+          }
+          findMany: {
+            args: Prisma.LanguagesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>[]
+          }
+          create: {
+            args: Prisma.LanguagesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>
+          }
+          createMany: {
+            args: Prisma.LanguagesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LanguagesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>[]
+          }
+          delete: {
+            args: Prisma.LanguagesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>
+          }
+          update: {
+            args: Prisma.LanguagesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.LanguagesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LanguagesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LanguagesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>[]
+          }
+          upsert: {
+            args: Prisma.LanguagesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagesPayload>
+          }
+          aggregate: {
+            args: Prisma.LanguagesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLanguages>
+          }
+          groupBy: {
+            args: Prisma.LanguagesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LanguagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LanguagesCountArgs<ExtArgs>
+            result: $Utils.Optional<LanguagesCountAggregateOutputType> | number
           }
         }
       }
@@ -1948,6 +2006,7 @@ export namespace Prisma {
     privateFiles?: PrivateFilesOmit
     flowers?: FlowersOmit
     flowersVariety?: FlowersVarietyOmit
+    languages?: LanguagesOmit
     flowersHistory?: FlowersHistoryOmit
     flowersFarms?: FlowersFarmsOmit
     flowersFarmsAndFlowers?: FlowersFarmsAndFlowersOmit
@@ -3341,24 +3400,22 @@ export namespace Prisma {
   }
 
   export type PrivateFilesAvgAggregateOutputType = {
-    id: number | null
     size: number | null
   }
 
   export type PrivateFilesSumAggregateOutputType = {
-    id: number | null
     size: number | null
   }
 
   export type PrivateFilesMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     name: string | null
     size: number | null
     uploadAt: Date | null
   }
 
   export type PrivateFilesMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     name: string | null
     size: number | null
     uploadAt: Date | null
@@ -3374,12 +3431,10 @@ export namespace Prisma {
 
 
   export type PrivateFilesAvgAggregateInputType = {
-    id?: true
     size?: true
   }
 
   export type PrivateFilesSumAggregateInputType = {
-    id?: true
     size?: true
   }
 
@@ -3492,7 +3547,7 @@ export namespace Prisma {
   }
 
   export type PrivateFilesGroupByOutputType = {
-    id: number
+    id: string
     name: string
     size: number
     uploadAt: Date
@@ -3551,7 +3606,7 @@ export namespace Prisma {
     name: "PrivateFiles"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       name: string
       size: number
       uploadAt: Date
@@ -3978,7 +4033,7 @@ export namespace Prisma {
    * Fields of the PrivateFiles model
    */
   interface PrivateFilesFieldRefs {
-    readonly id: FieldRef<"PrivateFiles", 'Int'>
+    readonly id: FieldRef<"PrivateFiles", 'String'>
     readonly name: FieldRef<"PrivateFiles", 'String'>
     readonly size: FieldRef<"PrivateFiles", 'Int'>
     readonly uploadAt: FieldRef<"PrivateFiles", 'DateTime'>
@@ -4562,14 +4617,6 @@ export namespace Prisma {
     _count?: boolean | FlowersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["flowers"]>
 
-  export type FlowersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    color?: boolean
-    name?: boolean
-    price?: boolean
-    varietyId?: boolean
-    variety?: boolean | FlowersVarietyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["flowers"]>
 
   export type FlowersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -4596,9 +4643,6 @@ export namespace Prisma {
     bouquets?: boolean | Flowers$bouquetsArgs<ExtArgs>
     variety?: boolean | FlowersVarietyDefaultArgs<ExtArgs>
     _count?: boolean | FlowersCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type FlowersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    variety?: boolean | FlowersVarietyDefaultArgs<ExtArgs>
   }
   export type FlowersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variety?: boolean | FlowersVarietyDefaultArgs<ExtArgs>
@@ -4709,58 +4753,6 @@ export namespace Prisma {
     findMany<T extends FlowersFindManyArgs>(args?: SelectSubset<T, FlowersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Flowers.
-     * @param {FlowersCreateArgs} args - Arguments to create a Flowers.
-     * @example
-     * // Create one Flowers
-     * const Flowers = await prisma.flowers.create({
-     *   data: {
-     *     // ... data to create a Flowers
-     *   }
-     * })
-     * 
-     */
-    create<T extends FlowersCreateArgs>(args: SelectSubset<T, FlowersCreateArgs<ExtArgs>>): Prisma__FlowersClient<$Result.GetResult<Prisma.$FlowersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Flowers.
-     * @param {FlowersCreateManyArgs} args - Arguments to create many Flowers.
-     * @example
-     * // Create many Flowers
-     * const flowers = await prisma.flowers.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends FlowersCreateManyArgs>(args?: SelectSubset<T, FlowersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Flowers and returns the data saved in the database.
-     * @param {FlowersCreateManyAndReturnArgs} args - Arguments to create many Flowers.
-     * @example
-     * // Create many Flowers
-     * const flowers = await prisma.flowers.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Flowers and only return the `id`
-     * const flowersWithIdOnly = await prisma.flowers.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends FlowersCreateManyAndReturnArgs>(args?: SelectSubset<T, FlowersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Delete a Flowers.
      * @param {FlowersDeleteArgs} args - Arguments to delete one Flowers.
      * @example
@@ -4853,25 +4845,6 @@ export namespace Prisma {
      * 
      */
     updateManyAndReturn<T extends FlowersUpdateManyAndReturnArgs>(args: SelectSubset<T, FlowersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Flowers.
-     * @param {FlowersUpsertArgs} args - Arguments to update or create a Flowers.
-     * @example
-     * // Update or create a Flowers
-     * const flowers = await prisma.flowers.upsert({
-     *   create: {
-     *     // ... data to create a Flowers
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Flowers we want to update
-     *   }
-     * })
-     */
-    upsert<T extends FlowersUpsertArgs>(args: SelectSubset<T, FlowersUpsertArgs<ExtArgs>>): Prisma__FlowersClient<$Result.GetResult<Prisma.$FlowersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
@@ -5252,62 +5225,6 @@ export namespace Prisma {
   }
 
   /**
-   * Flowers create
-   */
-  export type FlowersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Flowers
-     */
-    select?: FlowersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Flowers
-     */
-    omit?: FlowersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FlowersInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Flowers.
-     */
-    data: XOR<FlowersCreateInput, FlowersUncheckedCreateInput>
-  }
-
-  /**
-   * Flowers createMany
-   */
-  export type FlowersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Flowers.
-     */
-    data: FlowersCreateManyInput | FlowersCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Flowers createManyAndReturn
-   */
-  export type FlowersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Flowers
-     */
-    select?: FlowersSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Flowers
-     */
-    omit?: FlowersOmit<ExtArgs> | null
-    /**
-     * The data used to create many Flowers.
-     */
-    data: FlowersCreateManyInput | FlowersCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FlowersIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
    * Flowers update
    */
   export type FlowersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5379,36 +5296,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: FlowersIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Flowers upsert
-   */
-  export type FlowersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Flowers
-     */
-    select?: FlowersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Flowers
-     */
-    omit?: FlowersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FlowersInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Flowers to update in case it exists.
-     */
-    where: FlowersWhereUniqueInput
-    /**
-     * In case the Flowers found by the `where` argument doesn't exist, create a new Flowers with this data.
-     */
-    create: XOR<FlowersCreateInput, FlowersUncheckedCreateInput>
-    /**
-     * In case the Flowers was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<FlowersUpdateInput, FlowersUncheckedUpdateInput>
   }
 
   /**
@@ -5584,17 +5471,14 @@ export namespace Prisma {
 
   export type FlowersVarietyMinAggregateOutputType = {
     id: number | null
-    title: string | null
   }
 
   export type FlowersVarietyMaxAggregateOutputType = {
     id: number | null
-    title: string | null
   }
 
   export type FlowersVarietyCountAggregateOutputType = {
     id: number
-    title: number
     _all: number
   }
 
@@ -5609,17 +5493,14 @@ export namespace Prisma {
 
   export type FlowersVarietyMinAggregateInputType = {
     id?: true
-    title?: true
   }
 
   export type FlowersVarietyMaxAggregateInputType = {
     id?: true
-    title?: true
   }
 
   export type FlowersVarietyCountAggregateInputType = {
     id?: true
-    title?: true
     _all?: true
   }
 
@@ -5711,7 +5592,6 @@ export namespace Prisma {
 
   export type FlowersVarietyGroupByOutputType = {
     id: number
-    title: string
     _count: FlowersVarietyCountAggregateOutputType | null
     _avg: FlowersVarietyAvgAggregateOutputType | null
     _sum: FlowersVarietySumAggregateOutputType | null
@@ -5735,32 +5615,24 @@ export namespace Prisma {
 
   export type FlowersVarietySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
     flowers?: boolean | FlowersVariety$flowersArgs<ExtArgs>
     _count?: boolean | FlowersVarietyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["flowersVariety"]>
 
-  export type FlowersVarietySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-  }, ExtArgs["result"]["flowersVariety"]>
 
   export type FlowersVarietySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
   }, ExtArgs["result"]["flowersVariety"]>
 
   export type FlowersVarietySelectScalar = {
     id?: boolean
-    title?: boolean
   }
 
-  export type FlowersVarietyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title", ExtArgs["result"]["flowersVariety"]>
+  export type FlowersVarietyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id", ExtArgs["result"]["flowersVariety"]>
   export type FlowersVarietyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     flowers?: boolean | FlowersVariety$flowersArgs<ExtArgs>
     _count?: boolean | FlowersVarietyCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type FlowersVarietyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
   export type FlowersVarietyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $FlowersVarietyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5770,7 +5642,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      title: string
     }, ExtArgs["result"]["flowersVariety"]>
     composites: {}
   }
@@ -5859,58 +5730,6 @@ export namespace Prisma {
      * 
      */
     findMany<T extends FlowersVarietyFindManyArgs>(args?: SelectSubset<T, FlowersVarietyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersVarietyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a FlowersVariety.
-     * @param {FlowersVarietyCreateArgs} args - Arguments to create a FlowersVariety.
-     * @example
-     * // Create one FlowersVariety
-     * const FlowersVariety = await prisma.flowersVariety.create({
-     *   data: {
-     *     // ... data to create a FlowersVariety
-     *   }
-     * })
-     * 
-     */
-    create<T extends FlowersVarietyCreateArgs>(args: SelectSubset<T, FlowersVarietyCreateArgs<ExtArgs>>): Prisma__FlowersVarietyClient<$Result.GetResult<Prisma.$FlowersVarietyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many FlowersVarieties.
-     * @param {FlowersVarietyCreateManyArgs} args - Arguments to create many FlowersVarieties.
-     * @example
-     * // Create many FlowersVarieties
-     * const flowersVariety = await prisma.flowersVariety.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends FlowersVarietyCreateManyArgs>(args?: SelectSubset<T, FlowersVarietyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many FlowersVarieties and returns the data saved in the database.
-     * @param {FlowersVarietyCreateManyAndReturnArgs} args - Arguments to create many FlowersVarieties.
-     * @example
-     * // Create many FlowersVarieties
-     * const flowersVariety = await prisma.flowersVariety.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many FlowersVarieties and only return the `id`
-     * const flowersVarietyWithIdOnly = await prisma.flowersVariety.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends FlowersVarietyCreateManyAndReturnArgs>(args?: SelectSubset<T, FlowersVarietyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersVarietyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a FlowersVariety.
@@ -6005,25 +5824,6 @@ export namespace Prisma {
      * 
      */
     updateManyAndReturn<T extends FlowersVarietyUpdateManyAndReturnArgs>(args: SelectSubset<T, FlowersVarietyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlowersVarietyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one FlowersVariety.
-     * @param {FlowersVarietyUpsertArgs} args - Arguments to update or create a FlowersVariety.
-     * @example
-     * // Update or create a FlowersVariety
-     * const flowersVariety = await prisma.flowersVariety.upsert({
-     *   create: {
-     *     // ... data to create a FlowersVariety
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the FlowersVariety we want to update
-     *   }
-     * })
-     */
-    upsert<T extends FlowersVarietyUpsertArgs>(args: SelectSubset<T, FlowersVarietyUpsertArgs<ExtArgs>>): Prisma__FlowersVarietyClient<$Result.GetResult<Prisma.$FlowersVarietyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
@@ -6196,7 +5996,6 @@ export namespace Prisma {
    */
   interface FlowersVarietyFieldRefs {
     readonly id: FieldRef<"FlowersVariety", 'Int'>
-    readonly title: FieldRef<"FlowersVariety", 'String'>
   }
     
 
@@ -6397,58 +6196,6 @@ export namespace Prisma {
   }
 
   /**
-   * FlowersVariety create
-   */
-  export type FlowersVarietyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FlowersVariety
-     */
-    select?: FlowersVarietySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FlowersVariety
-     */
-    omit?: FlowersVarietyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FlowersVarietyInclude<ExtArgs> | null
-    /**
-     * The data needed to create a FlowersVariety.
-     */
-    data: XOR<FlowersVarietyCreateInput, FlowersVarietyUncheckedCreateInput>
-  }
-
-  /**
-   * FlowersVariety createMany
-   */
-  export type FlowersVarietyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many FlowersVarieties.
-     */
-    data: FlowersVarietyCreateManyInput | FlowersVarietyCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * FlowersVariety createManyAndReturn
-   */
-  export type FlowersVarietyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FlowersVariety
-     */
-    select?: FlowersVarietySelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the FlowersVariety
-     */
-    omit?: FlowersVarietyOmit<ExtArgs> | null
-    /**
-     * The data used to create many FlowersVarieties.
-     */
-    data: FlowersVarietyCreateManyInput | FlowersVarietyCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * FlowersVariety update
    */
   export type FlowersVarietyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6516,36 +6263,6 @@ export namespace Prisma {
      * Limit how many FlowersVarieties to update.
      */
     limit?: number
-  }
-
-  /**
-   * FlowersVariety upsert
-   */
-  export type FlowersVarietyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FlowersVariety
-     */
-    select?: FlowersVarietySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FlowersVariety
-     */
-    omit?: FlowersVarietyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FlowersVarietyInclude<ExtArgs> | null
-    /**
-     * The filter to search for the FlowersVariety to update in case it exists.
-     */
-    where: FlowersVarietyWhereUniqueInput
-    /**
-     * In case the FlowersVariety found by the `where` argument doesn't exist, create a new FlowersVariety with this data.
-     */
-    create: XOR<FlowersVarietyCreateInput, FlowersVarietyUncheckedCreateInput>
-    /**
-     * In case the FlowersVariety was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<FlowersVarietyUpdateInput, FlowersVarietyUncheckedUpdateInput>
   }
 
   /**
@@ -6624,6 +6341,949 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: FlowersVarietyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Languages
+   */
+
+  export type AggregateLanguages = {
+    _count: LanguagesCountAggregateOutputType | null
+    _min: LanguagesMinAggregateOutputType | null
+    _max: LanguagesMaxAggregateOutputType | null
+  }
+
+  export type LanguagesMinAggregateOutputType = {
+    id: string | null
+  }
+
+  export type LanguagesMaxAggregateOutputType = {
+    id: string | null
+  }
+
+  export type LanguagesCountAggregateOutputType = {
+    id: number
+    _all: number
+  }
+
+
+  export type LanguagesMinAggregateInputType = {
+    id?: true
+  }
+
+  export type LanguagesMaxAggregateInputType = {
+    id?: true
+  }
+
+  export type LanguagesCountAggregateInputType = {
+    id?: true
+    _all?: true
+  }
+
+  export type LanguagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Languages to aggregate.
+     */
+    where?: LanguagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguagesOrderByWithRelationInput | LanguagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LanguagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Languages
+    **/
+    _count?: true | LanguagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LanguagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LanguagesMaxAggregateInputType
+  }
+
+  export type GetLanguagesAggregateType<T extends LanguagesAggregateArgs> = {
+        [P in keyof T & keyof AggregateLanguages]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLanguages[P]>
+      : GetScalarType<T[P], AggregateLanguages[P]>
+  }
+
+
+
+
+  export type LanguagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LanguagesWhereInput
+    orderBy?: LanguagesOrderByWithAggregationInput | LanguagesOrderByWithAggregationInput[]
+    by: LanguagesScalarFieldEnum[] | LanguagesScalarFieldEnum
+    having?: LanguagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LanguagesCountAggregateInputType | true
+    _min?: LanguagesMinAggregateInputType
+    _max?: LanguagesMaxAggregateInputType
+  }
+
+  export type LanguagesGroupByOutputType = {
+    id: string
+    _count: LanguagesCountAggregateOutputType | null
+    _min: LanguagesMinAggregateOutputType | null
+    _max: LanguagesMaxAggregateOutputType | null
+  }
+
+  type GetLanguagesGroupByPayload<T extends LanguagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LanguagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LanguagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LanguagesGroupByOutputType[P]>
+            : GetScalarType<T[P], LanguagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LanguagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["languages"]>
+
+  export type LanguagesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["languages"]>
+
+  export type LanguagesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["languages"]>
+
+  export type LanguagesSelectScalar = {
+    id?: boolean
+  }
+
+  export type LanguagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id", ExtArgs["result"]["languages"]>
+
+  export type $LanguagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Languages"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+    }, ExtArgs["result"]["languages"]>
+    composites: {}
+  }
+
+  type LanguagesGetPayload<S extends boolean | null | undefined | LanguagesDefaultArgs> = $Result.GetResult<Prisma.$LanguagesPayload, S>
+
+  type LanguagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LanguagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LanguagesCountAggregateInputType | true
+    }
+
+  export interface LanguagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Languages'], meta: { name: 'Languages' } }
+    /**
+     * Find zero or one Languages that matches the filter.
+     * @param {LanguagesFindUniqueArgs} args - Arguments to find a Languages
+     * @example
+     * // Get one Languages
+     * const languages = await prisma.languages.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LanguagesFindUniqueArgs>(args: SelectSubset<T, LanguagesFindUniqueArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Languages that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LanguagesFindUniqueOrThrowArgs} args - Arguments to find a Languages
+     * @example
+     * // Get one Languages
+     * const languages = await prisma.languages.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LanguagesFindUniqueOrThrowArgs>(args: SelectSubset<T, LanguagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Languages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguagesFindFirstArgs} args - Arguments to find a Languages
+     * @example
+     * // Get one Languages
+     * const languages = await prisma.languages.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LanguagesFindFirstArgs>(args?: SelectSubset<T, LanguagesFindFirstArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Languages that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguagesFindFirstOrThrowArgs} args - Arguments to find a Languages
+     * @example
+     * // Get one Languages
+     * const languages = await prisma.languages.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LanguagesFindFirstOrThrowArgs>(args?: SelectSubset<T, LanguagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Languages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguagesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Languages
+     * const languages = await prisma.languages.findMany()
+     * 
+     * // Get first 10 Languages
+     * const languages = await prisma.languages.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const languagesWithIdOnly = await prisma.languages.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LanguagesFindManyArgs>(args?: SelectSubset<T, LanguagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Languages.
+     * @param {LanguagesCreateArgs} args - Arguments to create a Languages.
+     * @example
+     * // Create one Languages
+     * const Languages = await prisma.languages.create({
+     *   data: {
+     *     // ... data to create a Languages
+     *   }
+     * })
+     * 
+     */
+    create<T extends LanguagesCreateArgs>(args: SelectSubset<T, LanguagesCreateArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Languages.
+     * @param {LanguagesCreateManyArgs} args - Arguments to create many Languages.
+     * @example
+     * // Create many Languages
+     * const languages = await prisma.languages.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LanguagesCreateManyArgs>(args?: SelectSubset<T, LanguagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Languages and returns the data saved in the database.
+     * @param {LanguagesCreateManyAndReturnArgs} args - Arguments to create many Languages.
+     * @example
+     * // Create many Languages
+     * const languages = await prisma.languages.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Languages and only return the `id`
+     * const languagesWithIdOnly = await prisma.languages.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LanguagesCreateManyAndReturnArgs>(args?: SelectSubset<T, LanguagesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Languages.
+     * @param {LanguagesDeleteArgs} args - Arguments to delete one Languages.
+     * @example
+     * // Delete one Languages
+     * const Languages = await prisma.languages.delete({
+     *   where: {
+     *     // ... filter to delete one Languages
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LanguagesDeleteArgs>(args: SelectSubset<T, LanguagesDeleteArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Languages.
+     * @param {LanguagesUpdateArgs} args - Arguments to update one Languages.
+     * @example
+     * // Update one Languages
+     * const languages = await prisma.languages.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LanguagesUpdateArgs>(args: SelectSubset<T, LanguagesUpdateArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Languages.
+     * @param {LanguagesDeleteManyArgs} args - Arguments to filter Languages to delete.
+     * @example
+     * // Delete a few Languages
+     * const { count } = await prisma.languages.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LanguagesDeleteManyArgs>(args?: SelectSubset<T, LanguagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Languages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Languages
+     * const languages = await prisma.languages.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LanguagesUpdateManyArgs>(args: SelectSubset<T, LanguagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Languages and returns the data updated in the database.
+     * @param {LanguagesUpdateManyAndReturnArgs} args - Arguments to update many Languages.
+     * @example
+     * // Update many Languages
+     * const languages = await prisma.languages.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Languages and only return the `id`
+     * const languagesWithIdOnly = await prisma.languages.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LanguagesUpdateManyAndReturnArgs>(args: SelectSubset<T, LanguagesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Languages.
+     * @param {LanguagesUpsertArgs} args - Arguments to update or create a Languages.
+     * @example
+     * // Update or create a Languages
+     * const languages = await prisma.languages.upsert({
+     *   create: {
+     *     // ... data to create a Languages
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Languages we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LanguagesUpsertArgs>(args: SelectSubset<T, LanguagesUpsertArgs<ExtArgs>>): Prisma__LanguagesClient<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Languages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguagesCountArgs} args - Arguments to filter Languages to count.
+     * @example
+     * // Count the number of Languages
+     * const count = await prisma.languages.count({
+     *   where: {
+     *     // ... the filter for the Languages we want to count
+     *   }
+     * })
+    **/
+    count<T extends LanguagesCountArgs>(
+      args?: Subset<T, LanguagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LanguagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Languages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LanguagesAggregateArgs>(args: Subset<T, LanguagesAggregateArgs>): Prisma.PrismaPromise<GetLanguagesAggregateType<T>>
+
+    /**
+     * Group by Languages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LanguagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LanguagesGroupByArgs['orderBy'] }
+        : { orderBy?: LanguagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LanguagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLanguagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Languages model
+   */
+  readonly fields: LanguagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Languages.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LanguagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Languages model
+   */
+  interface LanguagesFieldRefs {
+    readonly id: FieldRef<"Languages", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Languages findUnique
+   */
+  export type LanguagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * Filter, which Languages to fetch.
+     */
+    where: LanguagesWhereUniqueInput
+  }
+
+  /**
+   * Languages findUniqueOrThrow
+   */
+  export type LanguagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * Filter, which Languages to fetch.
+     */
+    where: LanguagesWhereUniqueInput
+  }
+
+  /**
+   * Languages findFirst
+   */
+  export type LanguagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * Filter, which Languages to fetch.
+     */
+    where?: LanguagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguagesOrderByWithRelationInput | LanguagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Languages.
+     */
+    cursor?: LanguagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Languages.
+     */
+    distinct?: LanguagesScalarFieldEnum | LanguagesScalarFieldEnum[]
+  }
+
+  /**
+   * Languages findFirstOrThrow
+   */
+  export type LanguagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * Filter, which Languages to fetch.
+     */
+    where?: LanguagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguagesOrderByWithRelationInput | LanguagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Languages.
+     */
+    cursor?: LanguagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Languages.
+     */
+    distinct?: LanguagesScalarFieldEnum | LanguagesScalarFieldEnum[]
+  }
+
+  /**
+   * Languages findMany
+   */
+  export type LanguagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * Filter, which Languages to fetch.
+     */
+    where?: LanguagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguagesOrderByWithRelationInput | LanguagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Languages.
+     */
+    cursor?: LanguagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    distinct?: LanguagesScalarFieldEnum | LanguagesScalarFieldEnum[]
+  }
+
+  /**
+   * Languages create
+   */
+  export type LanguagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Languages.
+     */
+    data: XOR<LanguagesCreateInput, LanguagesUncheckedCreateInput>
+  }
+
+  /**
+   * Languages createMany
+   */
+  export type LanguagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Languages.
+     */
+    data: LanguagesCreateManyInput | LanguagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Languages createManyAndReturn
+   */
+  export type LanguagesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Languages.
+     */
+    data: LanguagesCreateManyInput | LanguagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Languages update
+   */
+  export type LanguagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Languages.
+     */
+    data: XOR<LanguagesUpdateInput, LanguagesUncheckedUpdateInput>
+    /**
+     * Choose, which Languages to update.
+     */
+    where: LanguagesWhereUniqueInput
+  }
+
+  /**
+   * Languages updateMany
+   */
+  export type LanguagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Languages.
+     */
+    data: XOR<LanguagesUpdateManyMutationInput, LanguagesUncheckedUpdateManyInput>
+    /**
+     * Filter which Languages to update
+     */
+    where?: LanguagesWhereInput
+    /**
+     * Limit how many Languages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Languages updateManyAndReturn
+   */
+  export type LanguagesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * The data used to update Languages.
+     */
+    data: XOR<LanguagesUpdateManyMutationInput, LanguagesUncheckedUpdateManyInput>
+    /**
+     * Filter which Languages to update
+     */
+    where?: LanguagesWhereInput
+    /**
+     * Limit how many Languages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Languages upsert
+   */
+  export type LanguagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Languages to update in case it exists.
+     */
+    where: LanguagesWhereUniqueInput
+    /**
+     * In case the Languages found by the `where` argument doesn't exist, create a new Languages with this data.
+     */
+    create: XOR<LanguagesCreateInput, LanguagesUncheckedCreateInput>
+    /**
+     * In case the Languages was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LanguagesUpdateInput, LanguagesUncheckedUpdateInput>
+  }
+
+  /**
+   * Languages delete
+   */
+  export type LanguagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
+    /**
+     * Filter which Languages to delete.
+     */
+    where: LanguagesWhereUniqueInput
+  }
+
+  /**
+   * Languages deleteMany
+   */
+  export type LanguagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Languages to delete
+     */
+    where?: LanguagesWhereInput
+    /**
+     * Limit how many Languages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Languages without action
+   */
+  export type LanguagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Languages
+     */
+    select?: LanguagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Languages
+     */
+    omit?: LanguagesOmit<ExtArgs> | null
   }
 
 
@@ -17187,11 +17847,17 @@ export namespace Prisma {
 
 
   export const FlowersVarietyScalarFieldEnum: {
-    id: 'id',
-    title: 'title'
+    id: 'id'
   };
 
   export type FlowersVarietyScalarFieldEnum = (typeof FlowersVarietyScalarFieldEnum)[keyof typeof FlowersVarietyScalarFieldEnum]
+
+
+  export const LanguagesScalarFieldEnum: {
+    id: 'id'
+  };
+
+  export type LanguagesScalarFieldEnum = (typeof LanguagesScalarFieldEnum)[keyof typeof LanguagesScalarFieldEnum]
 
 
   export const FlowersHistoryScalarFieldEnum: {
@@ -17437,7 +18103,7 @@ export namespace Prisma {
     AND?: PrivateFilesWhereInput | PrivateFilesWhereInput[]
     OR?: PrivateFilesWhereInput[]
     NOT?: PrivateFilesWhereInput | PrivateFilesWhereInput[]
-    id?: IntFilter<"PrivateFiles"> | number
+    id?: StringFilter<"PrivateFiles"> | string
     name?: StringFilter<"PrivateFiles"> | string
     size?: IntFilter<"PrivateFiles"> | number
     uploadAt?: DateTimeFilter<"PrivateFiles"> | Date | string
@@ -17451,7 +18117,7 @@ export namespace Prisma {
   }
 
   export type PrivateFilesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     name?: string
     AND?: PrivateFilesWhereInput | PrivateFilesWhereInput[]
     OR?: PrivateFilesWhereInput[]
@@ -17476,7 +18142,7 @@ export namespace Prisma {
     AND?: PrivateFilesScalarWhereWithAggregatesInput | PrivateFilesScalarWhereWithAggregatesInput[]
     OR?: PrivateFilesScalarWhereWithAggregatesInput[]
     NOT?: PrivateFilesScalarWhereWithAggregatesInput | PrivateFilesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"PrivateFiles"> | number
+    id?: StringWithAggregatesFilter<"PrivateFiles"> | string
     name?: StringWithAggregatesFilter<"PrivateFiles"> | string
     size?: IntWithAggregatesFilter<"PrivateFiles"> | number
     uploadAt?: DateTimeWithAggregatesFilter<"PrivateFiles"> | Date | string
@@ -17556,28 +18222,24 @@ export namespace Prisma {
     OR?: FlowersVarietyWhereInput[]
     NOT?: FlowersVarietyWhereInput | FlowersVarietyWhereInput[]
     id?: IntFilter<"FlowersVariety"> | number
-    title?: StringFilter<"FlowersVariety"> | string
     flowers?: FlowersListRelationFilter
   }
 
   export type FlowersVarietyOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
     flowers?: FlowersOrderByRelationAggregateInput
   }
 
   export type FlowersVarietyWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    title?: string
     AND?: FlowersVarietyWhereInput | FlowersVarietyWhereInput[]
     OR?: FlowersVarietyWhereInput[]
     NOT?: FlowersVarietyWhereInput | FlowersVarietyWhereInput[]
     flowers?: FlowersListRelationFilter
-  }, "id" | "title">
+  }, "id">
 
   export type FlowersVarietyOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
     _count?: FlowersVarietyCountOrderByAggregateInput
     _avg?: FlowersVarietyAvgOrderByAggregateInput
     _max?: FlowersVarietyMaxOrderByAggregateInput
@@ -17590,7 +18252,38 @@ export namespace Prisma {
     OR?: FlowersVarietyScalarWhereWithAggregatesInput[]
     NOT?: FlowersVarietyScalarWhereWithAggregatesInput | FlowersVarietyScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"FlowersVariety"> | number
-    title?: StringWithAggregatesFilter<"FlowersVariety"> | string
+  }
+
+  export type LanguagesWhereInput = {
+    AND?: LanguagesWhereInput | LanguagesWhereInput[]
+    OR?: LanguagesWhereInput[]
+    NOT?: LanguagesWhereInput | LanguagesWhereInput[]
+    id?: StringFilter<"Languages"> | string
+  }
+
+  export type LanguagesOrderByWithRelationInput = {
+    id?: SortOrder
+  }
+
+  export type LanguagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LanguagesWhereInput | LanguagesWhereInput[]
+    OR?: LanguagesWhereInput[]
+    NOT?: LanguagesWhereInput | LanguagesWhereInput[]
+  }, "id" | "id">
+
+  export type LanguagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    _count?: LanguagesCountOrderByAggregateInput
+    _max?: LanguagesMaxOrderByAggregateInput
+    _min?: LanguagesMinOrderByAggregateInput
+  }
+
+  export type LanguagesScalarWhereWithAggregatesInput = {
+    AND?: LanguagesScalarWhereWithAggregatesInput | LanguagesScalarWhereWithAggregatesInput[]
+    OR?: LanguagesScalarWhereWithAggregatesInput[]
+    NOT?: LanguagesScalarWhereWithAggregatesInput | LanguagesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Languages"> | string
   }
 
   export type FlowersHistoryWhereInput = {
@@ -18125,72 +18818,52 @@ export namespace Prisma {
   }
 
   export type PrivateFilesCreateInput = {
+    id: string
     name: string
     size: number
     uploadAt?: Date | string
   }
 
   export type PrivateFilesUncheckedCreateInput = {
-    id?: number
+    id: string
     name: string
     size: number
     uploadAt?: Date | string
   }
 
   export type PrivateFilesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PrivateFilesUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PrivateFilesCreateManyInput = {
-    id?: number
+    id: string
     name: string
     size: number
     uploadAt?: Date | string
   }
 
   export type PrivateFilesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PrivateFilesUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     uploadAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FlowersCreateInput = {
-    color: string
-    name: string
-    price: number
-    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
-    variety: FlowersVarietyCreateNestedOneWithoutFlowersInput
-  }
-
-  export type FlowersUncheckedCreateInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
-    varietyId: number
-    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
   }
 
   export type FlowersUpdateInput = {
@@ -18216,14 +18889,6 @@ export namespace Prisma {
     bouquets?: FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersNestedInput
   }
 
-  export type FlowersCreateManyInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
-    varietyId: number
-  }
-
   export type FlowersUpdateManyMutationInput = {
     color?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -18238,40 +18903,49 @@ export namespace Prisma {
     varietyId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type FlowersVarietyCreateInput = {
-    title: string
-    flowers?: FlowersCreateNestedManyWithoutVarietyInput
-  }
-
-  export type FlowersVarietyUncheckedCreateInput = {
-    id?: number
-    title: string
-    flowers?: FlowersUncheckedCreateNestedManyWithoutVarietyInput
-  }
-
   export type FlowersVarietyUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
     flowers?: FlowersUpdateManyWithoutVarietyNestedInput
   }
 
   export type FlowersVarietyUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
     flowers?: FlowersUncheckedUpdateManyWithoutVarietyNestedInput
   }
 
-  export type FlowersVarietyCreateManyInput = {
-    id?: number
-    title: string
-  }
-
   export type FlowersVarietyUpdateManyMutationInput = {
-    title?: StringFieldUpdateOperationsInput | string
+
   }
 
   export type FlowersVarietyUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LanguagesCreateInput = {
+    id: string
+  }
+
+  export type LanguagesUncheckedCreateInput = {
+    id: string
+  }
+
+  export type LanguagesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LanguagesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LanguagesCreateManyInput = {
+    id: string
+  }
+
+  export type LanguagesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LanguagesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
   }
 
   export type FlowersHistoryCreateInput = {
@@ -18828,7 +19502,6 @@ export namespace Prisma {
   }
 
   export type PrivateFilesAvgOrderByAggregateInput = {
-    id?: SortOrder
     size?: SortOrder
   }
 
@@ -18847,7 +19520,6 @@ export namespace Prisma {
   }
 
   export type PrivateFilesSumOrderByAggregateInput = {
-    id?: SortOrder
     size?: SortOrder
   }
 
@@ -18934,7 +19606,6 @@ export namespace Prisma {
 
   export type FlowersVarietyCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
   }
 
   export type FlowersVarietyAvgOrderByAggregateInput = {
@@ -18943,15 +19614,25 @@ export namespace Prisma {
 
   export type FlowersVarietyMaxOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
   }
 
   export type FlowersVarietyMinOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
   }
 
   export type FlowersVarietySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type LanguagesCountOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type LanguagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type LanguagesMinOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -19386,68 +20067,6 @@ export namespace Prisma {
     deleteMany?: FlowersAndFilesScalarWhereInput | FlowersAndFilesScalarWhereInput[]
   }
 
-  export type FlowersAndFilesCreateNestedManyWithoutFlowersInput = {
-    create?: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput> | FlowersAndFilesCreateWithoutFlowersInput[] | FlowersAndFilesUncheckedCreateWithoutFlowersInput[]
-    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutFlowersInput | FlowersAndFilesCreateOrConnectWithoutFlowersInput[]
-    createMany?: FlowersAndFilesCreateManyFlowersInputEnvelope
-    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
-  }
-
-  export type FlowersHistoryCreateNestedManyWithoutFlowerInput = {
-    create?: XOR<FlowersHistoryCreateWithoutFlowerInput, FlowersHistoryUncheckedCreateWithoutFlowerInput> | FlowersHistoryCreateWithoutFlowerInput[] | FlowersHistoryUncheckedCreateWithoutFlowerInput[]
-    connectOrCreate?: FlowersHistoryCreateOrConnectWithoutFlowerInput | FlowersHistoryCreateOrConnectWithoutFlowerInput[]
-    createMany?: FlowersHistoryCreateManyFlowerInputEnvelope
-    connect?: FlowersHistoryWhereUniqueInput | FlowersHistoryWhereUniqueInput[]
-  }
-
-  export type FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput = {
-    create?: XOR<FlowersFarmsAndFlowersCreateWithoutFlowersInput, FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersFarmsAndFlowersCreateWithoutFlowersInput[] | FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput[]
-    connectOrCreate?: FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput[]
-    createMany?: FlowersFarmsAndFlowersCreateManyFlowersInputEnvelope
-    connect?: FlowersFarmsAndFlowersWhereUniqueInput | FlowersFarmsAndFlowersWhereUniqueInput[]
-  }
-
-  export type FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput = {
-    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput[]
-    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput[]
-    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope
-    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
-  }
-
-  export type FlowersVarietyCreateNestedOneWithoutFlowersInput = {
-    create?: XOR<FlowersVarietyCreateWithoutFlowersInput, FlowersVarietyUncheckedCreateWithoutFlowersInput>
-    connectOrCreate?: FlowersVarietyCreateOrConnectWithoutFlowersInput
-    connect?: FlowersVarietyWhereUniqueInput
-  }
-
-  export type FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput = {
-    create?: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput> | FlowersAndFilesCreateWithoutFlowersInput[] | FlowersAndFilesUncheckedCreateWithoutFlowersInput[]
-    connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutFlowersInput | FlowersAndFilesCreateOrConnectWithoutFlowersInput[]
-    createMany?: FlowersAndFilesCreateManyFlowersInputEnvelope
-    connect?: FlowersAndFilesWhereUniqueInput | FlowersAndFilesWhereUniqueInput[]
-  }
-
-  export type FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput = {
-    create?: XOR<FlowersHistoryCreateWithoutFlowerInput, FlowersHistoryUncheckedCreateWithoutFlowerInput> | FlowersHistoryCreateWithoutFlowerInput[] | FlowersHistoryUncheckedCreateWithoutFlowerInput[]
-    connectOrCreate?: FlowersHistoryCreateOrConnectWithoutFlowerInput | FlowersHistoryCreateOrConnectWithoutFlowerInput[]
-    createMany?: FlowersHistoryCreateManyFlowerInputEnvelope
-    connect?: FlowersHistoryWhereUniqueInput | FlowersHistoryWhereUniqueInput[]
-  }
-
-  export type FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput = {
-    create?: XOR<FlowersFarmsAndFlowersCreateWithoutFlowersInput, FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersFarmsAndFlowersCreateWithoutFlowersInput[] | FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput[]
-    connectOrCreate?: FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput[]
-    createMany?: FlowersFarmsAndFlowersCreateManyFlowersInputEnvelope
-    connect?: FlowersFarmsAndFlowersWhereUniqueInput | FlowersFarmsAndFlowersWhereUniqueInput[]
-  }
-
-  export type FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput = {
-    create?: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput> | FlowersBouquetsAndFlowersCreateWithoutFlowersInput[] | FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput[]
-    connectOrCreate?: FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput | FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput[]
-    createMany?: FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope
-    connect?: FlowersBouquetsAndFlowersWhereUniqueInput | FlowersBouquetsAndFlowersWhereUniqueInput[]
-  }
-
   export type FlowersAndFilesUpdateManyWithoutFlowersNestedInput = {
     create?: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput> | FlowersAndFilesCreateWithoutFlowersInput[] | FlowersAndFilesUncheckedCreateWithoutFlowersInput[]
     connectOrCreate?: FlowersAndFilesCreateOrConnectWithoutFlowersInput | FlowersAndFilesCreateOrConnectWithoutFlowersInput[]
@@ -19505,9 +20124,6 @@ export namespace Prisma {
   }
 
   export type FlowersVarietyUpdateOneRequiredWithoutFlowersNestedInput = {
-    create?: XOR<FlowersVarietyCreateWithoutFlowersInput, FlowersVarietyUncheckedCreateWithoutFlowersInput>
-    connectOrCreate?: FlowersVarietyCreateOrConnectWithoutFlowersInput
-    upsert?: FlowersVarietyUpsertWithoutFlowersInput
     connect?: FlowersVarietyWhereUniqueInput
     update?: XOR<XOR<FlowersVarietyUpdateToOneWithWhereWithoutFlowersInput, FlowersVarietyUpdateWithoutFlowersInput>, FlowersVarietyUncheckedUpdateWithoutFlowersInput>
   }
@@ -19568,25 +20184,7 @@ export namespace Prisma {
     deleteMany?: FlowersBouquetsAndFlowersScalarWhereInput | FlowersBouquetsAndFlowersScalarWhereInput[]
   }
 
-  export type FlowersCreateNestedManyWithoutVarietyInput = {
-    create?: XOR<FlowersCreateWithoutVarietyInput, FlowersUncheckedCreateWithoutVarietyInput> | FlowersCreateWithoutVarietyInput[] | FlowersUncheckedCreateWithoutVarietyInput[]
-    connectOrCreate?: FlowersCreateOrConnectWithoutVarietyInput | FlowersCreateOrConnectWithoutVarietyInput[]
-    createMany?: FlowersCreateManyVarietyInputEnvelope
-    connect?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
-  }
-
-  export type FlowersUncheckedCreateNestedManyWithoutVarietyInput = {
-    create?: XOR<FlowersCreateWithoutVarietyInput, FlowersUncheckedCreateWithoutVarietyInput> | FlowersCreateWithoutVarietyInput[] | FlowersUncheckedCreateWithoutVarietyInput[]
-    connectOrCreate?: FlowersCreateOrConnectWithoutVarietyInput | FlowersCreateOrConnectWithoutVarietyInput[]
-    createMany?: FlowersCreateManyVarietyInputEnvelope
-    connect?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
-  }
-
   export type FlowersUpdateManyWithoutVarietyNestedInput = {
-    create?: XOR<FlowersCreateWithoutVarietyInput, FlowersUncheckedCreateWithoutVarietyInput> | FlowersCreateWithoutVarietyInput[] | FlowersUncheckedCreateWithoutVarietyInput[]
-    connectOrCreate?: FlowersCreateOrConnectWithoutVarietyInput | FlowersCreateOrConnectWithoutVarietyInput[]
-    upsert?: FlowersUpsertWithWhereUniqueWithoutVarietyInput | FlowersUpsertWithWhereUniqueWithoutVarietyInput[]
-    createMany?: FlowersCreateManyVarietyInputEnvelope
     set?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
     disconnect?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
     delete?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
@@ -19597,10 +20195,6 @@ export namespace Prisma {
   }
 
   export type FlowersUncheckedUpdateManyWithoutVarietyNestedInput = {
-    create?: XOR<FlowersCreateWithoutVarietyInput, FlowersUncheckedCreateWithoutVarietyInput> | FlowersCreateWithoutVarietyInput[] | FlowersUncheckedCreateWithoutVarietyInput[]
-    connectOrCreate?: FlowersCreateOrConnectWithoutVarietyInput | FlowersCreateOrConnectWithoutVarietyInput[]
-    upsert?: FlowersUpsertWithWhereUniqueWithoutVarietyInput | FlowersUpsertWithWhereUniqueWithoutVarietyInput[]
-    createMany?: FlowersCreateManyVarietyInputEnvelope
     set?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
     disconnect?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
     delete?: FlowersWhereUniqueInput | FlowersWhereUniqueInput[]
@@ -19611,15 +20205,10 @@ export namespace Prisma {
   }
 
   export type FlowersCreateNestedOneWithoutHistoryInput = {
-    create?: XOR<FlowersCreateWithoutHistoryInput, FlowersUncheckedCreateWithoutHistoryInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutHistoryInput
     connect?: FlowersWhereUniqueInput
   }
 
   export type FlowersUpdateOneRequiredWithoutHistoryNestedInput = {
-    create?: XOR<FlowersCreateWithoutHistoryInput, FlowersUncheckedCreateWithoutHistoryInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutHistoryInput
-    upsert?: FlowersUpsertWithoutHistoryInput
     connect?: FlowersWhereUniqueInput
     update?: XOR<XOR<FlowersUpdateToOneWithWhereWithoutHistoryInput, FlowersUpdateWithoutHistoryInput>, FlowersUncheckedUpdateWithoutHistoryInput>
   }
@@ -19667,8 +20256,6 @@ export namespace Prisma {
   }
 
   export type FlowersCreateNestedOneWithoutFarmsInput = {
-    create?: XOR<FlowersCreateWithoutFarmsInput, FlowersUncheckedCreateWithoutFarmsInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutFarmsInput
     connect?: FlowersWhereUniqueInput
   }
 
@@ -19679,9 +20266,6 @@ export namespace Prisma {
   }
 
   export type FlowersUpdateOneRequiredWithoutFarmsNestedInput = {
-    create?: XOR<FlowersCreateWithoutFarmsInput, FlowersUncheckedCreateWithoutFarmsInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutFarmsInput
-    upsert?: FlowersUpsertWithoutFarmsInput
     connect?: FlowersWhereUniqueInput
     update?: XOR<XOR<FlowersUpdateToOneWithWhereWithoutFarmsInput, FlowersUpdateWithoutFarmsInput>, FlowersUncheckedUpdateWithoutFarmsInput>
   }
@@ -19737,8 +20321,6 @@ export namespace Prisma {
   }
 
   export type FlowersCreateNestedOneWithoutBouquetsInput = {
-    create?: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutBouquetsInput
     connect?: FlowersWhereUniqueInput
   }
 
@@ -19749,9 +20331,6 @@ export namespace Prisma {
   }
 
   export type FlowersUpdateOneRequiredWithoutBouquetsNestedInput = {
-    create?: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutBouquetsInput
-    upsert?: FlowersUpsertWithoutBouquetsInput
     connect?: FlowersWhereUniqueInput
     update?: XOR<XOR<FlowersUpdateToOneWithWhereWithoutBouquetsInput, FlowersUpdateWithoutBouquetsInput>, FlowersUncheckedUpdateWithoutBouquetsInput>
   }
@@ -19765,8 +20344,6 @@ export namespace Prisma {
   }
 
   export type FlowersCreateNestedOneWithoutImgsInput = {
-    create?: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutImgsInput
     connect?: FlowersWhereUniqueInput
   }
 
@@ -19777,9 +20354,6 @@ export namespace Prisma {
   }
 
   export type FlowersUpdateOneRequiredWithoutImgsNestedInput = {
-    create?: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
-    connectOrCreate?: FlowersCreateOrConnectWithoutImgsInput
-    upsert?: FlowersUpsertWithoutImgsInput
     connect?: FlowersWhereUniqueInput
     update?: XOR<XOR<FlowersUpdateToOneWithWhereWithoutImgsInput, FlowersUpdateWithoutImgsInput>, FlowersUncheckedUpdateWithoutImgsInput>
   }
@@ -20004,9 +20578,25 @@ export namespace Prisma {
     create: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput>
   }
 
+  export type FlowersAndFilesUpsertWithWhereUniqueWithoutFlowersInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    update: XOR<FlowersAndFilesUpdateWithoutFlowersInput, FlowersAndFilesUncheckedUpdateWithoutFlowersInput>
+    create: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput>
+  }
+
   export type FlowersAndFilesCreateManyFlowersInputEnvelope = {
     data: FlowersAndFilesCreateManyFlowersInput | FlowersAndFilesCreateManyFlowersInput[]
     skipDuplicates?: boolean
+  }
+
+  export type FlowersAndFilesUpdateWithWhereUniqueWithoutFlowersInput = {
+    where: FlowersAndFilesWhereUniqueInput
+    data: XOR<FlowersAndFilesUpdateWithoutFlowersInput, FlowersAndFilesUncheckedUpdateWithoutFlowersInput>
+  }
+
+  export type FlowersAndFilesUpdateManyWithWhereWithoutFlowersInput = {
+    where: FlowersAndFilesScalarWhereInput
+    data: XOR<FlowersAndFilesUpdateManyMutationInput, FlowersAndFilesUncheckedUpdateManyWithoutFlowersInput>
   }
 
   export type FlowersHistoryCreateWithoutFlowerInput = {
@@ -20025,81 +20615,15 @@ export namespace Prisma {
     create: XOR<FlowersHistoryCreateWithoutFlowerInput, FlowersHistoryUncheckedCreateWithoutFlowerInput>
   }
 
-  export type FlowersHistoryCreateManyFlowerInputEnvelope = {
-    data: FlowersHistoryCreateManyFlowerInput | FlowersHistoryCreateManyFlowerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type FlowersFarmsAndFlowersCreateWithoutFlowersInput = {
-    flowersFarms: FlowersFarmsCreateNestedOneWithoutFlowersInput
-  }
-
-  export type FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput = {
-    flowersFarmsId: number
-  }
-
-  export type FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput = {
-    where: FlowersFarmsAndFlowersWhereUniqueInput
-    create: XOR<FlowersFarmsAndFlowersCreateWithoutFlowersInput, FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput>
-  }
-
-  export type FlowersFarmsAndFlowersCreateManyFlowersInputEnvelope = {
-    data: FlowersFarmsAndFlowersCreateManyFlowersInput | FlowersFarmsAndFlowersCreateManyFlowersInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type FlowersBouquetsAndFlowersCreateWithoutFlowersInput = {
-    flowersBouquets: FlowersBouquetsCreateNestedOneWithoutFlowersInput
-  }
-
-  export type FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput = {
-    flowersBouquetsId: number
-  }
-
-  export type FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput = {
-    where: FlowersBouquetsAndFlowersWhereUniqueInput
-    create: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput>
-  }
-
-  export type FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope = {
-    data: FlowersBouquetsAndFlowersCreateManyFlowersInput | FlowersBouquetsAndFlowersCreateManyFlowersInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type FlowersVarietyCreateWithoutFlowersInput = {
-    title: string
-  }
-
-  export type FlowersVarietyUncheckedCreateWithoutFlowersInput = {
-    id?: number
-    title: string
-  }
-
-  export type FlowersVarietyCreateOrConnectWithoutFlowersInput = {
-    where: FlowersVarietyWhereUniqueInput
-    create: XOR<FlowersVarietyCreateWithoutFlowersInput, FlowersVarietyUncheckedCreateWithoutFlowersInput>
-  }
-
-  export type FlowersAndFilesUpsertWithWhereUniqueWithoutFlowersInput = {
-    where: FlowersAndFilesWhereUniqueInput
-    update: XOR<FlowersAndFilesUpdateWithoutFlowersInput, FlowersAndFilesUncheckedUpdateWithoutFlowersInput>
-    create: XOR<FlowersAndFilesCreateWithoutFlowersInput, FlowersAndFilesUncheckedCreateWithoutFlowersInput>
-  }
-
-  export type FlowersAndFilesUpdateWithWhereUniqueWithoutFlowersInput = {
-    where: FlowersAndFilesWhereUniqueInput
-    data: XOR<FlowersAndFilesUpdateWithoutFlowersInput, FlowersAndFilesUncheckedUpdateWithoutFlowersInput>
-  }
-
-  export type FlowersAndFilesUpdateManyWithWhereWithoutFlowersInput = {
-    where: FlowersAndFilesScalarWhereInput
-    data: XOR<FlowersAndFilesUpdateManyMutationInput, FlowersAndFilesUncheckedUpdateManyWithoutFlowersInput>
-  }
-
   export type FlowersHistoryUpsertWithWhereUniqueWithoutFlowerInput = {
     where: FlowersHistoryWhereUniqueInput
     update: XOR<FlowersHistoryUpdateWithoutFlowerInput, FlowersHistoryUncheckedUpdateWithoutFlowerInput>
     create: XOR<FlowersHistoryCreateWithoutFlowerInput, FlowersHistoryUncheckedCreateWithoutFlowerInput>
+  }
+
+  export type FlowersHistoryCreateManyFlowerInputEnvelope = {
+    data: FlowersHistoryCreateManyFlowerInput | FlowersHistoryCreateManyFlowerInput[]
+    skipDuplicates?: boolean
   }
 
   export type FlowersHistoryUpdateWithWhereUniqueWithoutFlowerInput = {
@@ -20122,10 +20646,28 @@ export namespace Prisma {
     price?: IntFilter<"FlowersHistory"> | number
   }
 
+  export type FlowersFarmsAndFlowersCreateWithoutFlowersInput = {
+    flowersFarms: FlowersFarmsCreateNestedOneWithoutFlowersInput
+  }
+
+  export type FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput = {
+    flowersFarmsId: number
+  }
+
+  export type FlowersFarmsAndFlowersCreateOrConnectWithoutFlowersInput = {
+    where: FlowersFarmsAndFlowersWhereUniqueInput
+    create: XOR<FlowersFarmsAndFlowersCreateWithoutFlowersInput, FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput>
+  }
+
   export type FlowersFarmsAndFlowersUpsertWithWhereUniqueWithoutFlowersInput = {
     where: FlowersFarmsAndFlowersWhereUniqueInput
     update: XOR<FlowersFarmsAndFlowersUpdateWithoutFlowersInput, FlowersFarmsAndFlowersUncheckedUpdateWithoutFlowersInput>
     create: XOR<FlowersFarmsAndFlowersCreateWithoutFlowersInput, FlowersFarmsAndFlowersUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersFarmsAndFlowersCreateManyFlowersInputEnvelope = {
+    data: FlowersFarmsAndFlowersCreateManyFlowersInput | FlowersFarmsAndFlowersCreateManyFlowersInput[]
+    skipDuplicates?: boolean
   }
 
   export type FlowersFarmsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput = {
@@ -20146,10 +20688,28 @@ export namespace Prisma {
     flowersFarmsId?: IntFilter<"FlowersFarmsAndFlowers"> | number
   }
 
+  export type FlowersBouquetsAndFlowersCreateWithoutFlowersInput = {
+    flowersBouquets: FlowersBouquetsCreateNestedOneWithoutFlowersInput
+  }
+
+  export type FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput = {
+    flowersBouquetsId: number
+  }
+
+  export type FlowersBouquetsAndFlowersCreateOrConnectWithoutFlowersInput = {
+    where: FlowersBouquetsAndFlowersWhereUniqueInput
+    create: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput>
+  }
+
   export type FlowersBouquetsAndFlowersUpsertWithWhereUniqueWithoutFlowersInput = {
     where: FlowersBouquetsAndFlowersWhereUniqueInput
     update: XOR<FlowersBouquetsAndFlowersUpdateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedUpdateWithoutFlowersInput>
     create: XOR<FlowersBouquetsAndFlowersCreateWithoutFlowersInput, FlowersBouquetsAndFlowersUncheckedCreateWithoutFlowersInput>
+  }
+
+  export type FlowersBouquetsAndFlowersCreateManyFlowersInputEnvelope = {
+    data: FlowersBouquetsAndFlowersCreateManyFlowersInput | FlowersBouquetsAndFlowersCreateManyFlowersInput[]
+    skipDuplicates?: boolean
   }
 
   export type FlowersBouquetsAndFlowersUpdateWithWhereUniqueWithoutFlowersInput = {
@@ -20170,61 +20730,17 @@ export namespace Prisma {
     flowersBouquetsId?: IntFilter<"FlowersBouquetsAndFlowers"> | number
   }
 
-  export type FlowersVarietyUpsertWithoutFlowersInput = {
-    update: XOR<FlowersVarietyUpdateWithoutFlowersInput, FlowersVarietyUncheckedUpdateWithoutFlowersInput>
-    create: XOR<FlowersVarietyCreateWithoutFlowersInput, FlowersVarietyUncheckedCreateWithoutFlowersInput>
-    where?: FlowersVarietyWhereInput
-  }
-
   export type FlowersVarietyUpdateToOneWithWhereWithoutFlowersInput = {
     where?: FlowersVarietyWhereInput
     data: XOR<FlowersVarietyUpdateWithoutFlowersInput, FlowersVarietyUncheckedUpdateWithoutFlowersInput>
   }
 
   export type FlowersVarietyUpdateWithoutFlowersInput = {
-    title?: StringFieldUpdateOperationsInput | string
+
   }
 
   export type FlowersVarietyUncheckedUpdateWithoutFlowersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type FlowersCreateWithoutVarietyInput = {
-    color: string
-    name: string
-    price: number
-    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
-  }
-
-  export type FlowersUncheckedCreateWithoutVarietyInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
-    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-  }
-
-  export type FlowersCreateOrConnectWithoutVarietyInput = {
-    where: FlowersWhereUniqueInput
-    create: XOR<FlowersCreateWithoutVarietyInput, FlowersUncheckedCreateWithoutVarietyInput>
-  }
-
-  export type FlowersCreateManyVarietyInputEnvelope = {
-    data: FlowersCreateManyVarietyInput | FlowersCreateManyVarietyInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type FlowersUpsertWithWhereUniqueWithoutVarietyInput = {
-    where: FlowersWhereUniqueInput
-    update: XOR<FlowersUpdateWithoutVarietyInput, FlowersUncheckedUpdateWithoutVarietyInput>
-    create: XOR<FlowersCreateWithoutVarietyInput, FlowersUncheckedCreateWithoutVarietyInput>
   }
 
   export type FlowersUpdateWithWhereUniqueWithoutVarietyInput = {
@@ -20246,38 +20762,6 @@ export namespace Prisma {
     name?: StringFilter<"Flowers"> | string
     price?: IntFilter<"Flowers"> | number
     varietyId?: IntFilter<"Flowers"> | number
-  }
-
-  export type FlowersCreateWithoutHistoryInput = {
-    color: string
-    name: string
-    price: number
-    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
-    farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
-    variety: FlowersVarietyCreateNestedOneWithoutFlowersInput
-  }
-
-  export type FlowersUncheckedCreateWithoutHistoryInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
-    varietyId: number
-    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
-    farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-  }
-
-  export type FlowersCreateOrConnectWithoutHistoryInput = {
-    where: FlowersWhereUniqueInput
-    create: XOR<FlowersCreateWithoutHistoryInput, FlowersUncheckedCreateWithoutHistoryInput>
-  }
-
-  export type FlowersUpsertWithoutHistoryInput = {
-    update: XOR<FlowersUpdateWithoutHistoryInput, FlowersUncheckedUpdateWithoutHistoryInput>
-    create: XOR<FlowersCreateWithoutHistoryInput, FlowersUncheckedCreateWithoutHistoryInput>
-    where?: FlowersWhereInput
   }
 
   export type FlowersUpdateToOneWithWhereWithoutHistoryInput = {
@@ -20340,32 +20824,6 @@ export namespace Prisma {
     data: XOR<FlowersFarmsAndFlowersUpdateManyMutationInput, FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersFarmsInput>
   }
 
-  export type FlowersCreateWithoutFarmsInput = {
-    color: string
-    name: string
-    price: number
-    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
-    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
-    variety: FlowersVarietyCreateNestedOneWithoutFlowersInput
-  }
-
-  export type FlowersUncheckedCreateWithoutFarmsInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
-    varietyId: number
-    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
-    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-  }
-
-  export type FlowersCreateOrConnectWithoutFarmsInput = {
-    where: FlowersWhereUniqueInput
-    create: XOR<FlowersCreateWithoutFarmsInput, FlowersUncheckedCreateWithoutFarmsInput>
-  }
-
   export type FlowersFarmsCreateWithoutFlowersInput = {
     name: string
     country: string
@@ -20382,12 +20840,6 @@ export namespace Prisma {
   export type FlowersFarmsCreateOrConnectWithoutFlowersInput = {
     where: FlowersFarmsWhereUniqueInput
     create: XOR<FlowersFarmsCreateWithoutFlowersInput, FlowersFarmsUncheckedCreateWithoutFlowersInput>
-  }
-
-  export type FlowersUpsertWithoutFarmsInput = {
-    update: XOR<FlowersUpdateWithoutFarmsInput, FlowersUncheckedUpdateWithoutFarmsInput>
-    create: XOR<FlowersCreateWithoutFarmsInput, FlowersUncheckedCreateWithoutFarmsInput>
-    where?: FlowersWhereInput
   }
 
   export type FlowersUpdateToOneWithWhereWithoutFarmsInput = {
@@ -20474,32 +20926,6 @@ export namespace Prisma {
     data: XOR<FlowersBouquetsAndFlowersUpdateManyMutationInput, FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersBouquetsInput>
   }
 
-  export type FlowersCreateWithoutBouquetsInput = {
-    color: string
-    name: string
-    price: number
-    imgs?: FlowersAndFilesCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
-    variety: FlowersVarietyCreateNestedOneWithoutFlowersInput
-  }
-
-  export type FlowersUncheckedCreateWithoutBouquetsInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
-    varietyId: number
-    imgs?: FlowersAndFilesUncheckedCreateNestedManyWithoutFlowersInput
-    history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-  }
-
-  export type FlowersCreateOrConnectWithoutBouquetsInput = {
-    where: FlowersWhereUniqueInput
-    create: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
-  }
-
   export type FlowersBouquetsCreateWithoutFlowersInput = {
     name: string
     price: number
@@ -20514,12 +20940,6 @@ export namespace Prisma {
   export type FlowersBouquetsCreateOrConnectWithoutFlowersInput = {
     where: FlowersBouquetsWhereUniqueInput
     create: XOR<FlowersBouquetsCreateWithoutFlowersInput, FlowersBouquetsUncheckedCreateWithoutFlowersInput>
-  }
-
-  export type FlowersUpsertWithoutBouquetsInput = {
-    update: XOR<FlowersUpdateWithoutBouquetsInput, FlowersUncheckedUpdateWithoutBouquetsInput>
-    create: XOR<FlowersCreateWithoutBouquetsInput, FlowersUncheckedCreateWithoutBouquetsInput>
-    where?: FlowersWhereInput
   }
 
   export type FlowersUpdateToOneWithWhereWithoutBouquetsInput = {
@@ -20570,32 +20990,6 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
   }
 
-  export type FlowersCreateWithoutImgsInput = {
-    color: string
-    name: string
-    price: number
-    history?: FlowersHistoryCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersCreateNestedManyWithoutFlowersInput
-    variety: FlowersVarietyCreateNestedOneWithoutFlowersInput
-  }
-
-  export type FlowersUncheckedCreateWithoutImgsInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
-    varietyId: number
-    history?: FlowersHistoryUncheckedCreateNestedManyWithoutFlowerInput
-    farms?: FlowersFarmsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-    bouquets?: FlowersBouquetsAndFlowersUncheckedCreateNestedManyWithoutFlowersInput
-  }
-
-  export type FlowersCreateOrConnectWithoutImgsInput = {
-    where: FlowersWhereUniqueInput
-    create: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
-  }
-
   export type PublicFilesCreateWithoutFlowersInput = {
     name: string
     size: number
@@ -20612,12 +21006,6 @@ export namespace Prisma {
   export type PublicFilesCreateOrConnectWithoutFlowersInput = {
     where: PublicFilesWhereUniqueInput
     create: XOR<PublicFilesCreateWithoutFlowersInput, PublicFilesUncheckedCreateWithoutFlowersInput>
-  }
-
-  export type FlowersUpsertWithoutImgsInput = {
-    update: XOR<FlowersUpdateWithoutImgsInput, FlowersUncheckedUpdateWithoutImgsInput>
-    create: XOR<FlowersCreateWithoutImgsInput, FlowersUncheckedCreateWithoutImgsInput>
-    where?: FlowersWhereInput
   }
 
   export type FlowersUpdateToOneWithWhereWithoutImgsInput = {
@@ -20686,30 +21074,16 @@ export namespace Prisma {
     flowerId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type FlowersAndFilesCreateManyFlowersInput = {
-    publicFileName: string
-  }
-
-  export type FlowersHistoryCreateManyFlowerInput = {
-    id?: number
-    date: number
-    price: number
-  }
-
-  export type FlowersFarmsAndFlowersCreateManyFlowersInput = {
-    flowersFarmsId: number
-  }
-
-  export type FlowersBouquetsAndFlowersCreateManyFlowersInput = {
-    flowersBouquetsId: number
-  }
-
   export type FlowersAndFilesUpdateWithoutFlowersInput = {
     publicFiles?: PublicFilesUpdateOneRequiredWithoutFlowersNestedInput
   }
 
   export type FlowersAndFilesUncheckedUpdateWithoutFlowersInput = {
     publicFileName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FlowersAndFilesCreateManyFlowersInput = {
+    publicFileName: string
   }
 
   export type FlowersAndFilesUncheckedUpdateManyWithoutFlowersInput = {
@@ -20727,6 +21101,12 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
   }
 
+  export type FlowersHistoryCreateManyFlowerInput = {
+    id?: number
+    date: number
+    price: number
+  }
+
   export type FlowersHistoryUncheckedUpdateManyWithoutFlowerInput = {
     id?: IntFieldUpdateOperationsInput | number
     date?: IntFieldUpdateOperationsInput | number
@@ -20741,6 +21121,10 @@ export namespace Prisma {
     flowersFarmsId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type FlowersFarmsAndFlowersCreateManyFlowersInput = {
+    flowersFarmsId: number
+  }
+
   export type FlowersFarmsAndFlowersUncheckedUpdateManyWithoutFlowersInput = {
     flowersFarmsId?: IntFieldUpdateOperationsInput | number
   }
@@ -20753,15 +21137,12 @@ export namespace Prisma {
     flowersBouquetsId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersInput = {
-    flowersBouquetsId?: IntFieldUpdateOperationsInput | number
+  export type FlowersBouquetsAndFlowersCreateManyFlowersInput = {
+    flowersBouquetsId: number
   }
 
-  export type FlowersCreateManyVarietyInput = {
-    id?: number
-    color: string
-    name: string
-    price: number
+  export type FlowersBouquetsAndFlowersUncheckedUpdateManyWithoutFlowersInput = {
+    flowersBouquetsId?: IntFieldUpdateOperationsInput | number
   }
 
   export type FlowersUpdateWithoutVarietyInput = {

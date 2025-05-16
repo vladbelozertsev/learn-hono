@@ -1,6 +1,6 @@
+import DOMPurify from "isomorphic-dompurify";
 import { Context } from "hono";
 import { CookieOptions } from "hono/utils/cookie";
-import { PublicFiles } from "../../../libs/prisma";
 import { setCookie } from "hono/cookie";
 
 export const withset = <T>(prams: T) => {
@@ -25,15 +25,7 @@ export const capitalize = (s: string) => {
 };
 
 export const sanitize = (text: string) => {
-  const map: Record<string, string> = {
-    "<": "&lt;",
-    ">": "&gt;",
-    "&": "&amp;",
-    "'": "&#39;",
-    '"': "&quot;",
-    "/": "&#47;",
-  };
-  return text.replace(/[<>&'"\/]/g, (char: string): string => map[char]);
+  return DOMPurify.sanitize(text);
 };
 
 export const setSecureCookie = (c: Context<any, any, any>, name: string, value: string, options?: CookieOptions) => {
@@ -84,9 +76,9 @@ export const groupBy = <T extends { [key: string]: unknown }>(field?: string | n
   }, {} as { [key: string]: T[] });
 };
 
-export const getImgs = (arr: PublicFiles[]) => {
-  if (!Array.isArray(arr)) return [];
-  return arr.map((img) => `${process.env.URL}/public/${img.name}`);
+export const fileURL = (name: string, type?: "public" | "private") => {
+  const folder = type ? type : "public";
+  return `${process.env.URL}/${folder}/${name}`;
 };
 
 export const queryIds = (c: Context<any, any, any>, name: string) => {

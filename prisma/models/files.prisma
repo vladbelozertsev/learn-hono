@@ -7,7 +7,7 @@ model PublicFiles {
 }
 
 model PrivateFiles {
-  id        Int      @id @default(autoincrement())
+  id        String   @id
   name      String   @unique
   size      Int
   uploadAt  DateTime @default(now())

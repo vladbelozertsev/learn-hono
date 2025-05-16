@@ -1,3 +1,26 @@
+-- CreateExtension
+CREATE EXTENSION IF NOT EXISTS "hstore" WITH SCHEMA "public";
+
+-- CreateTable
+CREATE TABLE "PublicFiles" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "size" INTEGER NOT NULL,
+    "uploadAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "PublicFiles_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "PrivateFiles" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "size" INTEGER NOT NULL,
+    "uploadAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "PrivateFiles_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateTable
 CREATE TABLE "Flowers" (
     "id" SERIAL NOT NULL,
@@ -5,6 +28,7 @@ CREATE TABLE "Flowers" (
     "name" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
     "varietyId" INTEGER NOT NULL,
+    "test123" hstore,
 
     CONSTRAINT "Flowers_pkey" PRIMARY KEY ("id")
 );
@@ -12,9 +36,16 @@ CREATE TABLE "Flowers" (
 -- CreateTable
 CREATE TABLE "FlowersVariety" (
     "id" SERIAL NOT NULL,
-    "title" TEXT NOT NULL,
+    "title" hstore,
 
     CONSTRAINT "FlowersVariety_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Languages" (
+    "id" TEXT NOT NULL,
+
+    CONSTRAINT "Languages_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -64,11 +95,26 @@ CREATE TABLE "FlowersBouquetsAndFlowers" (
 
 -- CreateTable
 CREATE TABLE "FlowersAndFiles" (
-    "flowersId" INTEGER NOT NULL,
-    "publicFilesId" INTEGER NOT NULL,
-    "publicFilesName" TEXT NOT NULL,
+    "flowerId" INTEGER NOT NULL,
+    "publicFileName" TEXT NOT NULL,
 
-    CONSTRAINT "FlowersAndFiles_pkey" PRIMARY KEY ("flowersId","publicFilesId")
+    CONSTRAINT "FlowersAndFiles_pkey" PRIMARY KEY ("flowerId","publicFileName")
+);
+
+-- CreateTable
+CREATE TABLE "Test" (
+    "id" SERIAL NOT NULL,
+    "ddd1" TEXT NOT NULL,
+
+    CONSTRAINT "Test_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Test2" (
+    "id" SERIAL NOT NULL,
+    "ddd1" TEXT NOT NULL,
+
+    CONSTRAINT "Test2_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -94,34 +140,14 @@ CREATE TABLE "UsersFiles" (
     CONSTRAINT "UsersFiles_pkey" PRIMARY KEY ("userId","fileId")
 );
 
--- CreateTable
-CREATE TABLE "PublicFiles" (
-    "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "size" INTEGER NOT NULL,
-    "uploadAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "PublicFiles_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "PrivateFiles" (
-    "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "size" INTEGER NOT NULL,
-    "uploadAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "PrivateFiles_pkey" PRIMARY KEY ("id")
-);
-
--- CreateIndex
-CREATE UNIQUE INDEX "FlowersVariety_title_key" ON "FlowersVariety"("title");
-
 -- CreateIndex
 CREATE UNIQUE INDEX "PublicFiles_name_key" ON "PublicFiles"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "PrivateFiles_name_key" ON "PrivateFiles"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Languages_id_key" ON "Languages"("id");
 
 -- AddForeignKey
 ALTER TABLE "Flowers" ADD CONSTRAINT "Flowers_varietyId_fkey" FOREIGN KEY ("varietyId") REFERENCES "FlowersVariety"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -142,7 +168,7 @@ ALTER TABLE "FlowersBouquetsAndFlowers" ADD CONSTRAINT "FlowersBouquetsAndFlower
 ALTER TABLE "FlowersBouquetsAndFlowers" ADD CONSTRAINT "FlowersBouquetsAndFlowers_flowersBouquetsId_fkey" FOREIGN KEY ("flowersBouquetsId") REFERENCES "FlowersBouquets"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "FlowersAndFiles" ADD CONSTRAINT "FlowersAndFiles_flowersId_fkey" FOREIGN KEY ("flowersId") REFERENCES "Flowers"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "FlowersAndFiles" ADD CONSTRAINT "FlowersAndFiles_flowerId_fkey" FOREIGN KEY ("flowerId") REFERENCES "Flowers"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "FlowersAndFiles" ADD CONSTRAINT "FlowersAndFiles_publicFilesId_fkey" FOREIGN KEY ("publicFilesId") REFERENCES "PublicFiles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "FlowersAndFiles" ADD CONSTRAINT "FlowersAndFiles_publicFileName_fkey" FOREIGN KEY ("publicFileName") REFERENCES "PublicFiles"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
