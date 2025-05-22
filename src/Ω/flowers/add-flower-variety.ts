@@ -7,13 +7,14 @@ import { z } from "zod";
 const jsonv = validator({
   target: "json",
   schema: z.object({
-    title: z.string().nonempty().transform(sanitize),
+    name_en: z.string().optional().transform(sanitize),
+    name_ru: z.string().optional().transform(sanitize),
   }),
 });
 
 app.post("api/flowers/varieties", jsonv, async (c) => {
   const [flowerVariety]: [FlowerVariety["value"]] = await sql`
-    INSERT INTO "FlowersVariety"
+    INSERT INTO "flowers_variety"
     ${sql(c.req.valid("json"))}
     RETURNING *
   `;

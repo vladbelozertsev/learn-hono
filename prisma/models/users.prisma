@@ -1,19 +1,19 @@
 
-model Users {
-  id            Int     @id @default(autoincrement())
-  email         String
-  emailVerified Boolean @default(false)
-  name          String
-  password      String?
-  signature     String?
-  role          String  @default("user")
-  oauth         String?
-  oauthId       String?
+model users {
+  id             Int     @id @default(autoincrement())
+  email          String
+  email_verified Boolean @default(false)
+  name           String
+  password       String?
+  signature      String?
+  role           String  @default("user")
+  oauth          String?
+  oauth_id       String?
 }
 
-model UsersFiles {
-  userId Int
-  fileId Int
-  @@id([userId, fileId])
+model users_files {
+  user_id Int
+  file_id Int
+  @@id([user_id, file_id])
 }
 

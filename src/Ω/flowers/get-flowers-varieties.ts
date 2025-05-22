@@ -1,9 +1,9 @@
-import { COUNT, PAGE, SELECT, WHERE } from "../../libs/sql";
 import { FlowerVariety } from "./types/flower-variety";
+import { LIST, PAGE, WHERE } from "../../libs/sql";
 
 app.get("api/flowers/varieties", async (c) => {
-  const flowersVarieties = await COUNT<FlowerVariety["value"][]>(c, {
-    select: SELECT(c, "FlowersVariety").sql,
+  const flowersVarieties = await LIST<FlowerVariety["value"]>(c, {
+    select: ["flowers_variety", ["id", "name_en"]],
     where: WHERE(c),
     page: PAGE(c),
   });

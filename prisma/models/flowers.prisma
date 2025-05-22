@@ -1,69 +1,69 @@
-model Flowers {
+model flowers {
   id            Int     @id @default(autoincrement())
   color         String
-  name          String
+  name_en       String
+  name_ru       String
   price         Int
-  varietyId     Int
-  imgs          FlowersAndFiles[]
-  history       FlowersHistory[]
-  farms         FlowersFarmsAndFlowers[]
-  bouquets      FlowersBouquetsAndFlowers[]
-  variety       FlowersVariety @relation(fields: [varietyId], references: [id])
+  variety_id    Int
+  history       flowers_history[]
+  variety       flowers_variety @relation(fields: [variety_id], references: [id])
+  imgs          flowers_and_files[]
+  farms         flowers_and_flowers_farms[]
+  bouquets      flowers_and_flowers_bouquets[]
 }
 
-model FlowersVariety {
+model flowers_variety {
   id        Int    @id @default(autoincrement())
-  name      String @unique
-  flowers   Flowers[]
+  name_en   String @unique
+  name_ru   String @unique
+  flowers   flowers[]
 }
 
-model Languages {
-  id String @id @unique
-}
-
-model FlowersHistory {
+model flowers_history {
   id        Int     @id @default(autoincrement())
-  flowersId Int
+  flower_id Int
   date      Int
   price     Int
-  flower    Flowers @relation(fields: [flowersId], references: [id])
+  flower    flowers @relation(fields: [flower_id], references: [id])
 }
 
-model FlowersFarms {
+model flowers_farms {
   id      Int @id @default(autoincrement())
-  name    String
+  name_en String
+  name_ru String
   country String
   rate    Int
-  flowers FlowersFarmsAndFlowers[]
+  flowers flowers_and_flowers_farms[]
 }
 
-model FlowersFarmsAndFlowers {
-  flowers        Flowers      @relation(fields: [flowersId], references: [id])
-  flowersId      Int
-  flowersFarms   FlowersFarms @relation(fields: [flowersFarmsId], references: [id])
-  flowersFarmsId Int 
-  @@id([flowersId, flowersFarmsId])
+model flowers_and_flowers_farms {
+  flowers        flowers       @relation(fields: [flower_id], references: [id])
+  flower_id      Int
+  flowers_farms  flowers_farms @relation(fields: [flower_farm_id], references: [id])
+  flower_farm_id Int 
+  @@id([flower_id, flower_farm_id])
 }
 
-model FlowersBouquets {
+model flowers_bouquets {
   id      Int @id @default(autoincrement())
-  name    String
+  name_en String
+  name_ru String
   price   Int
-  flowers FlowersBouquetsAndFlowers[]
+  flowers flowers_and_flowers_bouquets[]
 }
 
-model FlowersBouquetsAndFlowers {
-  flowers           Flowers @relation(fields: [flowersId], references: [id])
-  flowersId         Int
-  flowersBouquets   FlowersBouquets @relation(fields: [flowersBouquetsId], references: [id])
-  flowersBouquetsId Int 
-  @@id([flowersId, flowersBouquetsId])
+model flowers_and_flowers_bouquets {
+  flowers           flowers @relation(fields: [flower_id], references: [id])
+  flower_id         Int
+  flowers_bouquets  flowers_bouquets @relation(fields: [flower_bouquet_id], references: [id])
+  flower_bouquet_id Int 
+  @@id([flower_id, flower_bouquet_id])
 }
 
-model FlowersAndFiles {
-  flowers          Flowers     @relation(fields: [flowerId], references: [id])
-  flowerId         Int
-  publicFiles      PublicFiles @relation(fields: [publicFileName], references: [name])
-  publicFileName   String
-  @@id([flowerId, publicFileName])
+model flowers_and_files {
+  flowers          flowers @relation(fields: [flower_id], references: [id])
+  flower_id        Int
+  public_files     public_files @relation(fields: [public_file_name], references: [name])
+  public_file_name String
+  @@id([flower_id, public_file_name])
 }

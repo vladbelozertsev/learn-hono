@@ -24,7 +24,8 @@ export const capitalize = (s: string) => {
   return (s && s[0].toUpperCase() + s.slice(1)) || "";
 };
 
-export const sanitize = (text: string) => {
+export const sanitize = (text?: unknown) => {
+  if (typeof text !== "string") return text;
   return DOMPurify.sanitize(text);
 };
 
@@ -85,4 +86,14 @@ export const queryIds = (c: Context<any, any, any>, name: string) => {
   const str = c.req.query(name);
   if (!c || !name || !str) return [];
   return str.split(".").map((id) => +id);
+};
+
+export const langx = (val: unknown) => {
+  if (typeof val !== "object" || val === null) return {};
+  const arr = Object.entries(val).map((item) => {
+    if (!item[0].includes("_")) return item;
+    const prop = item[0].substring(0, item[0].indexOf("_"));
+    return [prop, item[1]];
+  });
+  return Object.fromEntries(arr);
 };

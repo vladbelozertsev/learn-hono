@@ -120,96 +120,87 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PublicFilesScalarFieldEnum = {
+exports.Prisma.Public_filesScalarFieldEnum = {
   id: 'id',
   name: 'name',
   size: 'size',
-  uploadAt: 'uploadAt'
+  upload_at: 'upload_at'
 };
 
-exports.Prisma.PrivateFilesScalarFieldEnum = {
+exports.Prisma.Private_filesScalarFieldEnum = {
   id: 'id',
   name: 'name',
   size: 'size',
-  uploadAt: 'uploadAt'
+  upload_at: 'upload_at'
 };
 
 exports.Prisma.FlowersScalarFieldEnum = {
   id: 'id',
   color: 'color',
-  name: 'name',
+  name_en: 'name_en',
+  name_ru: 'name_ru',
   price: 'price',
-  varietyId: 'varietyId'
+  variety_id: 'variety_id'
 };
 
-exports.Prisma.FlowersVarietyScalarFieldEnum = {
-  id: 'id'
-};
-
-exports.Prisma.LanguagesScalarFieldEnum = {
-  id: 'id'
-};
-
-exports.Prisma.FlowersHistoryScalarFieldEnum = {
+exports.Prisma.Flowers_varietyScalarFieldEnum = {
   id: 'id',
-  flowersId: 'flowersId',
+  name_en: 'name_en',
+  name_ru: 'name_ru'
+};
+
+exports.Prisma.Flowers_historyScalarFieldEnum = {
+  id: 'id',
+  flower_id: 'flower_id',
   date: 'date',
   price: 'price'
 };
 
-exports.Prisma.FlowersFarmsScalarFieldEnum = {
+exports.Prisma.Flowers_farmsScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  name_en: 'name_en',
+  name_ru: 'name_ru',
   country: 'country',
   rate: 'rate'
 };
 
-exports.Prisma.FlowersFarmsAndFlowersScalarFieldEnum = {
-  flowersId: 'flowersId',
-  flowersFarmsId: 'flowersFarmsId'
+exports.Prisma.Flowers_and_flowers_farmsScalarFieldEnum = {
+  flower_id: 'flower_id',
+  flower_farm_id: 'flower_farm_id'
 };
 
-exports.Prisma.FlowersBouquetsScalarFieldEnum = {
+exports.Prisma.Flowers_bouquetsScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  name_en: 'name_en',
+  name_ru: 'name_ru',
   price: 'price'
 };
 
-exports.Prisma.FlowersBouquetsAndFlowersScalarFieldEnum = {
-  flowersId: 'flowersId',
-  flowersBouquetsId: 'flowersBouquetsId'
+exports.Prisma.Flowers_and_flowers_bouquetsScalarFieldEnum = {
+  flower_id: 'flower_id',
+  flower_bouquet_id: 'flower_bouquet_id'
 };
 
-exports.Prisma.FlowersAndFilesScalarFieldEnum = {
-  flowerId: 'flowerId',
-  publicFileName: 'publicFileName'
-};
-
-exports.Prisma.TestScalarFieldEnum = {
-  id: 'id',
-  ddd1: 'ddd1'
-};
-
-exports.Prisma.Test2ScalarFieldEnum = {
-  id: 'id',
-  ddd1: 'ddd1'
+exports.Prisma.Flowers_and_filesScalarFieldEnum = {
+  flower_id: 'flower_id',
+  public_file_name: 'public_file_name'
 };
 
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  emailVerified: 'emailVerified',
+  email_verified: 'email_verified',
   name: 'name',
   password: 'password',
   signature: 'signature',
   role: 'role',
   oauth: 'oauth',
-  oauthId: 'oauthId'
+  oauth_id: 'oauth_id'
 };
 
-exports.Prisma.UsersFilesScalarFieldEnum = {
-  userId: 'userId',
-  fileId: 'fileId'
+exports.Prisma.Users_filesScalarFieldEnum = {
+  user_id: 'user_id',
+  file_id: 'file_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -229,21 +220,18 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  PublicFiles: 'PublicFiles',
-  PrivateFiles: 'PrivateFiles',
-  Flowers: 'Flowers',
-  FlowersVariety: 'FlowersVariety',
-  Languages: 'Languages',
-  FlowersHistory: 'FlowersHistory',
-  FlowersFarms: 'FlowersFarms',
-  FlowersFarmsAndFlowers: 'FlowersFarmsAndFlowers',
-  FlowersBouquets: 'FlowersBouquets',
-  FlowersBouquetsAndFlowers: 'FlowersBouquetsAndFlowers',
-  FlowersAndFiles: 'FlowersAndFiles',
-  Test: 'Test',
-  Test2: 'Test2',
-  Users: 'Users',
-  UsersFiles: 'UsersFiles'
+  public_files: 'public_files',
+  private_files: 'private_files',
+  flowers: 'flowers',
+  flowers_variety: 'flowers_variety',
+  flowers_history: 'flowers_history',
+  flowers_farms: 'flowers_farms',
+  flowers_and_flowers_farms: 'flowers_and_flowers_farms',
+  flowers_bouquets: 'flowers_bouquets',
+  flowers_and_flowers_bouquets: 'flowers_and_flowers_bouquets',
+  flowers_and_files: 'flowers_and_files',
+  users: 'users',
+  users_files: 'users_files'
 };
 
 /**

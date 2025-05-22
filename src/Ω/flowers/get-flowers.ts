@@ -1,59 +1,43 @@
-import { COUNT, INTERSECT, PAGE, SELECT, WHERE } from "../../libs/sql";
-import { Flower } from "./types/flower";
-import { FlowersAndFiles, FlowersHistory } from "../../libs/prisma";
+import { INTERSECT, LIST, PAGE, WHERE } from "../../libs/sql";
+import { SFlower } from "./types/flower";
 import { fileURL, groupBy, queryIds } from "../../libs/helpers/utils";
+import { flowers_and_files as FFiles } from "../../libs/prisma";
 import { sql } from "bun";
 
 app.get("api/flowers", async (c) => {
-  const select = SELECT<Flower["value"]>(c, {
-    from: "Flowers",
-    select: ["asd", "dsdsd", "dfdfdf"],
-    exclude: ["hist"],
-  });
-
   const and = INTERSECT("id", [
     {
-      select: "flowersId",
-      from: "FlowersFarmsAndFlowers",
-      where: "flowersFarmsId",
+      select: "flower_id",
+      from: "flowers_farms_and_flowers",
+      where: "flowers_farm_id",
       in: queryIds(c, "farms"),
     },
     {
-      select: "flowersId",
-      from: "FlowersBouquetsAndFlowers",
-      where: "flowersBouquetsId",
+      select: "flower_id",
+      from: "flowers_bouquets_and_flowers",
+      where: "flowers_bouquet_id",
       in: queryIds(c, "bouquets"),
     },
   ]);
 
-  let flowers = await COUNT<Flower["value"][]>(c, {
-    select: select.sql,
+  let flowers = await LIST<SFlower["value"]>(c, {
+    select: ["Flowers", ["id", "name_en"]],
     where: WHERE(c, and),
     page: PAGE(c),
   });
 
-  if (!select.join || select.join.hist) {
-    const history: { [key: string]: FlowersHistory[] } = await sql`
-      SELECT * FROM "FlowersHistory"
-      WHERE "flowersId" IN ${sql(flowers.map((f) => f.id))}
-    `.then((arr) => groupBy("flowersId", arr));
-    flowers = flowers.map((f) => ({ ...f, hist: history[f.id] }));
-  }
+  const faf: { [key: string]: FFiles[] } = await sql`
+    SELECT *
+    FROM "flowers_and_files"
+    WHERE "flower_id" IN ${sql(flowers.map((f) => f.id))}
+  `.then((arr) => groupBy("flower_id", arr));
 
-  if (!select.join || select.join.imgs) {
-    const faf: { [key: string]: FlowersAndFiles[] } = await sql`
-      SELECT *
-      FROM "FlowersAndFiles"
-      WHERE "flowerId" IN ${sql(flowers.map((f) => f.id))}
-    `.then((arr) => groupBy("flowerId", arr));
+  flowers = flowers.map((f) => {
+    const imgs = faf[f.id]?.map((img) => fileURL(img.public_file_name));
+    return { ...f, imgs };
+  });
 
-    flowers = flowers.map((f) => {
-      const imgs = faf[f.id]?.map((img) => fileURL(img.publicFileName));
-      return { ...f, imgs };
-    });
-  }
-
-  return c.json<Flower["valid"]>({ data: flowers });
+  return c.json<SFlower["valid"]>({ data: flowers });
 });
 
 // https://stackoverflow.com/questions/349559/sql-how-to-search-a-many-to-many-relationship

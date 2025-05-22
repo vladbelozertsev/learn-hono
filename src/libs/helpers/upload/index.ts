@@ -10,6 +10,7 @@ type Prams = {
   onFile?: (file: PublicFiles | PrivateFiles) => void | Promise<void>;
   dir: "public" | "private";
   maxSize?: number;
+  filesName?: string;
 };
 
 export const upload = async (c: Context, prams: Prams) => {
@@ -19,7 +20,7 @@ export const upload = async (c: Context, prams: Prams) => {
   if (!c.req.raw.body) throw new HTTPException(422, { message: "BODY_IS_UNDEFINED" });
 
   const formData = await c.req.formData();
-  const files = formData.getAll("$files");
+  const files = formData.getAll(prams.filesName || "$files");
 
   const result = files.map(async (file) => {
     const data = await onFile({ ...prams, file }).catch(console.error);

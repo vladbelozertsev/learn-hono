@@ -1,134 +1,116 @@
-model PublicFiles {
-  id       Int               @id @default(autoincrement())
-  name     String            @unique
-  size     Int
-  uploadAt DateTime          @default(now())
-  flowers  FlowersAndFiles[]
+model public_files {
+  id        Int                 @id @default(autoincrement())
+  name      String              @unique
+  size      Int
+  upload_at DateTime            @default(now())
+  flowers   flowers_and_files[]
 }
 
-model PrivateFiles {
-  id       String   @id
-  name     String   @unique
-  size     Int
-  uploadAt DateTime @default(now())
+model private_files {
+  id        String   @id
+  name      String   @unique
+  size      Int
+  upload_at DateTime @default(now())
 }
 
-model Flowers {
-  id        Int                         @id @default(autoincrement())
-  color     String
-  name      String
-  price     Int
-  varietyId Int
-  test123   Unsupported("hstore")
-  imgs      FlowersAndFiles[]
-  history   FlowersHistory[]
-  farms     FlowersFarmsAndFlowers[]
-  bouquets  FlowersBouquetsAndFlowers[]
-  variety   FlowersVariety              @relation(fields: [varietyId], references: [id])
+model flowers {
+  id         Int                            @id @default(autoincrement())
+  color      String
+  name_en    String
+  name_ru    String
+  price      Int
+  variety_id Int
+  history    flowers_history[]
+  variety    flowers_variety                @relation(fields: [variety_id], references: [id])
+  imgs       flowers_and_files[]
+  farms      flowers_and_flowers_farms[]
+  bouquets   flowers_and_flowers_bouquets[]
 }
 
-model FlowersVariety {
-  id      Int                   @id @default(autoincrement())
-  title   Unsupported("hstore")
-  flowers Flowers[]
+model flowers_variety {
+  id      Int       @id @default(autoincrement())
+  name_en String    @unique
+  name_ru String    @unique
+  flowers flowers[]
 }
 
-// model Dictionary {
-//   languageId O
-//   languages Languages @relation(fields: [languageId], references: [id])
-// }
-
-model Languages {
-  id String @id @unique
-}
-
-model FlowersHistory {
+model flowers_history {
   id        Int     @id @default(autoincrement())
-  flowersId Int
+  flower_id Int
   date      Int
   price     Int
-  flower    Flowers @relation(fields: [flowersId], references: [id])
+  flower    flowers @relation(fields: [flower_id], references: [id])
 }
 
-model FlowersFarms {
-  id      Int                      @id @default(autoincrement())
-  name    String
+model flowers_farms {
+  id      Int                         @id @default(autoincrement())
+  name_en String
+  name_ru String
   country String
   rate    Int
-  flowers FlowersFarmsAndFlowers[]
+  flowers flowers_and_flowers_farms[]
 }
 
-model FlowersFarmsAndFlowers {
-  flowers        Flowers      @relation(fields: [flowersId], references: [id])
-  flowersId      Int
-  flowersFarms   FlowersFarms @relation(fields: [flowersFarmsId], references: [id])
-  flowersFarmsId Int
+model flowers_and_flowers_farms {
+  flowers        flowers       @relation(fields: [flower_id], references: [id])
+  flower_id      Int
+  flowers_farms  flowers_farms @relation(fields: [flower_farm_id], references: [id])
+  flower_farm_id Int
 
-  @@id([flowersId, flowersFarmsId])
+  @@id([flower_id, flower_farm_id])
 }
 
-model FlowersBouquets {
-  id      Int                         @id @default(autoincrement())
-  name    String
+model flowers_bouquets {
+  id      Int                            @id @default(autoincrement())
+  name_en String
+  name_ru String
   price   Int
-  flowers FlowersBouquetsAndFlowers[]
+  flowers flowers_and_flowers_bouquets[]
 }
 
-model FlowersBouquetsAndFlowers {
-  flowers           Flowers         @relation(fields: [flowersId], references: [id])
-  flowersId         Int
-  flowersBouquets   FlowersBouquets @relation(fields: [flowersBouquetsId], references: [id])
-  flowersBouquetsId Int
+model flowers_and_flowers_bouquets {
+  flowers           flowers          @relation(fields: [flower_id], references: [id])
+  flower_id         Int
+  flowers_bouquets  flowers_bouquets @relation(fields: [flower_bouquet_id], references: [id])
+  flower_bouquet_id Int
 
-  @@id([flowersId, flowersBouquetsId])
+  @@id([flower_id, flower_bouquet_id])
 }
 
-model FlowersAndFiles {
-  flowers        Flowers     @relation(fields: [flowerId], references: [id])
-  flowerId       Int
-  publicFiles    PublicFiles @relation(fields: [publicFileName], references: [name])
-  publicFileName String
+model flowers_and_files {
+  flowers          flowers      @relation(fields: [flower_id], references: [id])
+  flower_id        Int
+  public_files     public_files @relation(fields: [public_file_name], references: [name])
+  public_file_name String
 
-  @@id([flowerId, publicFileName])
+  @@id([flower_id, public_file_name])
 }
 
-model Test {
-  id   Int    @id @default(autoincrement())
-  ddd1 String
+model users {
+  id             Int     @id @default(autoincrement())
+  email          String
+  email_verified Boolean @default(false)
+  name           String
+  password       String?
+  signature      String?
+  role           String  @default("user")
+  oauth          String?
+  oauth_id       String?
 }
 
-model Test2 {
-  id   Int    @id @default(autoincrement())
-  ddd1 String
-}
+model users_files {
+  user_id Int
+  file_id Int
 
-model Users {
-  id            Int     @id @default(autoincrement())
-  email         String
-  emailVerified Boolean @default(false)
-  name          String
-  password      String?
-  signature     String?
-  role          String  @default("user")
-  oauth         String?
-  oauthId       String?
-}
-
-model UsersFiles {
-  userId Int
-  fileId Int
-
-  @@id([userId, fileId])
+  @@id([user_id, file_id])
 }
 
 datasource db {
-  provider   = "postgresql"
-  url        = env("POSTGRES_URL_PRISMA")
-  extensions = [hstore(schema: "public")]
+  provider = "postgresql"
+  url      = env("POSTGRES_URL_PRISMA")
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  output          = "../src/libs/prisma"
-  previewFeatures = ["postgresqlExtensions"]
+  provider = "prisma-client-js"
+  output   = "../src/libs/prisma"
 }

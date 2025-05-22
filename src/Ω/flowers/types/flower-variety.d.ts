@@ -1,9 +1,11 @@
 import { Equal } from "../../../libs/types/valid";
-import { FlowersVariety as PrismaFlowersVariety } from "../../../libs/prisma";
+import { flowers_variety } from "../../../libs/prisma";
 
 export type FlowerVariety = Equal<
-  PrismaFlowersVariety,
+  flowers_variety,
   {
     id: number;
+    name_en: string;
+    name_ru: string;
   }
 >;
