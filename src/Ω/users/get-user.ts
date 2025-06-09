@@ -3,7 +3,7 @@ import { Token } from "../../libs/types/token.js";
 import { User } from "../../libs/types/user.js";
 import { auth } from "../../libs/mws/auth.js";
 import { decode } from "hono/jwt";
-import { delkeys } from "../../libs/helpers/utils/index.js";
+import { delkeys } from "../../libs/helpers/utils.js";
 import { sql } from "bun";
 
 app.get("api/users", auth, async (c) => {
@@ -15,7 +15,7 @@ app.get("api/users", auth, async (c) => {
   }
 
   const [user]: [User["value"] | undefined] = await sql`
-    SELECT * FROM "Users"
+    SELECT * FROM "users"
     WHERE "id" = ${tokenDecoded.id}
   `;
 

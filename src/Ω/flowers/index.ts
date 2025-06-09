@@ -1,7 +1,8 @@
-import "./add-flower";
-import "./add-flower-variety";
-import "./chg-flower-variety";
-import "./del-flower-variety";
-import "./get-flowers";
-import "./get-flowers-varieties";
+import "./flowers-add";
+import "./flowers-get";
 import "./pdf";
+import "./varieties-add";
+import "./varieties-del";
+import "./varieties-get";
+import "./varieties-one";
+import "./varieties-upd";

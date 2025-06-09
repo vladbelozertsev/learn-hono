@@ -1,7 +1,7 @@
 import { Flower } from "./types/flower";
 import { sanitize } from "../../libs/helpers/utils";
 import { sql } from "bun";
-import { upload } from "../../libs/helpers/upload";
+import { upload } from "../../libs/upload";
 import { validator } from "../../libs/mws/validator";
 import { z } from "zod";
 
@@ -13,11 +13,11 @@ const formv = validator({
     price: z
       .string()
       .refine((v) => !isNaN(+v))
-      .transform((p) => +p),
+      .transform((v) => +sanitize(v)),
     varietyId: z
       .string()
       .refine((v) => Number.isInteger(+v))
-      .transform((id) => +id),
+      .transform((v) => +sanitize(v)),
   }),
 });
 

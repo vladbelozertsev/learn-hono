@@ -18,7 +18,7 @@ app.post("api/auth", jsonv, async (c) => {
   const json = c.req.valid("json");
 
   const [user]: [User["value"] | undefined] = await sql`
-    SELECT * FROM "Users"
+    SELECT * FROM "users"
     WHERE "email" = ${json.email}
   `;
 
@@ -29,7 +29,7 @@ app.post("api/auth", jsonv, async (c) => {
   const signature = await password.hash(refreshToken.split(".")[2]);
 
   await sql`
-    UPDATE "Users"
+    UPDATE "users"
     SET "signature" = ${signature}
     WHERE "email" = ${json.email}
   `;

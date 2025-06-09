@@ -1,7 +1,7 @@
+import { FlowerFile } from "./types/flower-file";
 import { INTERSECT, LIST, PAGE, WHERE } from "../../libs/sql";
 import { SFlower } from "./types/flower";
 import { fileURL, groupBy, queryIds } from "../../libs/helpers/utils";
-import { flowers_and_files as FFiles } from "../../libs/prisma";
 import { sql } from "bun";
 
 app.get("api/flowers", async (c) => {
@@ -26,7 +26,7 @@ app.get("api/flowers", async (c) => {
     page: PAGE(c),
   });
 
-  const faf: { [key: string]: FFiles[] } = await sql`
+  const faf: { [key: string]: FlowerFile["value"][] } = await sql`
     SELECT *
     FROM "flowers_and_files"
     WHERE "flower_id" IN ${sql(flowers.map((f) => f.id))}

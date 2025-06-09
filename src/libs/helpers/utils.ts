@@ -24,8 +24,8 @@ export const capitalize = (s: string) => {
   return (s && s[0].toUpperCase() + s.slice(1)) || "";
 };
 
-export const sanitize = (text?: unknown) => {
-  if (typeof text !== "string") return text;
+export const sanitize = (text?: string) => {
+  if (typeof text !== "string") return "";
   return DOMPurify.sanitize(text);
 };
 
@@ -97,3 +97,11 @@ export const langx = (val: unknown) => {
   });
   return Object.fromEntries(arr);
 };
+
+export function isInt(n?: unknown) {
+  return Number(n) === n && n % 1 === 0;
+}
+
+export function isFloat(n?: unknown) {
+  return Number(n) === n && n % 1 !== 0;
+}

@@ -1,30 +1,39 @@
-import { isStringOrNumber } from "../../helpers/utils";
-import { sql } from "bun";
+import { Context } from "hono";
+import { SQLQuery, sql } from "bun";
+import { atobURL, isStringOrNumber, safeParseJSON } from "../helpers/utils";
+import { z } from "zod";
 
-// | Filter              | Description                       |
-// | ------------------- | --------------------------------- |
-// | eq                  | Equal                             |
-// | ne                  | Not equal                         |
-// | lt                  | Less than                         |
-// | gt                  | Greater than                      |
-// | lte                 | Less than or equal to             |
-// | gte                 | Greater than or equal to          |
-// | in                  | Included in an array              |
-// | nin                 | Not included in an array          |
-// | contains            | Contains                          |
-// | ncontains           | Doesn't contain                   |
-// | containss           | Contains, case sensitive          |
-// | ncontainss          | Doesn't contain, case sensitive   |
-// | null                | Is null or not null               |
-// | startswith          | Starts with                       |
-// | nstartswith         | Doesn't start with                |
-// | startswiths         | Starts with, case sensitive       |
-// | nstartswiths        | Doesn't start with, case sensitive|
-// | endswith            | Ends with                         |
-// | nendswith           | Doesn't end with                  |
-// | endswiths           | Ends with, case sensitive         |
-// | nendswiths          | Doesn't end with, case sensitive  |
-//-|---------------------|-----------------------------------|
+const filterSchema = z
+  .tuple([
+    z.string().refine((column) => /^[A-Za-z0-9]+$/.test(column)),
+    z.string().nonempty(),
+    z.union([
+      z.string().nonempty().or(z.number()).or(z.boolean()),
+      z.string().nonempty().or(z.number()).or(z.boolean()).array(),
+    ]),
+  ])
+  .array();
+
+export const WHERE = (c: Context<any, any, any>, and?: SQLQuery) => {
+  const filterJSON = atobURL(c.req.query("filter"));
+  if (!filterJSON) return and ? sql`WHERE ${and}` : sql``;
+
+  const filters = filterSchema.safeParse(safeParseJSON(filterJSON));
+
+  if (!filters.success || !filters.data?.length) {
+    if (filters.error) console.error("SQL_WHERE", filters.error);
+    return and ? sql`WHERE ${and}` : sql``;
+  }
+
+  return filters.data
+    .map(getSQLFilter)
+    .filter((sqlQuery) => !!sqlQuery)
+    .reduce((acc, cur, index) => {
+      if (!index && and) return sql`WHERE ${and} AND ${cur}`;
+      if (!index) return sql`WHERE ${cur}`;
+      return sql`${acc} AND ${cur}`;
+    }, sql``);
+};
 
 export const getSQLFilter = (filter: [string, string, (string | number | boolean) | (string | number | boolean)[]]) => {
   const column = filter[0];
@@ -133,3 +142,33 @@ export const getSQLFilter = (filter: [string, string, (string | number | boolean
       return null;
   }
 };
+
+// | Filter              | Description                       |
+// | ------------------- | --------------------------------- |
+// | eq                  | Equal                             |
+// | ne                  | Not equal                         |
+// | lt                  | Less than                         |
+// | gt                  | Greater than                      |
+// | lte                 | Less than or equal to             |
+// | gte                 | Greater than or equal to          |
+// | in                  | Included in an array              |
+// | nin                 | Not included in an array          |
+// | contains            | Contains                          |
+// | ncontains           | Doesn't contain                   |
+// | containss           | Contains, case sensitive          |
+// | ncontainss          | Doesn't contain, case sensitive   |
+// | null                | Is null or not null               |
+// | startswith          | Starts with                       |
+// | nstartswith         | Doesn't start with                |
+// | startswiths         | Starts with, case sensitive       |
+// | nstartswiths        | Doesn't start with, case sensitive|
+// | endswith            | Ends with                         |
+// | nendswith           | Doesn't end with                  |
+// | endswiths           | Ends with, case sensitive         |
+// | nendswiths          | Doesn't end with, case sensitive  |
+//-|---------------------|-----------------------------------|
+
+/**
+ * Useful links:
+ * https://stackoverflow.com/questions/75511010/is-it-possible-to-chain-regex-expressions-in-zod
+ **/

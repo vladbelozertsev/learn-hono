@@ -14,13 +14,14 @@ const paramv = validator({
 const jsonv = validator({
   target: "json",
   schema: z.object({
-    title: z.string().nonempty().transform(sanitize),
+    name_en: z.string().optional().transform(sanitize),
+    name_ru: z.string().optional().transform(sanitize),
   }),
 });
 
 app.put("api/flowers/varieties/:id", paramv, jsonv, async (c) => {
   const [flowerVariety]: [FlowerVariety["value"]] = await sql`
-    UPDATE "FlowersVariety"
+    UPDATE "flowers_variety"
     SET ${sql(c.req.valid("json"))}
     WHERE "id" = ${+c.req.valid("param").id}
     RETURNING *

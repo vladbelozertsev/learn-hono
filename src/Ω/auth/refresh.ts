@@ -11,14 +11,14 @@ import { token } from "../../libs/helpers/token";
 const getTokens = async (refreshTokenJwt: string) => {
   const id = decode(refreshTokenJwt)?.payload?.id as number;
   if (!id) throw new HTTPException(401, { message: "Id undefined" });
-  const [user]: [User["value"] | undefined] = await sql`SELECT * FROM "Users" WHERE "id" = ${id}`;
+  const [user]: [User["value"] | undefined] = await sql`SELECT * FROM "users" WHERE "id" = ${id}`;
   if (!user?.signature) throw new HTTPException(401, { message: "Token cancelled" });
   const isValid = await password.verify(refreshTokenJwt.split(".")[2], user.signature);
   if (!isValid) throw new HTTPException(401, { message: "Token changed" });
   const accessToken = await token.access(id, user.role);
   const refreshToken = await token.refresh(id, user.role);
   const signature = await password.hash(refreshToken.split(".")[2]);
-  await sql`UPDATE "Users" SET "signature" = ${signature} WHERE "id" = ${id};`;
+  await sql`UPDATE "users" SET "signature" = ${signature} WHERE "id" = ${id};`;
   return { accessToken, refreshToken };
 };
 

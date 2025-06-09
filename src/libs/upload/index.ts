@@ -1,13 +1,13 @@
 import type { Context } from "hono";
 import type { mimeTypes } from "./mime-types.js";
 import { HTTPException } from "hono/http-exception";
-import { PrivateFiles, PublicFiles } from "../../../libs/prisma";
 import { onFile } from "./save-file.js";
+import { private_files, public_files } from "../prisma/index.js";
 import { sql } from "bun";
 
 type Prams = {
   allowed?: { [Key in keyof typeof mimeTypes]?: boolean };
-  onFile?: (file: PublicFiles | PrivateFiles) => void | Promise<void>;
+  onFile?: (file: public_files | private_files) => void | Promise<void>;
   dir: "public" | "private";
   maxSize?: number;
   filesName?: string;
@@ -30,12 +30,12 @@ export const upload = async (c: Context, prams: Prams) => {
     if (prams.dir === "public") {
       const dbFile = await sql`INSERT INTO "PublicFiles" ${sql(data)} RETURNING *`;
       if (prams.onFile) await prams.onFile(dbFile[0]);
-      return { url, file: dbFile[0] as PublicFiles };
+      return { url, file: dbFile[0] as public_files };
     }
 
     const dbFile = await sql`INSERT INTO "PrivateFiles" ${sql(data)} RETURNING *`;
     if (prams.onFile) await prams.onFile(dbFile[0]);
-    return { url, file: dbFile[0] as PrivateFiles };
+    return { url, file: dbFile[0] as private_files };
   });
 
   return Promise.allSettled(result);

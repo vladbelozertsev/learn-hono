@@ -9,12 +9,10 @@ export const SELECT = <T = any>(from: string, select: (keyof T)[]) => {
 
   if (!select?.length) return result();
 
-  // const SELECT_SQL = select?.reduce((acc, cur, index) => {
-  //   if (!index) return sql`SELECT ${sql(cur)}`;
-  //   return sql`${acc}, ${sql(cur)}`;
-  // }, sql``);
-
-  const SELECT_SQL = sql`SELECT ${["id", "name_en"]} FROM ${sql(from)}`;
+  const SELECT_SQL = select?.reduce((acc, cur, index) => {
+    if (!index) return sql`SELECT ${sql(cur)}`;
+    return sql`${acc}, ${sql(cur)}`;
+  }, sql``);
 
   return result(sql`${SELECT_SQL} FROM ${sql(from)}`);
 };

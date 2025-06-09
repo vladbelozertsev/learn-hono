@@ -1,17 +1,17 @@
 import { Equal } from "./valid";
-import { Users } from "../../../prisma/types";
+import { users } from "../prisma";
 
 export type User = Equal<
-  Users,
+  users,
   {
     email: string;
     name: string;
     password: string | null;
     id: number;
-    emailVerified: boolean;
+    email_verified: boolean;
     signature: string | null;
     role: string;
     oauth: string | null;
-    oauthId: string | null;
+    oauth_id: string | null;
   }
 >;

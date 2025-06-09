@@ -32,7 +32,7 @@ app.get("api/oauth/callback/:provider", async (c) => {
     const [dbUser]: [User["value"] | undefined] = await sql`
       SELECT * FROM "Users"
       WHERE "oauth" = ${provider}
-      AND "oauthId" = ${oauthUser.id}
+      AND "oauth_id" = ${oauthUser.id}
     `;
 
     if (dbUser) {
@@ -48,7 +48,7 @@ app.get("api/oauth/callback/:provider", async (c) => {
     const [user]: [User["value"]] = await sql`
       INSERT INTO "Users" ${sql({
         oauth: provider,
-        oauthId: oauthUser.id,
+        oauth_id: oauthUser.id,
         name: oauthUser.name,
         email: oauthUser.email,
       })}

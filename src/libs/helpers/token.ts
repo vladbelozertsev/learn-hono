@@ -1,4 +1,4 @@
-import { ROLE } from "../consts";
+import { ROLE } from "./consts";
 import { sign } from "hono/jwt";
 
 export const token = {

@@ -1,7 +1,6 @@
 import { Context } from "hono";
-import { SELECT } from "../select";
+import { SELECT } from "./select";
 import { SQLQuery, sql } from "bun";
-import { setCountHeader } from "./set-count-header";
 
 export const LIST = async <T>(
   c: Context<any, any, any>,
@@ -13,6 +12,15 @@ export const LIST = async <T>(
   }
 ) => {
   const select = SELECT(data.select[0], data.select[1]);
-  await setCountHeader(c, select[1], data.where);
+
+  if (c.req.query("count") === "1") {
+    const res: [{ count: string }] = await sql`
+      ${select[1]}
+      ${data.where}
+    `;
+
+    c.header("X-Count", res[0].count);
+  }
+
   return sql`${select[0]} ${data.where} ${data.page}` as unknown as T[];
 };

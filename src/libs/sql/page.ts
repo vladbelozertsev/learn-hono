@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { atobURL, safeParseJSON } from "../../helpers/utils";
+import { atobURL, safeParseJSON } from "../helpers/utils";
 import { sql } from "bun";
 import { z } from "zod";
 

@@ -1,7 +1,7 @@
 import { User } from "../../libs/types/user.js";
-import { delkeys, sanitize } from "../../libs/helpers/utils/index.js";
+import { delkeys, sanitize } from "../../libs/helpers/utils.js";
 import { password, sql } from "bun";
-import { token } from "../../libs/helpers/token/index.js";
+import { token } from "../../libs/helpers/token.js";
 import { validator } from "../../libs/mws/validator.js";
 import { z } from "zod";
 
@@ -18,7 +18,7 @@ app.post("api/users", jsonv, async (c) => {
   const { email, name, password: pass } = c.req.valid("json");
 
   const [dbUser]: [User["value"] | undefined] = await sql`
-    SELECT * FROM "Users"
+    SELECT * FROM "users"
     WHERE "email" = ${email}
     AND "oauth" IS NULL
   `;
@@ -26,7 +26,7 @@ app.post("api/users", jsonv, async (c) => {
   if (dbUser) return c.text("Email already busy", 401);
 
   const [user]: [User["value"]] = await sql`
-    INSERT INTO "Users" ${sql({ name, email, password: pass })}
+    INSERT INTO "users" ${sql({ name, email, password: pass })}
     RETURNING *
   `;
 
@@ -35,7 +35,7 @@ app.post("api/users", jsonv, async (c) => {
   const signature = await password.hash(refreshToken.split(".")[2]);
 
   await sql`
-    UPDATE "Users"
+    UPDATE "users"
     SET "signature" = ${signature}
     WHERE "id" = ${user.id}
   `;

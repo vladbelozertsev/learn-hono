@@ -8,7 +8,7 @@ app.delete("api/auth", auth, async (c) => {
   const { id } = decode(tokenJwt).payload as Token;
 
   await sql`
-    UPDATE "Users"
+    UPDATE "users"
     SET "signature" = ${""}
     WHERE "id" = ${id};
   `;
